@@ -23,6 +23,9 @@ namespace Purchase.Infrastructure.Repository
             var data = FindAll(trackChanges).OrderBy(e => e.FirstName);
             return PagedList<Customer>.ToPagedListAsync(data, pagingParameters.PageNumber, pagingParameters.PageSize);
         }
+
+        public void CreateCustomer(Customer customer) => Create(customer);
+
     }
 
 }

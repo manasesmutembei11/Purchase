@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Purchase.Infrastructure.Repository
 {
@@ -21,5 +22,8 @@ namespace Purchase.Infrastructure.Repository
             var data = FindAll(trackChanges).OrderBy(e => e.Code);
             return PagedList<Tax>.ToPagedListAsync(data, pagingParameters.PageNumber, pagingParameters.PageSize);
         }
+
+        public void CreateTax(Tax tax) => Create(tax);
+
     }
 }
