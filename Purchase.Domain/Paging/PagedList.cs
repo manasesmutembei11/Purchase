@@ -1,4 +1,4 @@
-﻿using XpaAsva.Core.Domain.Paging;
+﻿using Purchase.Domain.Paging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
