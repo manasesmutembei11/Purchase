@@ -15,10 +15,8 @@ namespace Purchase.Domain.DTOs
 
         public string CustomerName { get; set; } 
 
-        public DateOnly OrderDate { get; set; }
+        public DateTime OrderDate { get; set; }
 
         public decimal Total { get; set; }
-
-        public List<OrderItemDTO> OrderItems { get; set; } = new List<OrderItemDTO>();
     }
 }
