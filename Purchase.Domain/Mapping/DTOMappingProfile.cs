@@ -1,8 +1,8 @@
 ﻿
 using AutoMapper;
-using Purchase.Presentation.DTOs;
+using Purchase.Domain.DTOs;
 using Purchase.Domain.Models;
-namespace XpaAsva.Application.Mapping
+namespace Purchase.Domain.Mapping
 {
     public class MappingProfile : Profile
     {

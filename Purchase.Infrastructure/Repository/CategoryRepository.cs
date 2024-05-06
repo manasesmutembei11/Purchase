@@ -1,6 +1,6 @@
 ﻿using Purchase.Domain.Contracts;
-using Purchase.Domain.Models;
 using Purchase.Domain.Paging;
+using Purchase.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +24,14 @@ namespace Purchase.Infrastructure.Repository
         }
 
         public void CreateCategory(Category category) => Create(category);
+
+        public Category GetCategory(Guid categoryId, bool trackChanges) =>
+        FindByCondition(c => c.CategoryId.Equals(categoryId), trackChanges)
+        .SingleOrDefault();
+
+
+        public void DeleteCategory(Category category) => Delete(category);
+
 
     }
 }

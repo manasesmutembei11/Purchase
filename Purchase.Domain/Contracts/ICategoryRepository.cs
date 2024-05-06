@@ -13,6 +13,11 @@ namespace Purchase.Domain.Contracts
         Task<PagedList<Category>> GetPagedListAsync(PagingParameters pagingParameters, bool trackChanges);
 
         void CreateCategory(Category category);
+        Category GetCategory(Guid categoryId, bool trackChanges);
+
+
+        void DeleteCategory(Category category);
+
 
     }
 }

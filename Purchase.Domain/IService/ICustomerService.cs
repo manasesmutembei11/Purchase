@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Purchase.Domain.Models;
 using Purchase.Domain.Paging;
+using Purchase.Domain.DTOs;
 
 namespace Purchase.Domain.IService
 {
     public interface ICustomerService
     {
         IEnumerable<Customer> GetPagedListAsync(PagingParameters pagingParameters, bool trackChanges);
+        CustomerDTO CreateCustomer(CustomerDTO customer);
 
     }
 

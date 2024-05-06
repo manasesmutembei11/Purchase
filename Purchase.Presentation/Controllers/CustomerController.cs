@@ -8,8 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 using Purchase.Domain.Contracts;
 using AutoMapper;
 using Purchase.Domain.Paging;
-using Purchase.Presentation.DTOs;
+using Purchase.Domain.DTOs;
 using Purchase.Domain.Models;
+using Purchase.Domain.IService;
 namespace Purchase.Presentation.Controllers
 {
     [Route("api/[controller]")]
@@ -18,11 +19,13 @@ namespace Purchase.Presentation.Controllers
     {
         private readonly IRepositoryManager _repository;
         private readonly IMapper _mapper;
+        private readonly IServiceManager _service;
 
-        public CustomerController(IRepositoryManager repository, IMapper mapper)
+        public CustomerController(IRepositoryManager repository, IMapper mapper, IServiceManager service)
         {
             _repository = repository;
             _mapper = mapper;
+            _service = service;
         }
 
 
@@ -37,6 +40,15 @@ namespace Purchase.Presentation.Controllers
                 paged.MetaData.PageSize);
 
             return Ok(data);
+        }
+
+        [HttpPost]
+        public IActionResult CreateCustomer([FromBody] CustomerDTO customer)
+        {
+            if (customer is null)
+                return BadRequest("CustomerDTO object is null");
+            var createdCustomer = _service.CustomerService.CreateCustomer(customer);
+            return Ok(createdCustomer);
         }
 
 

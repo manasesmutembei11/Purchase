@@ -1,4 +1,5 @@
 ﻿using Purchase.Domain.Contracts;
+using Purchase.Domain.DTOs;
 using Purchase.Domain.IService;
 using Purchase.Domain.Models;
 using Purchase.Domain.Paging;
@@ -7,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 
 namespace Purchase.Infrastructure.Services
 {
@@ -14,10 +16,12 @@ namespace Purchase.Infrastructure.Services
     {
         private readonly IRepositoryManager _repository;
         private readonly ILoggerManager _logger;
-        public TaxService(IRepositoryManager repository, ILoggerManager logger)
+        private readonly IMapper _mapper;
+        public TaxService(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
         {
             _repository = repository;
             _logger = logger;
+            _mapper = mapper;
         }
         public IEnumerable<Tax> GetPagedListAsync(PagingParameters pagingParameters, bool trackChanges)
         {
@@ -32,6 +36,15 @@ namespace Purchase.Infrastructure.Services
                 _logger.LogError($"Something went wrong in the {nameof(GetPagedListAsync)} service method {ex}");
                 throw;
             }
+        }
+
+        public TaxDTO CreateTax(TaxDTO tax)
+        {
+            var taxEntity = _mapper.Map<Tax>(tax);
+            _repository.Tax.CreateTax(taxEntity);
+            _repository.Save();
+            var taxToReturn = _mapper.Map<TaxDTO>(taxEntity);
+            return taxToReturn;
         }
     }
 }

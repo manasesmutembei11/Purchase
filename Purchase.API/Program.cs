@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.HttpOverrides;
 using NLog;
+using Purchase.Domain.Mapping;
 using Purchase.API.Extensions;
 using Purchase.Domain.Contracts;
+using Purchase.Domain.Mapping;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +22,7 @@ builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureSqlContext(builder.Configuration);
 
-builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 
 builder.Services.AddControllers()

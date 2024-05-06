@@ -2,12 +2,15 @@
 using Microsoft.AspNetCore.Mvc;
 using Purchase.Domain.Contracts;
 using Purchase.Domain.Paging;
-using Purchase.Presentation.DTOs;
+using Purchase.Domain.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Purchase.Domain.IService;
+using Microsoft.AspNetCore.Authorization;
+using Purchase.Domain.Models;
 
 namespace Purchase.Presentation.Controllers
 {
@@ -17,11 +20,13 @@ namespace Purchase.Presentation.Controllers
     {
         private readonly IRepositoryManager _repository;
         private readonly IMapper _mapper;
+        private readonly IServiceManager _service;
 
-        public CategoryController(IRepositoryManager repository, IMapper mapper)
+        public CategoryController(IRepositoryManager repository, IMapper mapper, IServiceManager service)
         {
             _repository = repository;
             _mapper = mapper;
+            _service = service;
         }
 
 
@@ -37,5 +42,23 @@ namespace Purchase.Presentation.Controllers
 
             return Ok(data);
         }
+
+        [HttpGet("{id:guid}")]
+        public IActionResult GetCategory(Guid id)
+        {
+            var category = _service.CategoryService.GetCategory(id, trackChanges: false);
+            return Ok(category);
+        }
+
+
+        [HttpPost]
+        public IActionResult CreateCategory([FromBody] CategoryDTO category)
+        {
+            if (category is null)
+                return BadRequest("CategoryDTO object is null");
+            var createdCategory = _service.CategoryService.CreateCategory(category);
+            return Ok(createdCategory);
+        }
+
     }
 }

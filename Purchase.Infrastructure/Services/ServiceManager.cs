@@ -1,5 +1,7 @@
-﻿using Purchase.Domain.Contracts;
+﻿using AutoMapper;
+using Purchase.Domain.Contracts;
 using Purchase.Domain.IService;
+using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,25 +19,25 @@ namespace Purchase.Infrastructure.Services
         private readonly Lazy<ICategoryService> _categoryService;
         private readonly Lazy<ITaxService> _taxService;
         public ServiceManager(IRepositoryManager repositoryManager, ILoggerManager
-        logger)
+        logger, IMapper mapper)
         {
             _customerService = new Lazy<ICustomerService>(() => new
-            CustomerService(repositoryManager, logger));
+            CustomerService(repositoryManager, logger, mapper));
 
             _orderService = new Lazy<IOrderService>(() => new
-            OrderService(repositoryManager, logger));
+            OrderService(repositoryManager, logger, mapper));
 
             _orderItemService = new Lazy<IOrderItemService>(() => new
-          OrderItemService(repositoryManager, logger));
+          OrderItemService(repositoryManager, logger, mapper));
 
             _productService = new Lazy<IProductService>(() => new
-          ProductService(repositoryManager, logger));
+          ProductService(repositoryManager, logger, mapper));
 
             _categoryService = new Lazy<ICategoryService>(() => new
-          CategoryService(repositoryManager, logger));
+          CategoryService(repositoryManager, logger, mapper));
 
             _taxService = new Lazy<ITaxService>(() => new
-          TaxService(repositoryManager, logger));
+          TaxService(repositoryManager, logger, mapper));
 
         }
         public ICustomerService CustomerService => _customerService.Value;

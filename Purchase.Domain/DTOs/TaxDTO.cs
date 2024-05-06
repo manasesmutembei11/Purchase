@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Purchase.Presentation.DTOs
+namespace Purchase.Domain.DTOs
 {
     public class TaxDTO
     {

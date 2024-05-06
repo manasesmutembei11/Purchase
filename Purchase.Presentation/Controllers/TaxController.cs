@@ -2,12 +2,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Purchase.Domain.Contracts;
 using Purchase.Domain.Paging;
-using Purchase.Presentation.DTOs;
+using Purchase.Domain.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Purchase.Domain.IService;
 
 namespace Purchase.Presentation.Controllers
 {
@@ -17,11 +18,13 @@ namespace Purchase.Presentation.Controllers
     {
         private readonly IRepositoryManager _repository;
         private readonly IMapper _mapper;
+        private readonly IServiceManager _service;
 
-        public TaxController(IRepositoryManager repository, IMapper mapper)
+        public TaxController(IRepositoryManager repository, IMapper mapper, IServiceManager service)
         {
             _repository = repository;
             _mapper = mapper;
+            _service = service;
         }
 
 
@@ -36,6 +39,15 @@ namespace Purchase.Presentation.Controllers
                 paged.MetaData.PageSize);
 
             return Ok(data);
+        }
+
+        [HttpPost]
+        public IActionResult CreateTax([FromBody] TaxDTO tax)
+        {
+            if (tax is null)
+                return BadRequest("OrderDTO object is null");
+            var createdTax = _service.TaxService.CreateTax(tax);
+            return Ok(createdTax);
         }
     }
 }
