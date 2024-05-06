@@ -14,6 +14,10 @@ namespace Purchase.Domain.Contracts
         Task<PagedList<Customer>> GetPagedListAsync(PagingParameters pagingParameters, bool trackChanges);
 
         void CreateCustomer(Customer customer);
+        Customer GetCustomer(Guid customerId, bool trackChanges);
+
+
+        void DeleteCustomer(Customer customer);
 
     }
 }

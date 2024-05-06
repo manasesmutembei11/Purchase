@@ -51,6 +51,19 @@ namespace Purchase.Presentation.Controllers
             return Ok(createdCustomer);
         }
 
+        [HttpGet("{id:guid}")]
+        public IActionResult GetCustomer(Guid id)
+        {
+            var customer = _service.CustomerService.GetCustomer(id, trackChanges: false);
+            return Ok(customer);
+        }
+
+        [HttpDelete("{id:guid}")]
+        public IActionResult DeleteCustomer(Guid id)
+        {
+            _service.CustomerService.DeleteCustomer(id, trackChanges: false);
+            return NoContent();
+        }
 
     }
 

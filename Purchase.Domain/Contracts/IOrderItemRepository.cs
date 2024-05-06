@@ -13,5 +13,10 @@ namespace Purchase.Domain.Contracts
         Task<PagedList<OrderItem>> GetPagedListAsync(PagingParameters pagingParameters, bool trackChanges);
         void CreateOrderItem(OrderItem orderItem);
 
+        OrderItem GetOrderItem(Guid id, bool trackChanges);
+
+
+        void DeleteOrderItem(OrderItem orderItem);
+
     }
 }

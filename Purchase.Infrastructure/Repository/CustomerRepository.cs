@@ -26,6 +26,13 @@ namespace Purchase.Infrastructure.Repository
 
         public void CreateCustomer(Customer customer) => Create(customer);
 
+        public Customer GetCustomer(Guid Id, bool trackChanges) =>
+        FindByCondition(c => c.CustomerId.Equals(Id), trackChanges)
+        .SingleOrDefault();
+
+
+        public void DeleteCustomer(Customer customer) => Delete(customer);
+
     }
 
 }

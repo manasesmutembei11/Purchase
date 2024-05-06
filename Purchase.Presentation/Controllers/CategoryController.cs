@@ -60,5 +60,13 @@ namespace Purchase.Presentation.Controllers
             return Ok(createdCategory);
         }
 
+        [HttpDelete("{id:guid}")]
+        public IActionResult DeleteCategory(Guid id)
+        {
+            _service.CategoryService.DeleteCategory(id, trackChanges: false);
+            return NoContent();
+        }
+
+
     }
 }

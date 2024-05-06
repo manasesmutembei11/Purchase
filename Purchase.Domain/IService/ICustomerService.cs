@@ -14,6 +14,10 @@ namespace Purchase.Domain.IService
         IEnumerable<Customer> GetPagedListAsync(PagingParameters pagingParameters, bool trackChanges);
         CustomerDTO CreateCustomer(CustomerDTO customer);
 
+        CustomerDTO GetCustomer(Guid customerId, bool trackChanges);
+
+        void DeleteCustomer(Guid customerId, bool trackChanges);
+
     }
 
 }

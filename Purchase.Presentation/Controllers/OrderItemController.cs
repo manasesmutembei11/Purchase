@@ -49,5 +49,19 @@ namespace Purchase.Presentation.Controllers
             var createdOrderItem = _service.OrderItemService.CreateOrderItem(orderItem);
             return Ok(createdOrderItem);
         }
+
+        [HttpGet("{id:guid}")]
+        public IActionResult GetOrderItem(Guid id)
+        {
+            var orderItem = _service.OrderItemService.GetOrderItem(id, trackChanges: false);
+            return Ok(orderItem);
+        }
+
+        [HttpDelete("{id:guid}")]
+        public IActionResult DeleteOrderItem(Guid id)
+        {
+            _service.OrderItemService.DeleteOrderItem(id, trackChanges: false);
+            return NoContent();
+        }
     }
 }
