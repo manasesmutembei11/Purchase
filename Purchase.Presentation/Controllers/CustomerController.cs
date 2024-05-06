@@ -42,7 +42,8 @@ namespace Purchase.Presentation.Controllers
             return Ok(data);
         }
 
-        [HttpPost]
+
+        [HttpPost("Save")]
         public IActionResult CreateCustomer([FromBody] CustomerDTO customer)
         {
             if (customer is null)

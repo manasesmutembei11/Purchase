@@ -41,7 +41,8 @@ namespace Purchase.Presentation.Controllers
             return Ok(data);
         }
 
-        [HttpPost]
+
+        [HttpPost("Save")]
         public IActionResult CreateProduct([FromBody] ProductDTO product)
         {
             if (product is null)

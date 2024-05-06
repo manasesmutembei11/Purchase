@@ -51,7 +51,8 @@ namespace Purchase.Presentation.Controllers
         }
 
 
-        [HttpPost]
+
+        [HttpPost("Save")]
         public IActionResult CreateCategory([FromBody] CategoryDTO category)
         {
             if (category is null)

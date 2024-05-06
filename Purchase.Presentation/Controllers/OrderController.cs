@@ -41,7 +41,8 @@ namespace Purchase.Presentation.Controllers
             return Ok(data);
         }
 
-        [HttpPost]
+
+        [HttpPost("Save")]
         public IActionResult CreateOrder([FromBody] OrderDTO order)
         {
             if (order is null)

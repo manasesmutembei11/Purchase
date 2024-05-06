@@ -41,7 +41,8 @@ namespace Purchase.Presentation.Controllers
             return Ok(data);
         }
 
-        [HttpPost]
+
+        [HttpPost("Save")]
         public IActionResult CreateTax([FromBody] TaxDTO tax)
         {
             if (tax is null)
