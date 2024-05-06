@@ -14,5 +14,8 @@ namespace Purchase.Domain.Contracts
 
         void CreateProduct(Product product);
 
+        Product GetProduct(Guid id, bool trackChanges);
+        void DeleteProduct(Product product);
+
     }
 }

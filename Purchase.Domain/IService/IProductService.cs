@@ -13,5 +13,8 @@ namespace Purchase.Domain.IService
     {
         IEnumerable<Product> GetPagedListAsync(PagingParameters pagingParameters, bool trackChanges);
         ProductDTO CreateProduct(ProductDTO product);
+        ProductDTO GetProduct(Guid id, bool trackChanges);
+
+        void DeleteProduct(Guid id, bool trackChanges);
     }
 }

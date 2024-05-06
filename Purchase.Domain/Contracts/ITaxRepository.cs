@@ -13,5 +13,8 @@ namespace Purchase.Domain.Contracts
         Task<PagedList<Tax>> GetPagedListAsync(PagingParameters pagingParameters, bool trackChanges);
         void CreateTax(Tax tax);
 
+        Tax GetTax(Guid id, bool trackChanges);
+        void DeleteTax(Tax tax);
+
     }
 }

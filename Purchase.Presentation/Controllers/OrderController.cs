@@ -50,6 +50,20 @@ namespace Purchase.Presentation.Controllers
             return Ok(createdOrder);
         }
 
+        [HttpGet("{id:guid}")]
+        public IActionResult GetOrder(Guid id)
+        {
+            var order = _service.OrderService.GetOrder(id, trackChanges: false);
+            return Ok(order);
+        }
+
+        [HttpDelete("{id:guid}")]
+        public IActionResult DeleteOrder(Guid id)
+        {
+            _service.OrderService.DeleteOrder(id, trackChanges: false);
+            return NoContent();
+        }
+
 
     }
 }

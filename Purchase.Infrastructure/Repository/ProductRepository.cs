@@ -25,5 +25,13 @@ namespace Purchase.Infrastructure.Repository
 
         public void CreateProduct(Product product) => Create(product);
 
+
+        public Product GetProduct(Guid id, bool trackChanges) =>
+        FindByCondition(c => c.ProductId.Equals(id), trackChanges)
+        .SingleOrDefault();
+
+
+        public void DeleteProduct(Product product) => Delete(product);
+
     }
 }

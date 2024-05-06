@@ -49,5 +49,20 @@ namespace Purchase.Presentation.Controllers
             var createdTax = _service.TaxService.CreateTax(tax);
             return Ok(createdTax);
         }
+
+
+        [HttpGet("{id:guid}")]
+        public IActionResult GetTax(Guid id)
+        {
+            var tax = _service.TaxService.GetTax(id, trackChanges: false);
+            return Ok(tax);
+        }
+
+        [HttpDelete("{id:guid}")]
+        public IActionResult DeleteTax(Guid id)
+        {
+            _service.TaxService.DeleteTax(id, trackChanges: false);
+            return NoContent();
+        }
     }
 }

@@ -13,5 +13,8 @@ namespace Purchase.Domain.IService
     {
         IEnumerable<Tax> GetPagedListAsync(PagingParameters pagingParameters, bool trackChanges);
         TaxDTO CreateTax(TaxDTO tax);
+        TaxDTO GetTax(Guid id, bool trackChanges);
+
+        void DeleteTax(Guid id, bool trackChanges);
     }
 }

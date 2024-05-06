@@ -24,6 +24,12 @@ namespace Purchase.Infrastructure.Repository
         }
 
         public void CreateTax(Tax tax) => Create(tax);
+        public Tax GetTax(Guid id, bool trackChanges) =>
+        FindByCondition(c => c.TaxId.Equals(id), trackChanges)
+        .SingleOrDefault();
+
+
+        public void DeleteTax(Tax tax) => Delete(tax);
 
     }
 }

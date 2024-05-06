@@ -46,5 +46,24 @@ namespace Purchase.Infrastructure.Services
             var taxToReturn = _mapper.Map<TaxDTO>(taxEntity);
             return taxToReturn;
         }
+
+        public TaxDTO GetTax(Guid id, bool trackChanges)
+        {
+            var tax = _repository.Tax.GetTax(id, trackChanges);
+
+            var taxDto = _mapper.Map<TaxDTO>(tax);
+            return taxDto;
+        }
+
+
+        public void DeleteTax(Guid Id, bool trackChanges)
+        {
+            var tax = _repository.Tax.GetTax(Id, trackChanges);
+            if (tax is null)
+                throw null;
+
+            _repository.Tax.DeleteTax(tax);
+            _repository.Save();
+        }
     }
 }

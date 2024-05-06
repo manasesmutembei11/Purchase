@@ -13,5 +13,9 @@ namespace Purchase.Domain.IService
     {
         IEnumerable<Order> GetPagedListAsync(PagingParameters pagingParameters, bool trackChanges);
         OrderDTO CreateOrder(OrderDTO order);
+
+        OrderDTO GetOrder(Guid id, bool trackChanges);
+
+        void DeleteOrder(Guid id, bool trackChanges);
     }
 }

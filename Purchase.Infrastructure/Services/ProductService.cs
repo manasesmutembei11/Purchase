@@ -46,5 +46,24 @@ namespace Purchase.Infrastructure.Services
             var productToReturn = _mapper.Map<ProductDTO>(productEntity);
             return productToReturn;
         }
+
+        public ProductDTO GetProduct(Guid id, bool trackChanges)
+        {
+            var product = _repository.Product.GetProduct(id, trackChanges);
+
+            var productDto = _mapper.Map<ProductDTO>(product);
+            return productDto;
+        }
+
+
+        public void DeleteProduct(Guid Id, bool trackChanges)
+        {
+            var product = _repository.Product.GetProduct(Id, trackChanges);
+            if (product is null)
+                throw null;
+
+            _repository.Product.DeleteProduct(product);
+            _repository.Save();
+        }
     }
 }

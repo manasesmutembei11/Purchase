@@ -49,5 +49,19 @@ namespace Purchase.Presentation.Controllers
             var createdProduct = _service.ProductService.CreateProduct(product);
             return Ok(createdProduct);
         }
+
+        [HttpGet("{id:guid}")]
+        public IActionResult GetProduct(Guid id)
+        {
+            var product = _service.ProductService.GetProduct(id, trackChanges: false);
+            return Ok(product);
+        }
+
+        [HttpDelete("{id:guid}")]
+        public IActionResult DeleteProduct(Guid id)
+        {
+            _service.ProductService.DeleteProduct(id, trackChanges: false);
+            return NoContent();
+        }
     }
 }

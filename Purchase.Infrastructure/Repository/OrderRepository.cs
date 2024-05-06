@@ -25,6 +25,13 @@ namespace Purchase.Infrastructure.Repository
 
         public void CreateOrder(Order order) => Create(order);
 
+        public Order GetOrder(Guid id, bool trackChanges) =>
+        FindByCondition(c => c.OrderId.Equals(id), trackChanges)
+        .SingleOrDefault();
+
+
+        public void DeleteOrder(Order order) => Delete(order);
+
     }
 
 }

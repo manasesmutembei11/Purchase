@@ -46,5 +46,24 @@ namespace Purchase.Infrastructure.Services
             var orderToReturn = _mapper.Map<OrderDTO>(orderEntity);
             return orderToReturn;
         }
+
+        public OrderDTO GetOrder(Guid id, bool trackChanges)
+        {
+            var order = _repository.Order.GetOrder(id, trackChanges);
+
+            var orderDto = _mapper.Map<OrderDTO>(order);
+            return orderDto;
+        }
+
+
+        public void DeleteOrder(Guid Id, bool trackChanges)
+        {
+            var order = _repository.Order.GetOrder(Id, trackChanges);
+            if (order is null)
+                throw null;
+
+            _repository.Order.DeleteOrder(order);
+            _repository.Save();
+        }
     }
 }
