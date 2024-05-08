@@ -11,6 +11,8 @@ import { OrderItemListComponent } from './components/masterdata/order-item-list/
 import { OrderItemFormComponent } from './components/masterdata/order-item-form/order-item-form.component';
 import { ProductListComponent } from './components/masterdata/product-list/product-list.component';
 import { ProductFormComponent } from './components/masterdata/product-form/product-form.component';
+import { TaxListComponent } from './components/masterdata/tax-list/tax-list.component';
+import { TaxFormComponent } from './components/masterdata/tax-form/tax-form.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -57,6 +59,15 @@ const routes: Routes = [
       { path: '', component: ProductListComponent, pathMatch: 'full',},
       { path: 'create', component: ProductFormComponent,pathMatch: 'full' },
       { path: 'edit/:id', component: ProductFormComponent},
+    ]
+  },
+  {
+    path: 'tax',
+    canActivate: [],
+    children: [
+      { path: '', component: TaxListComponent, pathMatch: 'full',},
+      { path: 'create', component: TaxFormComponent,pathMatch: 'full' },
+      { path: 'edit/:id', component: TaxFormComponent},
     ]
   }
 

@@ -23,6 +23,8 @@ import { OrderItemFormComponent } from './components/masterdata/order-item-form/
 import { OrderItemListComponent } from './components/masterdata/order-item-list/order-item-list.component';
 import { ProductListComponent } from './components/masterdata/product-list/product-list.component';
 import { ProductFormComponent } from './components/masterdata/product-form/product-form.component';
+import { TaxFormComponent } from './components/masterdata/tax-form/tax-form.component';
+import { TaxListComponent } from './components/masterdata/tax-list/tax-list.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { ProductFormComponent } from './components/masterdata/product-form/produ
     OrderItemFormComponent,
     OrderItemListComponent,
     ProductListComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    TaxFormComponent,
+    TaxListComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
