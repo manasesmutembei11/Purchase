@@ -1,0 +1,79 @@
+
+<app-pagetitle [title]="pageTitle" [breadcrumbItems]="breadCrumbItems"></app-pagetitle>
+
+<div class="card h-auto">
+    <div class="card-body">
+        <app-error-display [errors]="errors"></app-error-display>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
+            <div class="row">
+                <div class="col-md-6 mb-2">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input type="text" class="form-control" placeholder="First Name" id="firstName" formControlName="firstName"
+                        appValidityStyle [submitted]="submitted">
+                    <div ngxErrors="firstName">
+                        <div ngxError="required">First name is required</div>
+                    </div>
+                </div>
+               
+
+            </div>
+            <div class="row">
+                <div class="col-6 mb-2">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" placeholder="lastName" id="lastName" formControlName="lastName"
+                        appValidityStyle [submitted]="submitted">
+                    <div ngxErrors="lastName">
+                        <div ngxError="required"> Last name is required</div>
+                    </div>
+                </div>
+
+            </div>   
+            
+            <div class="row">
+                <div class="col-6 mb-2">
+                    <label for="phone" class="form-label">Phone number</label>
+                    <input type="text" class="form-control" placeholder="Phone Number" id="phone" formControlName="phone"
+                        appValidityStyle [submitted]="submitted">
+                    <div ngxErrors="phone">
+                        <div ngxError="required"> Phone number is required</div>
+                    </div>
+                </div>
+            </div> 
+
+            <div class="row">
+                <div class="col-6 mb-2">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" class="form-control" placeholder="Email" id="email" formControlName="email"
+                        appValidityStyle [submitted]="submitted">
+                    <div ngxErrors="email">
+                        <div ngxError="required"> Email is required</div>
+                        <div ngxError="email"> Enter valid email</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6 mb-2">
+                    <label for="address" class="form-label">Address</label>
+                    <input type="text" class="form-control" placeholder="Address" id="address" formControlName="address"
+                        appValidityStyle [submitted]="submitted">
+                    <div ngxErrors="address">
+                        <div ngxError="required"> Address is required</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary me-1">{{buttonText}}</button>
+                    <button type="reset" (click)="onCancel()" class="btn btn-danger me-1">Cancel</button>
+                </div>
+            </div>
+            <!--end row-->
+        </form>
+        <hr>
+        <a class="btn btn-light waves-effect waves-light " (click)="back()">Back</a>
+    </div>
+</div>
+
+

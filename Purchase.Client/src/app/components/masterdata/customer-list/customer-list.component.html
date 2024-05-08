@@ -1,0 +1,72 @@
+
+<app-pagetitle [title]="pageTitle" [breadcrumbItems]="breadCrumbItems"></app-pagetitle>
+<div class="card h-auto">
+    <div class="card-body">
+
+        <div class="row">
+            <div class="col-md-1 mb-2 ">
+                <!-- Buttons with Label -->
+                <a class="btn btn-primary waves-effect waves-light " href="#" [routerLink]="['create']"
+                    routerLinkActive="active">New</a>
+            </div>
+            <div class="col-md-5 ms-auto">
+                <div class="input-group">
+                    <input type="text" placeholder="Search" name="search" class="form-control" aria-label="search"
+                        [(ngModel)]="search">
+                    <button ngbTooltip="Search" class="btn btn-primary" type="button" (click)="onSearch()"><i
+                            class="bi bi-search"></i></button>
+                    <button ngbTooltip="Clear" class="btn btn-primary" type="button" (click)="onReset()"><i
+                            class="bi bi-x-circle"></i></button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="table-responsive">
+            <table class="table table-nowrap mb-2">
+                <thead>
+                    <tr>
+
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>                        
+                        <th scope="col">Phone</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Address</th>
+
+                        <th [width]="200" scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let item of items " class="p-1">
+                        
+                        <td>{{item.firstName}}</td>
+                        <td>{{item.lastName}}</td>     
+                        <td>{{item.phone}}</td>  
+                        <td>{{item.email}}</td>
+                        <td>{{item.address}}</td>       
+                                            
+                        <td>
+                            <div class="hstack gap-3 fs-15">
+                                <a ngbTooltip="Edit" href="#" [routerLink]="['edit',item.customerId]" routerLinkActive="active">
+                                    <i class="bi bi-pencil-fill"></i> Edit
+                                </a>
+
+
+                            </div>
+                        </td>
+
+
+
+                    </tr>
+                </tbody>
+            </table>
+            <div *ngIf="totalCount>0">
+                <ngb-pagination (pageChange)="pageChanged($event)" [collectionSize]="totalCount" [pageSize]="pageSize"
+                [(page)]="page" [maxSize]="maxSize" [boundaryLinks]="true"></ngb-pagination>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+

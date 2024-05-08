@@ -15,6 +15,8 @@ import { CategoryListComponent } from './components/masterdata/category-list/cat
 import { PagetitleComponent } from './components/shared/pagetitle/pagetitle.component';
 import { CategoryFormComponent } from './components/masterdata/category-form/category-form.component';
 import { ValidityStyleDirective } from './services/directives/validity-style.directive';
+import { CustomerListComponent } from './components/masterdata/customer-list/customer-list.component';
+import { CustomerFormComponent } from './components/masterdata/customer-form/customer-form.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { ValidityStyleDirective } from './services/directives/validity-style.dir
     PagetitleComponent,
     CategoryFormComponent,
     ErrorDisplayComponent,
-    ValidityStyleDirective
+    ValidityStyleDirective,
+    CustomerListComponent,
+    CustomerFormComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,

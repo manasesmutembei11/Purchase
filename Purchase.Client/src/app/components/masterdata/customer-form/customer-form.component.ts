@@ -3,27 +3,26 @@ import { Component, OnInit } from '@angular/core';
 import { BaseFormComponent } from '../../base/base-form-component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { CategoryService } from '../../../services/masterdata-services/category.service';
+import { CustomerService } from '../../../services/masterdata-services/customer.service';
 import { Guid } from 'guid-typescript';
 import { first } from 'rxjs';
-import { Category } from '../../../models/masterdata-models/masterdata.models';
+import { Customer } from '../../../models/masterdata-models/masterdata.models';
 import { cloneDeep } from 'lodash';
 
-
 @Component({
-  selector: 'app-category-form',
-  templateUrl: './category-form.component.html',
+  selector: 'app-customer-form',
+  templateUrl: './customer-form.component.html',
   styles: []
 })
-export class CategoryFormComponent extends BaseFormComponent implements OnInit {
-  
+export class CustomerFormComponent extends BaseFormComponent implements OnInit {
+    
 
   form: FormGroup = this.fb.group({});
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,
     public location: Location,
-    private categoryService: CategoryService
+    private customerService: CustomerService
   ) {
     super();
   }
@@ -32,10 +31,10 @@ export class CategoryFormComponent extends BaseFormComponent implements OnInit {
     this.route.params.pipe().subscribe((params) => {
       this.id = params['id'] ? params['id'] : '';
       this.editMode = params['id'] != null;
-      this.pageTitle = this.editMode ? 'Edit Category' : 'New Category';
+      this.pageTitle = this.editMode ? 'Edit Customer' : 'New Customer';
       this.breadCrumbItems = [
         { label: 'Master Data' },
-        { label: 'Category' },
+        { label: 'Customer' },
         { label: this.pageTitle, active: true },
       ];
       this.buttonText = this.editMode ? 'Update' : 'Create';
@@ -44,16 +43,18 @@ export class CategoryFormComponent extends BaseFormComponent implements OnInit {
   }
   createForm(): FormGroup {
     const f = this.fb.group({
-      code: ['', [Validators.required]],
-      name: ['', Validators.required],
-      description: ['', Validators.required],
-      id: [Guid.create().toString()],
+      firstName: ['', [Validators.required]],
+      lastName: ['', Validators.required],
+      phone: ['', Validators.required],
+      email: ['', [Validators.email, Validators.required]],
+      address: ['', Validators.required],
+      customerId: [Guid.create().toString()],
     });
     return f;
   }
   initForm() {
     if (this.editMode) {
-      this.categoryService.findById(this.id).pipe(first())
+      this.customerService.findById(this.id).pipe(first())
         .subscribe({
           next: (_) => {
             this.form.patchValue(_);
@@ -65,11 +66,11 @@ export class CategoryFormComponent extends BaseFormComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (this.validateForm(this.form)) {
-      const model: Category = cloneDeep(this.form.value)
+      const model: Customer = cloneDeep(this.form.value)
       console.log("onSubmit =>",model);
       
 
-      this.categoryService.save(model).subscribe({
+      this.customerService.save(model).subscribe({
         next: (_) => {
           this.location.back();
         },

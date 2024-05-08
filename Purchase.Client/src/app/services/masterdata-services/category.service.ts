@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { Category } from '../../models/masterdata-models/category';
+import { Category } from '../../models/masterdata-models/masterdata.models';
 import { Observable } from 'rxjs';
 import { BasicResponse } from '../../models/shared-models/basic-response';
 import { PagedList } from '../../models/shared-models/paged-list';

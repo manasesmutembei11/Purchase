@@ -1,32 +1,29 @@
 import { Component, OnInit } from '@angular/core';
+import { BasePagedListComponent } from '../../base/base-paged-list-component';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { KeyValue } from '@angular/common';
 
 import { first } from 'rxjs';
-import { BasePagedListComponent } from '../../base/base-paged-list-component';
-import { Category } from '../../../models/masterdata-models/masterdata.models';
-import { CategoryService } from '../../../services/masterdata-services/category.service';
-
+import { Customer } from '../../../models/masterdata-models/masterdata.models';
+import { CustomerService } from '../../../services/masterdata-services/customer.service';
 
 @Component({
-  selector: 'app-category-list',
-  templateUrl: './category-list.component.html',
-  styles: [
-  ]
+  selector: 'app-customer-list',
+  templateUrl: './customer-list.component.html',
+  styles: []
 })
-export class CategoryListComponent extends BasePagedListComponent implements OnInit {
-  items: Category[] = [];
+export class CustomerListComponent extends BasePagedListComponent implements OnInit {
+  items: Customer[] = [];
   constructor(
     protected router: Router,
     private route: ActivatedRoute,
-    private categoryService: CategoryService
+    private customerService: CustomerService
   ) { super() }
 
   ngOnInit(): void {
     this.pageTitle = "List"
     this.breadCrumbItems = [
       { label: "Master Data" },
-      { label: "Category" },
+      { label: "Customer" },
       { label: this.pageTitle, active: true }
     ]
     this.route.queryParams.pipe(first()).subscribe({next:(_) => this.fetchPagingParams(_)});
@@ -38,7 +35,7 @@ export class CategoryListComponent extends BasePagedListComponent implements OnI
   loadItems() {
     
     
-    this.categoryService.list(this.page, this.pageSize, this.search)
+    this.customerService.list(this.page, this.pageSize, this.search)
       .pipe(first())
       .subscribe({
         next: (_) => {
@@ -52,6 +49,5 @@ export class CategoryListComponent extends BasePagedListComponent implements OnI
     this.router.navigate(["."], { relativeTo: this.route, queryParams: params, queryParamsHandling: 'merge' });
 
   }
-
 
 }
