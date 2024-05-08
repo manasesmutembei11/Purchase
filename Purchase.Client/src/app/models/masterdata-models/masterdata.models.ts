@@ -30,10 +30,9 @@ export interface Product {
 	price: number;
 	hasTax: boolean;
 	taxRate: number;
-	categoryId: string;
-	categoryName: string;
 	quantity: number;
 	description: string;
+	category: Category;
 }
 
 export interface Tax {

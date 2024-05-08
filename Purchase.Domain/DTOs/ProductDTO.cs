@@ -20,7 +20,6 @@ namespace Purchase.Domain.DTOs
         public decimal TaxRate { get; set; }
 
         public Guid CategoryId { get; set; }
-        public string? CategoryName { get; set; } // Assuming you want to transfer category name
 
         public int Quantity { get; set; }
         public string? Description { get; set; }
