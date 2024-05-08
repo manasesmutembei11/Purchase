@@ -21,6 +21,8 @@ import { OrderListComponent } from './components/masterdata/order-list/order-lis
 import { OrderFormComponent } from './components/masterdata/order-form/order-form.component';
 import { OrderItemFormComponent } from './components/masterdata/order-item-form/order-item-form.component';
 import { OrderItemListComponent } from './components/masterdata/order-item-list/order-item-list.component';
+import { ProductListComponent } from './components/masterdata/product-list/product-list.component';
+import { ProductFormComponent } from './components/masterdata/product-form/product-form.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { OrderItemListComponent } from './components/masterdata/order-item-list/
     OrderListComponent,
     OrderFormComponent,
     OrderItemFormComponent,
-    OrderItemListComponent
+    OrderItemListComponent,
+    ProductListComponent,
+    ProductFormComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,

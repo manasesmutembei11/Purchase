@@ -9,6 +9,8 @@ import { OrderListComponent } from './components/masterdata/order-list/order-lis
 import { OrderFormComponent } from './components/masterdata/order-form/order-form.component';
 import { OrderItemListComponent } from './components/masterdata/order-item-list/order-item-list.component';
 import { OrderItemFormComponent } from './components/masterdata/order-item-form/order-item-form.component';
+import { ProductListComponent } from './components/masterdata/product-list/product-list.component';
+import { ProductFormComponent } from './components/masterdata/product-form/product-form.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -46,6 +48,15 @@ const routes: Routes = [
       { path: '', component: OrderItemListComponent, pathMatch: 'full',},
       { path: 'create', component: OrderItemFormComponent,pathMatch: 'full' },
       { path: 'edit/:id', component: OrderItemFormComponent},
+    ]
+  },
+  {
+    path: 'product',
+    canActivate: [],
+    children: [
+      { path: '', component: ProductListComponent, pathMatch: 'full',},
+      { path: 'create', component: ProductFormComponent,pathMatch: 'full' },
+      { path: 'edit/:id', component: ProductFormComponent},
     ]
   }
 

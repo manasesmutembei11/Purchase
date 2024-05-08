@@ -26,9 +26,10 @@
                 <thead>
                     <tr>
 
-                        <th scope="col">Product Name</th>
-                        <th scope="col">Quantity</th>                        
-                        <th scope="col">Sub Total</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>                        
+                        <th scope="col">Category</th>
+                        <th scope="col">Description</th>
 
                         <th [width]="200" scope="col"></th>
                     </tr>
@@ -37,13 +38,14 @@
 
                     <tr *ngFor="let item of items " class="p-1">
                         
-                        <td>{{item.productName}}</td>
-                        <td>{{item.quantity}}</td>     
-                        <td>{{item.subTotal}}</td>        
+                        <td>{{item.name}}</td>
+                        <td>{{item.price}}</td>     
+                        <td>{{item.categoryName}}</td>  
+                        <td>{{item.description}}</td>       
                                             
                         <td>
                             <div class="hstack gap-3 fs-15">
-                                <a ngbTooltip="Edit" href="#" [routerLink]="['edit',item.orderItemId]" routerLinkActive="active">
+                                <a ngbTooltip="Edit" href="#" [routerLink]="['edit',item.productId]" routerLinkActive="active">
                                     <i class="bi bi-pencil-fill"></i> Edit
                                 </a>
 
