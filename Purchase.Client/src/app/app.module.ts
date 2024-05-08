@@ -17,6 +17,10 @@ import { CategoryFormComponent } from './components/masterdata/category-form/cat
 import { ValidityStyleDirective } from './services/directives/validity-style.directive';
 import { CustomerListComponent } from './components/masterdata/customer-list/customer-list.component';
 import { CustomerFormComponent } from './components/masterdata/customer-form/customer-form.component';
+import { OrderListComponent } from './components/masterdata/order-list/order-list.component';
+import { OrderFormComponent } from './components/masterdata/order-form/order-form.component';
+import { OrderItemFormComponent } from './components/masterdata/order-item-form/order-item-form.component';
+import { OrderItemListComponent } from './components/masterdata/order-item-list/order-item-list.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,11 @@ import { CustomerFormComponent } from './components/masterdata/customer-form/cus
     ErrorDisplayComponent,
     ValidityStyleDirective,
     CustomerListComponent,
-    CustomerFormComponent
+    CustomerFormComponent,
+    OrderListComponent,
+    OrderFormComponent,
+    OrderItemFormComponent,
+    OrderItemListComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
