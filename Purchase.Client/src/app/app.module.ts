@@ -10,7 +10,7 @@ import { ErrorDisplayComponent } from './components/shared/error-display/error-d
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './components/home/home-page/home-page.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CategoryListComponent } from './components/masterdata/category-list/category-list.component';
 import { PagetitleComponent } from './components/shared/pagetitle/pagetitle.component';
 import { CategoryFormComponent } from './components/masterdata/category-form/category-form.component';
@@ -50,7 +50,7 @@ import { TaxListComponent } from './components/masterdata/tax-list/tax-list.comp
     BrowserModule, HttpClientModule,
     AppRoutingModule, RouterModule, NgbModule, CommonModule, FormsModule, ReactiveFormsModule
   ],
-  providers: [],
+  providers: [NgbModal],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,6 +8,8 @@ import { Guid } from 'guid-typescript';
 import { first } from 'rxjs';
 import { OrderItem } from '../../../models/masterdata-models/masterdata.models';
 import { cloneDeep } from 'lodash';
+import { Product } from '../../../models/masterdata-models/masterdata.models';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-order-item-form',
@@ -16,11 +18,13 @@ import { cloneDeep } from 'lodash';
 })
 export class OrderItemFormComponent extends BaseFormComponent implements OnInit {
   form: FormGroup = this.fb.group({});
+  
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,
     public location: Location,
-    private orderItemService: OrderItemService
+    private modalService: NgbModal,
+    private orderItemService: OrderItemService,
   ) {
     super();
   }
@@ -41,14 +45,14 @@ export class OrderItemFormComponent extends BaseFormComponent implements OnInit 
   }
   createForm(): FormGroup {
     const f = this.fb.group({
-      code: ['', [Validators.required]],
-      name: ['', Validators.required],
-      price: [0, Validators.required],
-      hasTax: [0],
-      taxRate: [0, Validators.required],
-      quantity: [0, Validators.required],
-      description: ['', Validators.required],
+      orderItemId: [Guid.create().toString()],
       productId: [Guid.create().toString()],
+      orderId: [Guid.create().toString()],
+      productName: ['', Validators.required],
+      quantity: [0, Validators.required],
+      selectProduct: [''],
+      subTotal: [0],
+      taxRate: [0]
     });
     return f;
   }
@@ -83,6 +87,17 @@ export class OrderItemFormComponent extends BaseFormComponent implements OnInit 
   }
   back(): void {
     this.location.back();
+  }
+
+  openProductSelectionModal(content: any) {
+    const modalRef = this.modalService.open(content, { size: 'lg' });
+
+    modalRef.componentInstance.productSelected.subscribe((selectedProduct: Product) => {
+      this.form.patchValue({
+        productId: selectedProduct.productId,
+        productName: selectedProduct.productId
+      });
+    });
   }
 
 }

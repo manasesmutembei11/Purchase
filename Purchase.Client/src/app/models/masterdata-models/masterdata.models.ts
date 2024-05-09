@@ -50,4 +50,5 @@ export interface OrderItem {
 	subTotal: number;
 	taxRate: number;
 	orderId: string;
+	selectpProduct: Product| any;
 }

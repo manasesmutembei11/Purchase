@@ -42,14 +42,11 @@ export class OrderFormComponent extends BaseFormComponent implements OnInit {
   }
   createForm(): FormGroup {
     const f = this.fb.group({
-      code: ['', [Validators.required]],
-      name: ['', Validators.required],
-      price: [0, Validators.required],
-      hasTax: [0],
-      taxRate: [0, Validators.required],
-      quantity: [0, Validators.required],
-      description: ['', Validators.required],
-      productId: [Guid.create().toString()],
+      orderId: [Guid.create().toString()],
+      customerId: [Guid.create().toString()],
+      customerName: ['', Validators.required],
+      orderDate: ['', Validators.required],
+      total: [0]
     });
     return f;
   }
