@@ -10,7 +10,7 @@ using Purchase.Domain.Paging;
 
 namespace Purchase.Infrastructure.Repository
 {
-    public class CustomerRepository : RepositoryBase<Customer>, ICustomerRepository
+    public class CustomerRepository : RepositoryBase<Customer, Guid>, ICustomerRepository
     {
         public CustomerRepository(RepositoryContext repositoryContext)
         : base(repositoryContext)
@@ -27,7 +27,7 @@ namespace Purchase.Infrastructure.Repository
         public void CreateCustomer(Customer customer) => Create(customer);
 
         public Customer GetCustomer(Guid Id, bool trackChanges) =>
-        FindByCondition(c => c.CustomerId.Equals(Id), trackChanges)
+        FindByCondition(c => c.Id.Equals(Id), trackChanges)
         .SingleOrDefault();
 
 

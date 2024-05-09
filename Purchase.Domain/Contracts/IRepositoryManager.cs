@@ -16,6 +16,6 @@ namespace Purchase.Domain.Contracts
         IOrderItemRepository OrderItem { get; }
 
         ITaxRepository Tax { get; }
-        void Save();
+        Task SaveAsync();
     }
 }

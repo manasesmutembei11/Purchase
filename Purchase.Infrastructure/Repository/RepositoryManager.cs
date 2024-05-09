@@ -1,4 +1,5 @@
-﻿using Purchase.Domain.Contracts;
+﻿using Microsoft.EntityFrameworkCore;
+using Purchase.Domain.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,7 +51,11 @@ namespace Purchase.Infrastructure.Repository
         public ITaxRepository Tax => _taxRepository.Value;
 
         public ICategoryRepository Category => _categoryRepository.Value;
-        public void Save() => _repositoryContext.SaveChanges();
+        public Task SaveAsync()
+        {
+
+            return _repositoryContext.SaveChangesAsync();
+        }
     }
 
 }

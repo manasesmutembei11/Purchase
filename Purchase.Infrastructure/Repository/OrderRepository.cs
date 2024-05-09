@@ -10,7 +10,7 @@ using Purchase.Domain.Paging;
 
 namespace Purchase.Infrastructure.Repository
 {
-    public class OrderRepository : RepositoryBase<Order>, IOrderRepository
+    public class OrderRepository : RepositoryBase<Order, Guid>, IOrderRepository
     {
         public OrderRepository(RepositoryContext repositoryContext)
         : base(repositoryContext)
@@ -19,14 +19,14 @@ namespace Purchase.Infrastructure.Repository
 
         public Task<PagedList<Order>> GetPagedListAsync(PagingParameters pagingParameters, bool trackChanges)
         {
-            var data = FindAll(trackChanges).OrderBy(e => e.OrderDate);
+            var data = FindAll(trackChanges).OrderBy(e => e.CreatedOn);
             return PagedList<Order>.ToPagedListAsync(data, pagingParameters.PageNumber, pagingParameters.PageSize);
         }
 
         public void CreateOrder(Order order) => Create(order);
 
         public Order GetOrder(Guid id, bool trackChanges) =>
-        FindByCondition(c => c.OrderId.Equals(id), trackChanges)
+        FindByCondition(c => c.Id.Equals(id), trackChanges)
         .SingleOrDefault();
 
 

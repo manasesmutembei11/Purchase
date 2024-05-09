@@ -10,7 +10,7 @@ using Purchase.Domain.Paging;
 
 namespace Purchase.Infrastructure.Repository
 {
-    public class OrderItemRepository : RepositoryBase<OrderItem>, IOrderItemRepository
+    public class OrderItemRepository : RepositoryBase<OrderItem, Guid>, IOrderItemRepository
     {
         public OrderItemRepository(RepositoryContext repositoryContext)
         : base(repositoryContext)
@@ -27,7 +27,7 @@ namespace Purchase.Infrastructure.Repository
 
 
         public OrderItem GetOrderItem(Guid id, bool trackChanges) =>
-        FindByCondition(c => c.OrderItemId.Equals(id), trackChanges)
+        FindByCondition(c => c.Id.Equals(id), trackChanges)
         .SingleOrDefault();
 
 

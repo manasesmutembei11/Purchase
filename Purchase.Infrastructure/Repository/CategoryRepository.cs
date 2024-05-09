@@ -10,7 +10,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Purchase.Infrastructure.Repository
 {
-    public class CategoryRepository : RepositoryBase<Category>, ICategoryRepository
+    public class CategoryRepository : RepositoryBase<Category, Guid>, ICategoryRepository
     {
         public CategoryRepository(RepositoryContext repositoryContext)
         : base(repositoryContext)
@@ -26,7 +26,7 @@ namespace Purchase.Infrastructure.Repository
         public void CreateCategory(Category category) => Create(category);
 
         public Category GetCategory(Guid categoryId, bool trackChanges) =>
-        FindByCondition(c => c.CategoryId.Equals(categoryId), trackChanges)
+        FindByCondition(c => c.Id.Equals(categoryId), trackChanges)
         .SingleOrDefault();
 
 

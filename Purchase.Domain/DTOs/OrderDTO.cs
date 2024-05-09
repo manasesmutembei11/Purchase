@@ -15,8 +15,6 @@ namespace Purchase.Domain.DTOs
 
         public string CustomerName { get; set; } 
 
-        public DateTime OrderDate { get; set; }
-
         public decimal Total { get; set; }
     }
 }

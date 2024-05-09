@@ -10,7 +10,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Purchase.Infrastructure.Repository
 {
-    public class ProductRepository : RepositoryBase<Product>, IProductRepository
+    public class ProductRepository : RepositoryBase<Product, Guid>, IProductRepository
     {
         public ProductRepository(RepositoryContext repositoryContext)
         : base(repositoryContext)
@@ -27,7 +27,7 @@ namespace Purchase.Infrastructure.Repository
 
 
         public Product GetProduct(Guid id, bool trackChanges) =>
-        FindByCondition(c => c.ProductId.Equals(id), trackChanges)
+        FindByCondition(c => c.Id.Equals(id), trackChanges)
         .SingleOrDefault();
 
 

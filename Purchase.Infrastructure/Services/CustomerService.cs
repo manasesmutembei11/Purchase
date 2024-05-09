@@ -43,7 +43,7 @@ namespace Purchase.Infrastructure.Services
         {
             var customerEntity = _mapper.Map<Customer>(customer);
             _repository.Customer.CreateCustomer(customerEntity);
-            _repository.Save();
+            _repository.SaveAsync();
             var customerToReturn = _mapper.Map<CustomerDTO>(customerEntity);
             return customerToReturn;
         }
@@ -64,7 +64,7 @@ namespace Purchase.Infrastructure.Services
                 throw null;
 
                 _repository.Customer.DeleteCustomer(customer);
-            _repository.Save();
+            _repository.SaveAsync();
         }
     }
 

@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Purchase.Domain.Models
 {
-    public class Tax
+    public class Tax : BaseEntity<Guid>
     {
-        public Guid TaxId { get; set; }
 
         public string? Code { get; set; }
 

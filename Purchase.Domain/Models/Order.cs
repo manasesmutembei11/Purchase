@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace Purchase.Domain.Models
 {
-    public class Order
+    public class Order : BaseEntity<Guid>
     {
-        public Guid OrderId { get; set; }
 
         public Guid CustomerId { get; set; }
-
-        public DateTime OrderDate { get; set; }
 
         public decimal Total { get; set; }
 

@@ -44,7 +44,7 @@ namespace Purchase.Infrastructure.Services
         {
             var categoryEntity = _mapper.Map<Category>(category);
             _repository.Category.CreateCategory(categoryEntity);
-            _repository.Save();
+            _repository.SaveAsync();
             var categoryToReturn = _mapper.Map<CategoryDTO>(categoryEntity);
             return categoryToReturn;
         }
@@ -64,7 +64,7 @@ namespace Purchase.Infrastructure.Services
             if (category is null)
                 
             _repository.Category.DeleteCategory(category);
-            _repository.Save();
+            _repository.SaveAsync();
         }
 
 

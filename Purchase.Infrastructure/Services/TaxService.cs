@@ -42,7 +42,7 @@ namespace Purchase.Infrastructure.Services
         {
             var taxEntity = _mapper.Map<Tax>(tax);
             _repository.Tax.CreateTax(taxEntity);
-            _repository.Save();
+            _repository.SaveAsync();
             var taxToReturn = _mapper.Map<TaxDTO>(taxEntity);
             return taxToReturn;
         }
@@ -63,7 +63,7 @@ namespace Purchase.Infrastructure.Services
                 throw null;
 
             _repository.Tax.DeleteTax(tax);
-            _repository.Save();
+            _repository.SaveAsync();
         }
     }
 }

@@ -10,7 +10,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Purchase.Infrastructure.Repository
 {
-    public class TaxRepository : RepositoryBase<Tax>, ITaxRepository
+    public class TaxRepository : RepositoryBase<Tax, Guid>, ITaxRepository
     {
         public TaxRepository(RepositoryContext repositoryContext)
         : base(repositoryContext)
@@ -25,7 +25,7 @@ namespace Purchase.Infrastructure.Repository
 
         public void CreateTax(Tax tax) => Create(tax);
         public Tax GetTax(Guid id, bool trackChanges) =>
-        FindByCondition(c => c.TaxId.Equals(id), trackChanges)
+        FindByCondition(c => c.Id.Equals(id), trackChanges)
         .SingleOrDefault();
 
 

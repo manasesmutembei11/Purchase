@@ -6,7 +6,7 @@ import { Product } from '../../../models/masterdata-models/masterdata.models';
 @Component({
   selector: 'app-product-selection-modal',
   templateUrl: './product-selection-modal.component.html',
-  styleUrl: './product-selection-modal.component.css'
+  styles: []
 })
 export class ProductSelectionModalComponent {
   @Output() productSelected = new EventEmitter<Product>();

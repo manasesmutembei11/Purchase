@@ -42,7 +42,7 @@ namespace Purchase.Infrastructure.Services
         {
             var orderItemEntity = _mapper.Map<OrderItem>(orderItem);
             _repository.OrderItem.CreateOrderItem(orderItemEntity);
-            _repository.Save();
+            _repository.SaveAsync();
             var orderItemToReturn = _mapper.Map<OrderItemDTO>(orderItemEntity);
             return orderItemToReturn;
         }
@@ -63,7 +63,7 @@ namespace Purchase.Infrastructure.Services
                 throw null;
 
             _repository.OrderItem.DeleteOrderItem(orderItem);
-            _repository.Save();
+            _repository.SaveAsync();
         }
     }
 }

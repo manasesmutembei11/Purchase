@@ -9,6 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Purchase.Domain.IService;
+using Microsoft.AspNetCore.Authorization;
+using Purchase.Domain.Validations;
+using Purchase.Domain.Models;
 
 namespace Purchase.Presentation.Controllers
 {
@@ -41,8 +44,7 @@ namespace Purchase.Presentation.Controllers
             return Ok(data);
         }
 
-
-        [HttpPost("Save")]
+        [NonAction]
         public IActionResult CreateTax([FromBody] TaxDTO tax)
         {
             if (tax is null)
@@ -64,6 +66,47 @@ namespace Purchase.Presentation.Controllers
         {
             _service.TaxService.DeleteTax(id, trackChanges: false);
             return NoContent();
+        }
+
+        [HttpPost("Save")]
+        public async Task<IActionResult> Save([FromBody] TaxDTO dto)
+        {
+            var response = new BasicResponse();
+            try
+            {
+                response.Message = "Tax";
+                if (dto == null || !ModelState.IsValid)
+                {
+                    response.AddError(0, "Invalid model state");
+                    return BadRequest(response);
+                }
+                var exist = await _repository.Tax.ExistAsync(dto.TaxId);
+                var entity = _mapper.Map<Tax>(dto);
+                if (!exist)
+                {
+                    _repository.Tax.Create(entity);
+                }
+                else
+                {
+                    _repository.Tax.Update(entity);
+                }
+                await _repository.SaveAsync();
+                response.Message = "OK";
+                return StatusCode(201, response);
+
+            }
+            catch (DomainValidationException ex)
+            {
+                ex.ValidationResult.Results.ForEach(s => response.AddError(0, s.ErrorMessage));
+                response.Message = "Domain Errors";
+                return StatusCode(500, response);
+            }
+            catch (Exception ex)
+            {
+                response.AddError(0, ex.Message);
+                response.Message = "OK";
+                return StatusCode(500, response);
+            }
         }
     }
 }

@@ -42,7 +42,7 @@ namespace Purchase.Infrastructure.Services
         {
             var productEntity = _mapper.Map<Product>(product);
             _repository.Product.CreateProduct(productEntity);
-            _repository.Save();
+            _repository.SaveAsync();
             var productToReturn = _mapper.Map<ProductDTO>(productEntity);
             return productToReturn;
         }
@@ -63,7 +63,7 @@ namespace Purchase.Infrastructure.Services
                 throw null;
 
             _repository.Product.DeleteProduct(product);
-            _repository.Save();
+            _repository.SaveAsync();
         }
     }
 }

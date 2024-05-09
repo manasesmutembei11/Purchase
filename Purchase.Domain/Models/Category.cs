@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Purchase.Domain.Models
 {
-    public class Category
-    {
-        public Guid CategoryId { get; set; }
+    public class Category : BaseEntity<Guid>
+    { 
         public string? Name { get; set; }
         public string? Code { get; set; }
 

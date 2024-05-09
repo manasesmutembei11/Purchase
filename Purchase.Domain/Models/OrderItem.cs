@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Purchase.Domain.Models
 {
-    public class OrderItem
+    public class OrderItem : BaseEntity<Guid>
     {
-        public Guid OrderItemId { get; set; }
 
         public Guid ProductId { get; set; }
 
