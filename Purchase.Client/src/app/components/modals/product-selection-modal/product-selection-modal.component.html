@@ -1,0 +1,16 @@
+<!-- product-selection-modal.component.html -->
+<div class="modal-header">
+    <h4 class="modal-title">Select a Product</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modalRef.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <ul>
+      <li *ngFor="let product of products">
+        <button type="button" class="btn btn-link" (click)="selectProduct(product)">
+          {{ product.name }}
+        </button>
+      </li>
+    </ul>
+  </div>

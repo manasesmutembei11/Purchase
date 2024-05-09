@@ -50,7 +50,7 @@ export class OrderItemFormComponent extends BaseFormComponent implements OnInit 
       orderId: [Guid.create().toString()],
       productName: ['', Validators.required],
       quantity: [0, Validators.required],
-      selectProduct: [''],
+
       subTotal: [0],
       taxRate: [0]
     });
@@ -89,14 +89,10 @@ export class OrderItemFormComponent extends BaseFormComponent implements OnInit 
     this.location.back();
   }
 
-  openProductSelectionModal(content: any) {
-    const modalRef = this.modalService.open(content, { size: 'lg' });
-
-    modalRef.componentInstance.productSelected.subscribe((selectedProduct: Product) => {
-      this.form.patchValue({
-        productId: selectedProduct.productId,
-        productName: selectedProduct.productId
-      });
+  onSelectProduct(product: Product) {
+    this.form.patchValue({
+      productId: product.productId,
+      productName: product.name
     });
   }
 

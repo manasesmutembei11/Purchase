@@ -33,8 +33,6 @@ export class ProductListComponent extends BasePagedListComponent implements OnIn
  
 
   loadItems() {
-    
-    
     this.productService.list(this.page, this.pageSize, this.search)
       .pipe(first())
       .subscribe({

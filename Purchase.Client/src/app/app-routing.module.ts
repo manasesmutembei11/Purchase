@@ -13,6 +13,7 @@ import { ProductListComponent } from './components/masterdata/product-list/produ
 import { ProductFormComponent } from './components/masterdata/product-form/product-form.component';
 import { TaxListComponent } from './components/masterdata/tax-list/tax-list.component';
 import { TaxFormComponent } from './components/masterdata/tax-form/tax-form.component';
+import { ProductSelectionModalComponent } from './components/modals/product-selection-modal/product-selection-modal.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -68,6 +69,15 @@ const routes: Routes = [
       { path: '', component: TaxListComponent, pathMatch: 'full',},
       { path: 'create', component: TaxFormComponent,pathMatch: 'full' },
       { path: 'edit/:id', component: TaxFormComponent},
+    ]
+  },
+  {
+    path: 'productSelect',
+    canActivate: [],
+    children: [
+      { path: '', component: ProductSelectionModalComponent, pathMatch: 'full',},
+      { path: 'create', component: ProductSelectionModalComponent,pathMatch: 'full' },
+      { path: 'edit/:id', component: ProductSelectionModalComponent},
     ]
   }
 
