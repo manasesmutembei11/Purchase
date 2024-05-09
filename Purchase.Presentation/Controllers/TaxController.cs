@@ -12,6 +12,7 @@ using Purchase.Domain.IService;
 using Microsoft.AspNetCore.Authorization;
 using Purchase.Domain.Validations;
 using Purchase.Domain.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace Purchase.Presentation.Controllers
 {
@@ -44,29 +45,37 @@ namespace Purchase.Presentation.Controllers
             return Ok(data);
         }
 
-        [NonAction]
+       /* [NonAction]
         public IActionResult CreateTax([FromBody] TaxDTO tax)
         {
             if (tax is null)
                 return BadRequest("OrderDTO object is null");
             var createdTax = _service.TaxService.CreateTax(tax);
             return Ok(createdTax);
-        }
+        } */
 
 
-        [HttpGet("{id:guid}")]
-        public IActionResult GetTax(Guid id)
+        [HttpGet("{id}")]
+        [ProducesResponseType(typeof(TaxDTO), 200)]
+        public async Task<IActionResult> GetById(Guid id)
         {
-            var tax = _service.TaxService.GetTax(id, trackChanges: false);
-            return Ok(tax);
+            try
+            {
+                var entity = await _repository.Tax.GetByIdAsync(id);
+                return Ok(_mapper.Map<TaxDTO>(entity));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
         }
 
-        [HttpDelete("{id:guid}")]
+       /* [HttpDelete("{id:guid}")]
         public IActionResult DeleteTax(Guid id)
         {
             _service.TaxService.DeleteTax(id, trackChanges: false);
             return NoContent();
-        }
+        } */
 
         [HttpPost("Save")]
         public async Task<IActionResult> Save([FromBody] TaxDTO dto)
@@ -80,7 +89,7 @@ namespace Purchase.Presentation.Controllers
                     response.AddError(0, "Invalid model state");
                     return BadRequest(response);
                 }
-                var exist = await _repository.Tax.ExistAsync(dto.TaxId);
+                var exist = await _repository.Tax.ExistAsync(dto.Id);
                 var entity = _mapper.Map<Tax>(dto);
                 if (!exist)
                 {

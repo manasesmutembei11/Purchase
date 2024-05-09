@@ -36,7 +36,7 @@ export interface Product {
 }
 
 export interface Tax {
-	taxId: string;
+	id: string;
 	code: string;
 	name: string;
 	rate: number;

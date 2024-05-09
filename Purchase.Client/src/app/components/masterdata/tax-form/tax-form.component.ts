@@ -44,7 +44,7 @@ export class TaxFormComponent extends BaseFormComponent implements OnInit {
       code: ['', [Validators.required]],
       name: ['', Validators.required],
       rate: [0, Validators.required],
-      taxId: [Guid.create().toString()],
+      id: [Guid.create().toString()],
     });
     return f;
   }

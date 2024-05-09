@@ -11,8 +11,8 @@ using System.Threading.Tasks;
 using AutoMapper;
 
 namespace Purchase.Infrastructure.Services
-{
-    internal sealed class TaxService : ITaxService
+{  /* 
+  internal sealed class TaxService : ITaxService
     {
         private readonly IRepositoryManager _repository;
         private readonly ILoggerManager _logger;
@@ -58,12 +58,12 @@ namespace Purchase.Infrastructure.Services
 
         public void DeleteTax(Guid Id, bool trackChanges)
         {
-            var tax = _repository.Tax.GetTax(Id, trackChanges);
+            var tax = _repository.Tax.GetByIdAsync(Id, trackChanges);
             if (tax is null)
                 throw null;
 
-            _repository.Tax.DeleteTax(tax);
+            _repository.Tax.Delete(tax);
             _repository.SaveAsync();
         }
-    }
+    } */
 }

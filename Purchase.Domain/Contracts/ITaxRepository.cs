@@ -11,10 +11,6 @@ namespace Purchase.Domain.Contracts
     public interface ITaxRepository :IRepositoryBase<Tax, Guid>
     {
         Task<PagedList<Tax>> GetPagedListAsync(PagingParameters pagingParameters, bool trackChanges);
-        void CreateTax(Tax tax);
-
-        Tax GetTax(Guid id, bool trackChanges);
-        void DeleteTax(Tax tax);
 
     }
 }

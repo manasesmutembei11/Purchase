@@ -1,4 +1,5 @@
-﻿using Purchase.Domain.Contracts;
+﻿using LinqKit;
+using Purchase.Domain.Contracts;
 using Purchase.Domain.Models;
 using Purchase.Domain.Paging;
 using System;
@@ -19,14 +20,14 @@ namespace Purchase.Infrastructure.Repository
 
         public Task<PagedList<Tax>> GetPagedListAsync(PagingParameters pagingParameters, bool trackChanges)
         {
-            var data = FindAll(trackChanges).OrderBy(e => e.Code);
+            var predicate = PredicateBuilder.New<Tax>(true);
+            if (!string.IsNullOrWhiteSpace(pagingParameters.Search))
+            {
+                predicate = predicate.And(s => s.Name.Contains(pagingParameters.Search) || s.Code.Contains(pagingParameters.Search));
+            }
+            var data = FindByCondition(predicate, trackChanges).OrderBy(s => s.Name);
             return PagedList<Tax>.ToPagedListAsync(data, pagingParameters.PageNumber, pagingParameters.PageSize);
         }
-
-        public void CreateTax(Tax tax) => Create(tax);
-        public Tax GetTax(Guid id, bool trackChanges) =>
-        FindByCondition(c => c.Id.Equals(id), trackChanges)
-        .SingleOrDefault();
 
 
         public void DeleteTax(Tax tax) => Delete(tax);

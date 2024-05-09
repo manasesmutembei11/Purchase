@@ -8,7 +8,7 @@ namespace Purchase.Domain.DTOs
 {
     public class TaxDTO
     {
-        public Guid TaxId { get; set; }
+        public Guid Id { get; set; }
 
         public string? Code { get; set; }
 

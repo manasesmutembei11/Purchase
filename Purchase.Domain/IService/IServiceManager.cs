@@ -13,6 +13,5 @@ namespace Purchase.Domain.IService
         IOrderItemService OrderItemService { get; }
         IProductService ProductService { get; }
         ICategoryService CategoryService { get; }
-        ITaxService TaxService { get; }
     }
 }
