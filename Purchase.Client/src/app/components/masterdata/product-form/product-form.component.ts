@@ -15,7 +15,6 @@ import { cloneDeep } from 'lodash';
   styles: []
 })
 export class ProductFormComponent extends BaseFormComponent implements OnInit {
-  private categories: Category[] = []
   form: FormGroup = this.fb.group({});
   constructor(
     private route: ActivatedRoute,
@@ -46,12 +45,13 @@ export class ProductFormComponent extends BaseFormComponent implements OnInit {
       code: ['', [Validators.required]],
       name: ['', Validators.required],
       price: [0, Validators.required],
-      hasTax: [0],
+      hasTax: [false, Validators.required],
       taxRate: [0,],
       quantity: [0, Validators.required],
       description: ['', Validators.required],
-      category: ['', Validators.required],
-      productId: [Guid.create().toString()],
+      category: [''],
+      categoryId: ['7149820A-F297-4C59-057A-08DC7086CD08'],
+      id: [Guid.create().toString()],
     });
     return f;
   }
@@ -76,9 +76,9 @@ export class ProductFormComponent extends BaseFormComponent implements OnInit {
         next: (_) => {
           this.location.back();
         },
-        error: (errors) => {
-          this.errors = errors;
-          console.log('Error =>', this.errors);
+        error: (error) => {
+          this.error = error;
+          console.log('Error =>', this.error);
         },
       });
     }

@@ -9,6 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Purchase.Domain.IService;
+using Microsoft.AspNetCore.Http;
+using Purchase.Domain.Models;
+using Purchase.Domain.Validations;
 
 namespace Purchase.Presentation.Controllers
 {
@@ -41,28 +44,76 @@ namespace Purchase.Presentation.Controllers
             return Ok(data);
         }
 
+        /* [NonAction]
+         public IActionResult CreateTax([FromBody] TaxDTO tax)
+         {
+             if (tax is null)
+                 return BadRequest("OrderDTO object is null");
+             var createdTax = _service.TaxService.CreateTax(tax);
+             return Ok(createdTax);
+         } */
+
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            try
+            {
+                var entity = await _repository.Product.GetByIdAsync(id);
+                return Ok(_mapper.Map<ProductDTO>(entity));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
+        /* [HttpDelete("{id:guid}")]
+         public IActionResult DeleteTax(Guid id)
+         {
+             _service.TaxService.DeleteTax(id, trackChanges: false);
+             return NoContent();
+         } */
 
         [HttpPost("Save")]
-        public IActionResult CreateProduct([FromBody] ProductDTO product)
+        public async Task<IActionResult> Save([FromBody] ProductDTO dto)
         {
-            if (product is null)
-                return BadRequest("OrderDTO object is null");
-            var createdProduct = _service.ProductService.CreateProduct(product);
-            return Ok(createdProduct);
-        }
+            var response = new BasicResponse();
+            try
+            {
+                response.Message = "Product";
+                if (dto == null || !ModelState.IsValid)
+                {
+                    response.AddError(0, "Invalid model state");
+                    return BadRequest(response);
+                }
+                var exist = await _repository.Product.ExistAsync(dto.Id);
+                var entity = _mapper.Map<Product>(dto);
+                if (!exist)
+                {
+                    _repository.Product.Create(entity);
+                }
+                else
+                {
+                    _repository.Product.Update(entity);
+                }
+                await _repository.SaveAsync();
+                response.Message = "OK";
+                return StatusCode(201, response);
 
-        [HttpGet("{id:guid}")]
-        public IActionResult GetProduct(Guid id)
-        {
-            var product = _service.ProductService.GetProduct(id, trackChanges: false);
-            return Ok(product);
-        }
-
-        [HttpDelete("{id:guid}")]
-        public IActionResult DeleteProduct(Guid id)
-        {
-            _service.ProductService.DeleteProduct(id, trackChanges: false);
-            return NoContent();
+            }
+            catch (DomainValidationException ex)
+            {
+                ex.ValidationResult.Results.ForEach(s => response.AddError(0, s.ErrorMessage));
+                response.Message = "Domain Errors";
+                return StatusCode(500, response);
+            }
+            catch (Exception ex)
+            {
+                response.AddError(0, ex.Message);
+                response.Message = "OK";
+                return StatusCode(500, response);
+            }
         }
     }
 }

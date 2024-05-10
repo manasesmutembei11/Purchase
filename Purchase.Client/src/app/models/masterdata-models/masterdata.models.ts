@@ -24,7 +24,7 @@ export interface Order {
 }
 
 export interface Product {
-	productId: string;
+	id: string;
 	code: string;
 	name: string;
 	price: number;
@@ -32,7 +32,7 @@ export interface Product {
 	taxRate: number;
 	quantity: number;
 	description: string;
-	category: Category;
+	categoryId: string;
 }
 
 export interface Tax {

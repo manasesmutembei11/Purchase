@@ -8,14 +8,11 @@ using System.Threading.Tasks;
 
 namespace Purchase.Domain.Contracts
 {
-    public interface IProductRepository
+    public interface IProductRepository : IRepositoryBase<Product, Guid>
     {
         Task<PagedList<Product>> GetPagedListAsync(PagingParameters pagingParameters, bool trackChanges);
 
-        void CreateProduct(Product product);
 
-        Product GetProduct(Guid id, bool trackChanges);
-        void DeleteProduct(Product product);
 
     }
 }

@@ -15,7 +15,6 @@ namespace Purchase.Infrastructure.Services
         private readonly Lazy<ICustomerService> _customerService;
         private readonly Lazy<IOrderService> _orderService;
         private readonly Lazy<IOrderItemService> _orderItemService;
-        private readonly Lazy<IProductService> _productService;
         private readonly Lazy<ICategoryService> _categoryService;
         public ServiceManager(IRepositoryManager repositoryManager, ILoggerManager
         logger, IMapper mapper)
@@ -29,9 +28,6 @@ namespace Purchase.Infrastructure.Services
             _orderItemService = new Lazy<IOrderItemService>(() => new
           OrderItemService(repositoryManager, logger, mapper));
 
-            _productService = new Lazy<IProductService>(() => new
-          ProductService(repositoryManager, logger, mapper));
-
             _categoryService = new Lazy<ICategoryService>(() => new
           CategoryService(repositoryManager, logger, mapper));
 
@@ -41,7 +37,6 @@ namespace Purchase.Infrastructure.Services
         public IOrderService OrderService => _orderService.Value;
 
         public IOrderItemService OrderItemService => _orderItemService.Value;
-        public IProductService ProductService => _productService.Value;
         public ICategoryService CategoryService => _categoryService.Value;
     }
 }

@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace Purchase.Infrastructure.Services
 {
+    /*
     internal sealed class ProductService : IProductService
     {
         private readonly IRepositoryManager _repository;
@@ -65,5 +66,5 @@ namespace Purchase.Infrastructure.Services
             _repository.Product.DeleteProduct(product);
             _repository.SaveAsync();
         }
-    }
+    } */
 }

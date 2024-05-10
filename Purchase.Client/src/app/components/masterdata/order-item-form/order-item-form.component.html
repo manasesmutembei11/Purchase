@@ -1,2 +1,35 @@
-<app-product-selection-modal (productSelected)="onSelectProduct($event)"></app-product-selection-modal>
+<!-- order-item-form.component.html -->
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <!-- Your form fields -->
+  
+    <div class="form-group">
+      <label for="productName">Product Name:</label>
+      <input type="text" formControlName="productName" id="productName" class="form-control" readonly>
+      <button type="button" class="btn btn-primary" (click)="openProductModal(content)">Select Product</button>
+    </div>
+  
+    <!-- Other form fields -->
+  
+    <button type="submit" class="btn btn-success">{{ buttonText }}</button>
+    <button type="button" class="btn btn-secondary" (click)="back()">Back</button>
+  </form>
+  
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Select a Product</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <ul>
+        <li *ngFor="let product of products">
+          <button type="button" class="btn btn-link" (click)="onSelectProduct(product)">
+            {{ product.name }}
+          </button>
+        </li>
+      </ul>
+    </div>
+  </ng-template>
+  
 
