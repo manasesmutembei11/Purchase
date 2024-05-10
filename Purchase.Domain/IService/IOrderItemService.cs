@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace Purchase.Domain.IService
 {
-    public interface IOrderItemService
-    {
-        IEnumerable<OrderItem> GetPagedListAsync(PagingParameters pagingParameters, bool trackChanges);
-        OrderItemDTO CreateOrderItem(OrderItemDTO orderItem);
+    //public interface IOrderItemService
+    //{
+    //    IEnumerable<OrderItem> GetPagedListAsync(PagingParameters pagingParameters, bool trackChanges);
+    //    OrderItemDTO CreateOrderItem(OrderItemDTO orderItem);
 
-        OrderItemDTO GetOrderItem(Guid id, bool trackChanges);
+    //    OrderItemDTO GetOrderItem(Guid id, bool trackChanges);
 
-        void DeleteOrderItem(Guid id, bool trackChanges);
-    }
+    //    void DeleteOrderItem(Guid id, bool trackChanges);
+    //}
 }

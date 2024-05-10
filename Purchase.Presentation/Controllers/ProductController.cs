@@ -44,14 +44,6 @@ namespace Purchase.Presentation.Controllers
             return Ok(data);
         }
 
-        /* [NonAction]
-         public IActionResult CreateTax([FromBody] TaxDTO tax)
-         {
-             if (tax is null)
-                 return BadRequest("OrderDTO object is null");
-             var createdTax = _service.TaxService.CreateTax(tax);
-             return Ok(createdTax);
-         } */
 
 
         [HttpGet("{id}")]
@@ -68,12 +60,8 @@ namespace Purchase.Presentation.Controllers
             }
         }
 
-        /* [HttpDelete("{id:guid}")]
-         public IActionResult DeleteTax(Guid id)
-         {
-             _service.TaxService.DeleteTax(id, trackChanges: false);
-             return NoContent();
-         } */
+  
+     
 
         [HttpPost("Save")]
         public async Task<IActionResult> Save([FromBody] ProductDTO dto)

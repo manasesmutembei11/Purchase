@@ -9,15 +9,15 @@ using Purchase.Domain.DTOs;
 
 namespace Purchase.Domain.IService
 {
-    public interface ICustomerService
-    {
-        IEnumerable<Customer> GetPagedListAsync(PagingParameters pagingParameters, bool trackChanges);
-        CustomerDTO CreateCustomer(CustomerDTO customer);
+    //public interface ICustomerService
+    //{
+    //    IEnumerable<Customer> GetPagedListAsync(PagingParameters pagingParameters, bool trackChanges);
+    //    CustomerDTO CreateCustomer(CustomerDTO customer);
 
-        CustomerDTO GetCustomer(Guid customerId, bool trackChanges);
+    //    CustomerDTO GetCustomer(Guid customerId, bool trackChanges);
 
-        void DeleteCustomer(Guid customerId, bool trackChanges);
+    //    void DeleteCustomer(Guid customerId, bool trackChanges);
 
-    }
+    //}
 
 }

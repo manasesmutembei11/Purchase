@@ -13,59 +13,59 @@ using AutoMapper;
 
 namespace Purchase.Infrastructure.Services
 {
-    internal sealed class CustomerService : ICustomerService
-    {
-        private readonly IRepositoryManager _repository;
-        private readonly ILoggerManager _logger;
-        private readonly IMapper _mapper;
-        public CustomerService(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
-        {
-            _repository = repository;
-            _logger = logger;
-            _mapper = mapper;
-        }
-        public IEnumerable<Customer> GetPagedListAsync(PagingParameters pagingParameters, bool trackChanges)
-        {
-            try
-            {
-                var customers =
-                _repository.Customer.GetPagedListAsync(pagingParameters, trackChanges);
-                return (IEnumerable<Customer>)customers;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Something went wrong in the { nameof(GetPagedListAsync)} service method { ex}");
-            throw;
-            }
-        }
+    //internal sealed class CustomerService : ICustomerService
+    //{
+    //    private readonly IRepositoryManager _repository;
+    //    private readonly ILoggerManager _logger;
+    //    private readonly IMapper _mapper;
+    //    public CustomerService(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
+    //    {
+    //        _repository = repository;
+    //        _logger = logger;
+    //        _mapper = mapper;
+    //    }
+    //    public IEnumerable<Customer> GetPagedListAsync(PagingParameters pagingParameters, bool trackChanges)
+    //    {
+    //        try
+    //        {
+    //            var customers =
+    //            _repository.Customer.GetPagedListAsync(pagingParameters, trackChanges);
+    //            return (IEnumerable<Customer>)customers;
+    //        }
+    //        catch (Exception ex)
+    //        {
+    //            _logger.LogError($"Something went wrong in the { nameof(GetPagedListAsync)} service method { ex}");
+    //        throw;
+    //        }
+    //    }
 
-        public CustomerDTO CreateCustomer(CustomerDTO customer)
-        {
-            var customerEntity = _mapper.Map<Customer>(customer);
-            _repository.Customer.CreateCustomer(customerEntity);
-            _repository.SaveAsync();
-            var customerToReturn = _mapper.Map<CustomerDTO>(customerEntity);
-            return customerToReturn;
-        }
+    //    public CustomerDTO CreateCustomer(CustomerDTO customer)
+    //    {
+    //        var customerEntity = _mapper.Map<Customer>(customer);
+    //        _repository.Customer.CreateCustomer(customerEntity);
+    //        _repository.SaveAsync();
+    //        var customerToReturn = _mapper.Map<CustomerDTO>(customerEntity);
+    //        return customerToReturn;
+    //    }
 
-        public CustomerDTO GetCustomer(Guid id, bool trackChanges)
-        {
-            var customer = _repository.Customer.GetCustomer(id, trackChanges);
+    //    public CustomerDTO GetCustomer(Guid id, bool trackChanges)
+    //    {
+    //        var customer = _repository.Customer.GetCustomer(id, trackChanges);
 
-            var customerDto = _mapper.Map<CustomerDTO>(customer);
-            return customerDto;
-        }
+    //        var customerDto = _mapper.Map<CustomerDTO>(customer);
+    //        return customerDto;
+    //    }
 
 
-        public void DeleteCustomer(Guid Id, bool trackChanges)
-        {
-            var customer = _repository.Customer.GetCustomer(Id, trackChanges);
-            if (customer is null)
-                throw null;
+    //    public void DeleteCustomer(Guid Id, bool trackChanges)
+    //    {
+    //        var customer = _repository.Customer.GetCustomer(Id, trackChanges);
+    //        if (customer is null)
+    //            throw null;
 
-                _repository.Customer.DeleteCustomer(customer);
-            _repository.SaveAsync();
-        }
-    }
+    //            _repository.Customer.DeleteCustomer(customer);
+    //        _repository.SaveAsync();
+    //    }
+    //}
 
 }

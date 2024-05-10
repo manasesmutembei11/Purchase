@@ -8,10 +8,10 @@ namespace Purchase.Domain.IService
 {
     public interface IServiceManager
     {
-        ICustomerService CustomerService { get; }
-        IOrderService OrderService { get; }
-        IOrderItemService OrderItemService { get; }
-       // IProductService ProductService { get; }
-        ICategoryService CategoryService { get; }
+       // ICustomerService CustomerService { get; }
+       //// IOrderService OrderService { get; }
+       // IOrderItemService OrderItemService { get; }
+       //// IProductService ProductService { get; }
+       //// ICategoryService CategoryService { get; }
     }
 }

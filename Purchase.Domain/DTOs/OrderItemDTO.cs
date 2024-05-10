@@ -9,7 +9,7 @@ namespace Purchase.Domain.DTOs
 {
     public class OrderItemDTO
     {
-        public Guid OrderItemId { get; set; }
+        public Guid Id { get; set; }
 
         public Guid ProductId { get; set; }
 

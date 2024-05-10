@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using LinqKit;
 
 namespace Purchase.Infrastructure.Repository
 {
@@ -19,18 +20,17 @@ namespace Purchase.Infrastructure.Repository
 
         public Task<PagedList<Category>> GetPagedListAsync(PagingParameters pagingParameters, bool trackChanges)
         {
-            var data = FindAll(trackChanges).OrderBy(e => e.Code);
+            var predicate = PredicateBuilder.New<Category>(true);
+            if (!string.IsNullOrWhiteSpace(pagingParameters.Search))
+            {
+                predicate = predicate.And(s => s.Name.Contains(pagingParameters.Search) || s.Code.Contains(pagingParameters.Search));
+            }
+            var data = FindByCondition(predicate, trackChanges).OrderBy(s => s.Name);
             return PagedList<Category>.ToPagedListAsync(data, pagingParameters.PageNumber, pagingParameters.PageSize);
         }
 
-        public void CreateCategory(Category category) => Create(category);
 
-        public Category GetCategory(Guid categoryId, bool trackChanges) =>
-        FindByCondition(c => c.Id.Equals(categoryId), trackChanges)
-        .SingleOrDefault();
-
-
-        public void DeleteCategory(Category category) => Delete(category);
+        public void DeleteTax(Category category) => Delete(category);
 
 
     }

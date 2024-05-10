@@ -1,10 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Purchase.API.LoggerService;
 using Purchase.Domain.Contracts;
-using Purchase.Domain.IService;
 using Purchase.Infrastructure;
 using Purchase.Infrastructure.Repository;
-using Purchase.Infrastructure.Services;
 
 namespace Purchase.API.Extensions
 {
@@ -30,8 +28,8 @@ namespace Purchase.API.Extensions
         public static void ConfigureRepositoryManager(this IServiceCollection services) =>
         services.AddScoped<IRepositoryManager, RepositoryManager>();
 
-        public static void ConfigureServiceManager(this IServiceCollection services) =>
-        services.AddScoped<IServiceManager, ServiceManager>();
+        //public static void ConfigureServiceManager(this IServiceCollection services) =>
+        //services.AddScoped<IServiceManager, ServiceManager>();
 
 
         public static void ConfigureSqlContext(this IServiceCollection services,

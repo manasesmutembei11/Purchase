@@ -8,16 +8,12 @@ using System.Threading.Tasks;
 
 namespace Purchase.Domain.Contracts
 {
-    public interface ICustomerRepository
+    public interface ICustomerRepository : IRepositoryBase<Customer, Guid>
     {
 
         Task<PagedList<Customer>> GetPagedListAsync(PagingParameters pagingParameters, bool trackChanges);
 
-        void CreateCustomer(Customer customer);
-        Customer GetCustomer(Guid customerId, bool trackChanges);
-
-
-        void DeleteCustomer(Customer customer);
+       
 
     }
 }

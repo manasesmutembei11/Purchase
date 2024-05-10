@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Purchase.Domain.IService
-{
+{/*
     public interface IOrderService
     {
         IEnumerable<Order> GetPagedListAsync(PagingParameters pagingParameters, bool trackChanges);
@@ -17,5 +17,5 @@ namespace Purchase.Domain.IService
         OrderDTO GetOrder(Guid id, bool trackChanges);
 
         void DeleteOrder(Guid id, bool trackChanges);
-    }
+    } */
 }

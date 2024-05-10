@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Purchase.Infrastructure.Services
-{
+{ /*
     internal sealed class OrderService : IOrderService
     {
         private readonly IRepositoryManager _repository;
@@ -65,5 +65,5 @@ namespace Purchase.Infrastructure.Services
             _repository.Order.DeleteOrder(order);
             _repository.SaveAsync();
         }
-    }
+    } */
 }

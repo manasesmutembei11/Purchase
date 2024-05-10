@@ -8,16 +8,11 @@ using System.Threading.Tasks;
 
 namespace Purchase.Domain.Contracts
 {
-    public interface ICategoryRepository
+    public interface ICategoryRepository : IRepositoryBase<Category, Guid>
     {
         Task<PagedList<Category>> GetPagedListAsync(PagingParameters pagingParameters, bool trackChanges);
 
-        void CreateCategory(Category category);
-        Category GetCategory(Guid categoryId, bool trackChanges);
-
-
-        void DeleteCategory(Category category);
-
+       
 
     }
 }

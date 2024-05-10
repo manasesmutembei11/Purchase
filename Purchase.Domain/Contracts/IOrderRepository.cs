@@ -8,13 +8,10 @@ using System.Threading.Tasks;
 
 namespace Purchase.Domain.Contracts
 {
-    public interface IOrderRepository
+    public interface IOrderRepository : IRepositoryBase<Order, Guid>
     {
         Task<PagedList<Order>> GetPagedListAsync(PagingParameters pagingParameters, bool trackChanges);
-        void CreateOrder(Order order);
-
-        Order GetOrder(Guid id, bool trackChanges);
-        void DeleteOrder(Order order);
+      
 
     }
 }

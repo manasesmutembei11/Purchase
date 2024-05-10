@@ -9,6 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Purchase.Domain.IService;
+using Microsoft.AspNetCore.Http;
+using Purchase.Domain.Models;
+using Purchase.Domain.Validations;
 
 namespace Purchase.Presentation.Controllers
 {
@@ -42,29 +45,63 @@ namespace Purchase.Presentation.Controllers
         }
 
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            try
+            {
+                var entity = await _repository.Order.GetByIdAsync(id);
+                return Ok(_mapper.Map<OrderDTO>(entity));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
+    
+
         [HttpPost("Save")]
-        public IActionResult CreateOrder([FromBody] OrderDTO order)
+        public async Task<IActionResult> Save([FromBody] OrderDTO dto)
         {
-            if (order is null)
-                return BadRequest("OrderDTO object is null");
-            var createdOrder = _service.OrderService.CreateOrder(order);
-            return Ok(createdOrder);
+            var response = new BasicResponse();
+            try
+            {
+                response.Message = "Order";
+                if (dto == null || !ModelState.IsValid)
+                {
+                    response.AddError(0, "Invalid model state");
+                    return BadRequest(response);
+                }
+                var exist = await _repository.Order.ExistAsync(dto.Id);
+                var entity = _mapper.Map<Order>(dto);
+                if (!exist)
+                {
+                    _repository.Order.Create(entity);
+                }
+                else
+                {
+                    _repository.Order.Update(entity);
+                }
+                await _repository.SaveAsync();
+                response.Message = "OK";
+                return StatusCode(201, response);
+
+            }
+            catch (DomainValidationException ex)
+            {
+                ex.ValidationResult.Results.ForEach(s => response.AddError(0, s.ErrorMessage));
+                response.Message = "Domain Errors";
+                return StatusCode(500, response);
+            }
+            catch (Exception ex)
+            {
+                response.AddError(0, ex.Message);
+                response.Message = "OK";
+                return StatusCode(500, response);
+            }
+
+
         }
-
-        [HttpGet("{id:guid}")]
-        public IActionResult GetOrder(Guid id)
-        {
-            var order = _service.OrderService.GetOrder(id, trackChanges: false);
-            return Ok(order);
-        }
-
-        [HttpDelete("{id:guid}")]
-        public IActionResult DeleteOrder(Guid id)
-        {
-            _service.OrderService.DeleteOrder(id, trackChanges: false);
-            return NoContent();
-        }
-
-
     }
 }

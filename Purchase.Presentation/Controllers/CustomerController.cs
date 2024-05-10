@@ -11,6 +11,8 @@ using Purchase.Domain.Paging;
 using Purchase.Domain.DTOs;
 using Purchase.Domain.Models;
 using Purchase.Domain.IService;
+using Microsoft.AspNetCore.Http;
+using Purchase.Domain.Validations;
 namespace Purchase.Presentation.Controllers
 {
     [Route("api/[controller]")]
@@ -43,31 +45,66 @@ namespace Purchase.Presentation.Controllers
         }
 
 
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            try
+            {
+                var entity = await _repository.Customer.GetByIdAsync(id);
+                return Ok(_mapper.Map<CustomerDTO>(entity));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
+
+
+
         [HttpPost("Save")]
-        public IActionResult CreateCustomer([FromBody] CustomerDTO customer)
+        public async Task<IActionResult> Save([FromBody] CustomerDTO dto)
         {
-            if (customer is null)
-                return BadRequest("CustomerDTO object is null");
-            var createdCustomer = _service.CustomerService.CreateCustomer(customer);
-            return Ok(createdCustomer);
-        }
+            var response = new BasicResponse();
+            try
+            {
+                response.Message = "Customer";
+                if (dto == null || !ModelState.IsValid)
+                {
+                    response.AddError(0, "Invalid model state");
+                    return BadRequest(response);
+                }
+                var exist = await _repository.Customer.ExistAsync(dto.Id);
+                var entity = _mapper.Map<Customer>(dto);
+                if (!exist)
+                {
+                    _repository.Customer.Create(entity);
+                }
+                else
+                {
+                    _repository.Customer.Update(entity);
+                }
+                await _repository.SaveAsync();
+                response.Message = "OK";
+                return StatusCode(201, response);
 
-        [HttpGet("{id:guid}")]
-        public IActionResult GetCustomer(Guid id)
-        {
-            var customer = _service.CustomerService.GetCustomer(id, trackChanges: false);
-            return Ok(customer);
-        }
+            }
+            catch (DomainValidationException ex)
+            {
+                ex.ValidationResult.Results.ForEach(s => response.AddError(0, s.ErrorMessage));
+                response.Message = "Domain Errors";
+                return StatusCode(500, response);
+            }
+            catch (Exception ex)
+            {
+                response.AddError(0, ex.Message);
+                response.Message = "OK";
+                return StatusCode(500, response);
+            }
 
-        [HttpDelete("{id:guid}")]
-        public IActionResult DeleteCustomer(Guid id)
-        {
-            _service.CustomerService.DeleteCustomer(id, trackChanges: false);
-            return NoContent();
-        }
 
+
+        }
     }
-
-
-        
 }

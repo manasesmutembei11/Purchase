@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using Purchase.Domain.IService;
 using Microsoft.AspNetCore.Authorization;
 using Purchase.Domain.Models;
+using Microsoft.AspNetCore.Http;
+using Purchase.Domain.Validations;
 
 namespace Purchase.Presentation.Controllers
 {
@@ -43,31 +45,66 @@ namespace Purchase.Presentation.Controllers
             return Ok(data);
         }
 
-        [HttpGet("{id:guid}")]
-        public IActionResult GetCategory(Guid id)
+
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(Guid id)
         {
-            var category = _service.CategoryService.GetCategory(id, trackChanges: false);
-            return Ok(category);
+            try
+            {
+                var entity = await _repository.Category.GetByIdAsync(id);
+                return Ok(_mapper.Map<CategoryDTO>(entity));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
         }
+
 
 
 
         [HttpPost("Save")]
-        public IActionResult CreateCategory([FromBody] CategoryDTO category)
+        public async Task<IActionResult> Save([FromBody] CategoryDTO dto)
         {
-            if (category is null)
-                return BadRequest("CategoryDTO object is null");
-            var createdCategory = _service.CategoryService.CreateCategory(category);
-            return Ok(createdCategory);
+            var response = new BasicResponse();
+            try
+            {
+                response.Message = "Category";
+                if (dto == null || !ModelState.IsValid)
+                {
+                    response.AddError(0, "Invalid model state");
+                    return BadRequest(response);
+                }
+                var exist = await _repository.Category.ExistAsync(dto.Id);
+                var entity = _mapper.Map<Category>(dto);
+                if (!exist)
+                {
+                    _repository.Category.Create(entity);
+                }
+                else
+                {
+                    _repository.Category.Update(entity);
+                }
+                await _repository.SaveAsync();
+                response.Message = "OK";
+                return StatusCode(201, response);
+
+            }
+            catch (DomainValidationException ex)
+            {
+                ex.ValidationResult.Results.ForEach(s => response.AddError(0, s.ErrorMessage));
+                response.Message = "Domain Errors";
+                return StatusCode(500, response);
+            }
+            catch (Exception ex)
+            {
+                response.AddError(0, ex.Message);
+                response.Message = "OK";
+                return StatusCode(500, response);
+            }
+
+
         }
-
-        [HttpDelete("{id:guid}")]
-        public IActionResult DeleteCategory(Guid id)
-        {
-            _service.CategoryService.DeleteCategory(id, trackChanges: false);
-            return NoContent();
-        }
-
-
     }
 }
