@@ -8,6 +8,8 @@ namespace Purchase.Domain.Models
 {
     public class Product : BaseEntity<Guid>
     { 
+        public Guid OrderItemId { get; set; }
+        public OrderItem? orderItem { get; set; }
 
         public string? Code { get; set; }
         public string? Name { get; set; }

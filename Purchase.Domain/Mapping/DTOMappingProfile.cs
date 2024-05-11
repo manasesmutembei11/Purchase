@@ -16,13 +16,9 @@ namespace Purchase.Domain.Mapping
 
             CreateMap<Tax, TaxDTO>().ReverseMap();
 
-            CreateMap<OrderItem, OrderItemDTO>()
-            .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.Name))
-            .ForMember(dest => dest.TaxRate, opt => opt.MapFrom(src => src.Tax != null ? src.Tax.Rate : 0));
+            CreateMap<OrderItem, OrderItemDTO>().ReverseMap();
 
-            CreateMap<OrderDTO, Order>()
-            .ForMember(dest => dest.Customer, opt => opt.Ignore())
-            .ForMember(dest => dest.OrderItems, opt => opt.Ignore());
+            CreateMap<Order, OrderDTO>().ReverseMap();
         }
     }
 

@@ -1,16 +1,20 @@
-<!-- product-selection-modal.component.html -->
 <div class="modal-header">
-    <h4 class="modal-title">Select a Product</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modalRef.dismiss()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <ul>
-      <li *ngFor="let product of products">
-        <button type="button" class="btn btn-link" (click)="selectProduct(product)">
-          {{ product.name }}
-        </button>
-      </li>
-    </ul>
-  </div>
+  <h4 class="modal-title">Select Products</h4>
+  <button type="button" class="close" aria-label="Close" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <ul>
+    <li *ngFor="let product of products">
+      <label>
+        <input type="checkbox" (change)="selectProduct(product)" [checked]="selectedProductIds.includes(product.id)">
+        {{ product.name }}
+      </label>
+    </li>
+  </ul>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" (click)="saveProducts()">Save</button>
+  <button type="button" class="btn btn-secondary" (click)="close()">Cancel</button>
+</div>

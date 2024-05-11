@@ -11,11 +11,7 @@ namespace Purchase.Domain.DTOs
     {
         public Guid Id { get; set; }
 
-        public Guid ProductId { get; set; }
-
-        public string ProductName { get; set; } 
-
-        public int Quantity { get; set; }
+        public virtual List<Product>? Products { get; set; }
 
         public decimal SubTotal { get; set; }
 

@@ -20,6 +20,7 @@ namespace Purchase.Domain.DTOs
         public decimal TaxRate { get; set; }
 
         public Guid CategoryId { get; set; }
+        public Guid OrderItemId { get; set; }
 
         public int Quantity { get; set; }
         public string? Description { get; set; }

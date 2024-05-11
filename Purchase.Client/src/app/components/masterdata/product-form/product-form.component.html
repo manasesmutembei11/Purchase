@@ -73,7 +73,21 @@
                     </div>
                 </div>
 
-            </div>   
+                <div class="col-md-6 mb-2">
+                    <!-- Input field for category -->
+                    <label for="category" class="form-label">Category</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Select category" formControlName="category"
+                            readonly>
+                        <button class="btn btn-outline-secondary" type="button" (click)="openCategoryModal()">
+                            Select Category
+                        </button>
+                    </div>
+                    <div ngxErrors="category">
+                        <div ngxError="required">Category is required</div>
+                    </div>
+                </div>
+            </div>
             
             <div class="row">
                 <div class="col-md-4">

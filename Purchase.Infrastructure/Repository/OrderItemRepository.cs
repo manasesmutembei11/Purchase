@@ -23,7 +23,7 @@ namespace Purchase.Infrastructure.Repository
             var predicate = PredicateBuilder.New<OrderItem>(true);
             if (!string.IsNullOrWhiteSpace(pagingParameters.Search))
             {
-                predicate = predicate.And(s => s.Product.Name.Contains(pagingParameters.Search) || s.Order.Customer.FirstName.Contains(pagingParameters.Search));
+                predicate = predicate.And(s => s.Order.Customer.FirstName.Contains(pagingParameters.Search) || s.Order.Customer.FirstName.Contains(pagingParameters.Search));
             }
             var data = FindByCondition(predicate, trackChanges).OrderBy(s => s.CreatedOn);
             return PagedList<OrderItem>.ToPagedListAsync(data, pagingParameters.PageNumber, pagingParameters.PageSize);

@@ -1,6 +1,6 @@
 
 export interface Category {
-	categoryId: string;
+	id: string;
 	name: string;
 	code: string;
 	description: string;
@@ -33,6 +33,7 @@ export interface Product {
 	quantity: number;
 	description: string;
 	categoryId: string;
+	orderItemId: string;
 }
 
 export interface Tax {
@@ -43,12 +44,10 @@ export interface Tax {
 }
 
 export interface OrderItem {
-	orderItemId: string;
-	productId: string;
-	productName: string;
+	id: string;
+	products: [];
 	quantity: number;
 	subTotal: number;
 	taxRate: number;
 	orderId: string;
-	selectpProduct: Product| any;
 }

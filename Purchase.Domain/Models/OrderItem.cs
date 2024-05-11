@@ -9,15 +9,11 @@ namespace Purchase.Domain.Models
     public class OrderItem : BaseEntity<Guid>
     {
 
-        public Guid ProductId { get; set; }
-
         public Guid OrderId { get; set; }
 
-        public virtual Product? Product { get; set; }
-
+        public virtual List<Product>? Products { get; set; }
         public virtual Order? Order { get; set; }
 
-        public int Quantity { get; set; }
 
         public decimal SubTotal { get; set; }
 

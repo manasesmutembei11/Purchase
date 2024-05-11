@@ -1,35 +1,26 @@
-<!-- order-item-form.component.html -->
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <!-- Your form fields -->
-  
-    <div class="form-group">
-      <label for="productName">Product Name:</label>
-      <input type="text" formControlName="productName" id="productName" class="form-control" readonly>
-      <button type="button" class="btn btn-primary" (click)="openProductModal(content)">Select Product</button>
-    </div>
-  
-    <!-- Other form fields -->
-  
-    <button type="submit" class="btn btn-success">{{ buttonText }}</button>
-    <button type="button" class="btn btn-secondary" (click)="back()">Back</button>
-  </form>
-  
-  <ng-template #content let-modal>
-    <div class="modal-header">
-      <h4 class="modal-title">Select a Product</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <ul>
-        <li *ngFor="let product of products">
-          <button type="button" class="btn btn-link" (click)="onSelectProduct(product)">
-            {{ product.name }}
-          </button>
-        </li>
-      </ul>
-    </div>
-  </ng-template>
-  
+<app-pagetitle [title]="pageTitle" [breadcrumbItems]="breadCrumbItems"></app-pagetitle>
 
+<div class="card h-auto">
+    <div class="card-body">
+        <app-error-display [errors]="errors"></app-error-display>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
+
+            <div class="form-group">
+                <label for="selectedProducts">Selected Products:</label>
+                <div *ngFor="let selectedProduct of form.get('products')?.value">
+                    {{ selectedProduct.name }}
+                </div>
+                <button type="button" class="btn btn-primary" (click)="openProductModal()">Select Products</button>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary me-1">{{buttonText}}</button>
+                    <button type="button" class="btn btn-secondary" (click)="back()">Back</button>
+                </div>
+            </div>
+            <!--end row-->
+        </form>
+        <hr>
+        <a class="btn btn-light waves-effect waves-light " (click)="back()">Back</a>
+   

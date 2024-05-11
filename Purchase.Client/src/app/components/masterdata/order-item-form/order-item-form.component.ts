@@ -10,6 +10,7 @@ import { OrderItem, Product } from '../../../models/masterdata-models/masterdata
 import { cloneDeep } from 'lodash';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ProductService } from '../../../services/masterdata-services/product.service'; 
+import { ProductSelectionModalComponent } from '../../modals/product-selection-modal/product-selection-modal.component';
 
 @Component({
   selector: 'app-order-item-form',
@@ -18,7 +19,7 @@ import { ProductService } from '../../../services/masterdata-services/product.se
 })
 export class OrderItemFormComponent extends BaseFormComponent implements OnInit {
   form: FormGroup = this.fb.group({});
-  modalRef: NgbModalRef | any;
+  modalRef: NgbModalRef | null = null;
   products: Product[] = [];
 
   constructor(
@@ -52,11 +53,9 @@ export class OrderItemFormComponent extends BaseFormComponent implements OnInit 
 
   createForm(): FormGroup {
     return this.fb.group({
-      orderItemId: [Guid.create().toString()],
-      productId: [Guid.create().toString()],
+      id: [Guid.create().toString()],
       orderId: [Guid.create().toString()],
-      productName: ['', Validators.required],
-      quantity: [0, Validators.required],
+      products: [[]],
       subTotal: [0],
       taxRate: [0]
     });
@@ -83,9 +82,9 @@ export class OrderItemFormComponent extends BaseFormComponent implements OnInit 
         next: (_) => {
           this.location.back();
         },
-        error: (errors) => {
-          this.errors = errors;
-          console.log('Error =>', this.errors);
+        error: (error) => {
+          this.error = error;
+          console.log('Error =>', this.error);
         },
       });
     }
@@ -95,9 +94,16 @@ export class OrderItemFormComponent extends BaseFormComponent implements OnInit 
     this.location.back();
   }
 
-  openProductModal(content: any) {
-    this.modalRef = this.modalService.open(content, { size: 'lg' });
-    this.loadProducts();
+
+  openProductModal(): void {
+    this.modalRef = this.modalService.open(ProductSelectionModalComponent, { size: 'lg' });
+    if (this.modalRef) { // Check if modalRef is not null
+      this.modalRef.componentInstance.selectedProducts = this.form.get('products')!.value;
+      this.modalRef.componentInstance.products = this.products;
+      this.modalRef.componentInstance.selectedProducts.subscribe((products: Product[]) => {
+        this.form.get('products')!.setValue(products);
+      });
+    }
   }
 
   loadProducts() {
@@ -107,13 +113,5 @@ export class OrderItemFormComponent extends BaseFormComponent implements OnInit 
           this.products = pagedList.data;
         }
       });
-  }
-
-  onSelectProduct(product: Product) {
-    this.form.patchValue({
-      productId: product.id,
-      productName: product.name
-    });
-    this.modalRef.close(); // Close the modal after selecting the product
   }
 }

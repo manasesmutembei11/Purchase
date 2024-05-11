@@ -8,6 +8,8 @@ import { Guid } from 'guid-typescript';
 import { first } from 'rxjs';
 import { Product, Category } from '../../../models/masterdata-models/masterdata.models';
 import { cloneDeep } from 'lodash';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CategorySelectionModalComponent } from '../../modals/category-selection-modal/category-selection-modal.component';
 
 @Component({
   selector: 'app-product-form',
@@ -21,6 +23,7 @@ export class ProductFormComponent extends BaseFormComponent implements OnInit {
     private fb: FormBuilder,
     public location: Location,
     private productService: ProductService,
+    private modalService: NgbModal
     
   ) {
     super();
@@ -50,7 +53,8 @@ export class ProductFormComponent extends BaseFormComponent implements OnInit {
       quantity: [0, Validators.required],
       description: ['', Validators.required],
       category: [''],
-      categoryId: ['7149820A-F297-4C59-057A-08DC7086CD08'],
+      categoryId: [''],
+      orderItemId: [Guid.create().toString()],
       id: [Guid.create().toString()],
     });
     return f;
@@ -86,5 +90,16 @@ export class ProductFormComponent extends BaseFormComponent implements OnInit {
   back(): void {
     this.location.back();
   }
+
+  openCategoryModal() {
+    const modalRef = this.modalService.open(CategorySelectionModalComponent, { size: 'lg' });
+    modalRef.componentInstance.selectedCategory.subscribe((category: Category) => {
+      this.form.patchValue({
+        category: category.name,
+        categoryId: category.id
+      });
+    });
+  }
+  
 
 }
