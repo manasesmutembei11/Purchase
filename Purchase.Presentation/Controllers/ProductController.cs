@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Purchase.Domain.IService;
 using Microsoft.AspNetCore.Http;
 using Purchase.Domain.Models;
 using Purchase.Domain.Validations;
@@ -21,13 +20,12 @@ namespace Purchase.Presentation.Controllers
     {
         private readonly IRepositoryManager _repository;
         private readonly IMapper _mapper;
-        private readonly IServiceManager _service;
 
-        public ProductController(IRepositoryManager repository, IMapper mapper, IServiceManager service)
+        public ProductController(IRepositoryManager repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
-            _service = service;
+            
         }
 
 

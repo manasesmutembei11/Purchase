@@ -21,13 +21,12 @@ namespace Purchase.Presentation.Controllers
     {
         private readonly IRepositoryManager _repository;
         private readonly IMapper _mapper;
-        private readonly IServiceManager _service;
 
-        public OrderItemController(IRepositoryManager repository, IMapper mapper, IServiceManager service)
+        public OrderItemController(IRepositoryManager repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
-            _service = service;
+     
         }
 
 

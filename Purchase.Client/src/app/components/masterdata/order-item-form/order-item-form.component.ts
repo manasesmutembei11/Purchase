@@ -9,7 +9,7 @@ import { first } from 'rxjs';
 import { OrderItem, Product } from '../../../models/masterdata-models/masterdata.models';
 import { cloneDeep } from 'lodash';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { ProductService } from '../../../services/masterdata-services/product.service'; // Adjust path
+import { ProductService } from '../../../services/masterdata-services/product.service'; 
 
 @Component({
   selector: 'app-order-item-form',
@@ -45,8 +45,9 @@ export class OrderItemFormComponent extends BaseFormComponent implements OnInit 
       ];
       this.buttonText = this.editMode ? 'Update' : 'Create';
       this.initForm();
+      this.loadProducts();
     });
-    this.loadProducts();
+    
   }
 
   createForm(): FormGroup {
