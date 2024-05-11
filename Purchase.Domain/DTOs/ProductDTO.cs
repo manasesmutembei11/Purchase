@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Purchase.Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,7 @@ namespace Purchase.Domain.DTOs
         public decimal TaxRate { get; set; }
 
         public Guid CategoryId { get; set; }
-        public Guid OrderItemId { get; set; }
+     
 
         public int Quantity { get; set; }
         public string? Description { get; set; }

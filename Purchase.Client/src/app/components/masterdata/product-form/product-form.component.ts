@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../../services/masterdata-services/product.service';
 import { Guid } from 'guid-typescript';
 import { first } from 'rxjs';
-import { Product, Category } from '../../../models/masterdata-models/masterdata.models';
+import { Product, Category, OrderItem } from '../../../models/masterdata-models/masterdata.models';
 import { cloneDeep } from 'lodash';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CategorySelectionModalComponent } from '../../modals/category-selection-modal/category-selection-modal.component';
@@ -23,7 +23,7 @@ export class ProductFormComponent extends BaseFormComponent implements OnInit {
     private fb: FormBuilder,
     public location: Location,
     private productService: ProductService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
     
   ) {
     super();
@@ -54,7 +54,6 @@ export class ProductFormComponent extends BaseFormComponent implements OnInit {
       description: ['', Validators.required],
       category: [''],
       categoryId: [''],
-      orderItemId: [Guid.create().toString()],
       id: [Guid.create().toString()],
     });
     return f;

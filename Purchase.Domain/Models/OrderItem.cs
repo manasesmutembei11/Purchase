@@ -11,7 +11,7 @@ namespace Purchase.Domain.Models
 
         public Guid OrderId { get; set; }
 
-        public virtual List<Product>? Products { get; set; }
+        public virtual List<Product>? Products { get; set; } = new List<Product>();
         public virtual Order? Order { get; set; }
 
 
