@@ -112,6 +112,26 @@ namespace Purchase.API.Migrations
                     b.HasIndex("CustomerId");
 
                     b.ToTable("Orders");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("c9d4c053-49b6-440c-bc78-2d54a9991870"),
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CustomerId = new Guid("3fa85f64-5717-4562-b3fc-2c963f66afa6"),
+                            Status = 0,
+                            Total = 300m,
+                            UpdatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = new Guid("c9d4c053-69b6-410c-bc78-2d54a9991870"),
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CustomerId = new Guid("3fa85f64-5717-4562-b3fc-2c963f66afa6"),
+                            Status = 0,
+                            Total = 300m,
+                            UpdatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("Purchase.Domain.Models.OrderItem", b =>
@@ -145,6 +165,26 @@ namespace Purchase.API.Migrations
                     b.HasIndex("TaxId");
 
                     b.ToTable("OrderItems");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"),
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            OrderId = new Guid("c9d4c053-49b6-440c-bc78-2d54a9991870"),
+                            Status = 0,
+                            SubTotal = 300m,
+                            UpdatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = new Guid("c9d4c053-69b6-410c-bc78-2d54a9991870"),
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            OrderId = new Guid("c9d4c053-49b6-440c-bc78-2d54a9991870"),
+                            Status = 0,
+                            SubTotal = 300m,
+                            UpdatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("Purchase.Domain.Models.Product", b =>
@@ -263,7 +303,7 @@ namespace Purchase.API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Purchase.Domain.Models.OrderItem", "orderItem")
+                    b.HasOne("Purchase.Domain.Models.OrderItem", "OrderItem")
                         .WithMany("Products")
                         .HasForeignKey("OrderItemId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -271,7 +311,7 @@ namespace Purchase.API.Migrations
 
                     b.Navigation("Category");
 
-                    b.Navigation("orderItem");
+                    b.Navigation("OrderItem");
                 });
 
             modelBuilder.Entity("Purchase.Domain.Models.Customer", b =>
