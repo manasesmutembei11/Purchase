@@ -1,1 +1,32 @@
-<p>order-form works!</p>
+
+<app-pagetitle [title]="pageTitle" [breadcrumbItems]="breadCrumbItems"></app-pagetitle>
+
+<div class="card h-auto">
+    <div class="card-body">
+        <app-error-display [errors]="errors"></app-error-display>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
+
+            
+    
+      
+               
+
+    
+
+ 
+
+     
+            
+            <div class="row">
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary me-1">{{buttonText}}</button>
+                    <button type="reset" (click)="onCancel()" class="btn btn-danger me-1">Cancel</button>
+                </div>
+            </div>
+            <!--end row-->
+        </form>
+        <hr>
+        <a class="btn btn-light waves-effect waves-light " (click)="back()">Back</a>
+    </div>
+</div>
+

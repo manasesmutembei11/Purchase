@@ -54,6 +54,7 @@ export class ProductFormComponent extends BaseFormComponent implements OnInit {
       description: ['', Validators.required],
       category: [''],
       categoryId: [''],
+      orderItemId: ['3FA85F64-5717-4562-B3FC-2C963F66AFA6'],
       id: [Guid.create().toString()],
     });
     return f;

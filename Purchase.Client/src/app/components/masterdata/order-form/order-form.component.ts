@@ -42,7 +42,7 @@ export class OrderFormComponent extends BaseFormComponent implements OnInit {
   }
   createForm(): FormGroup {
     const f = this.fb.group({
-      orderId: [Guid.create().toString()],
+      id: [Guid.create().toString()],
       customerId: [Guid.create().toString()],
       customerName: ['', Validators.required],
       orderDate: ['', Validators.required],
@@ -82,5 +82,6 @@ export class OrderFormComponent extends BaseFormComponent implements OnInit {
   back(): void {
     this.location.back();
   }
+
 
 }

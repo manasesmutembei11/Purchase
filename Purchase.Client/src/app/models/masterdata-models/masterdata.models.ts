@@ -7,7 +7,7 @@ export interface Category {
 }
 
 export interface Customer {
-	customerId: string;
+	id: string;
 	firstName: string;
 	lastName: string;
 	address: string;
@@ -16,7 +16,7 @@ export interface Customer {
 }
 
 export interface Order {
-	orderId: string;
+	id: string;
 	customerId: string;
 	customerName: string;
 	orderDate: string;
@@ -33,6 +33,7 @@ export interface Product {
 	quantity: number;
 	description: string;
 	categoryId: string;
+	orderItemId: string;
 }
 
 export interface Tax {

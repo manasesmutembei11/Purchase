@@ -48,7 +48,7 @@ export class CustomerFormComponent extends BaseFormComponent implements OnInit {
       phone: ['', Validators.required],
       email: ['', [Validators.email, Validators.required]],
       address: ['', Validators.required],
-      customerId: [Guid.create().toString()],
+      id: [Guid.create().toString()],
     });
     return f;
   }

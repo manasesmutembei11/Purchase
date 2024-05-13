@@ -11,6 +11,7 @@ namespace Purchase.Domain.DTOs
     {
         public Guid Id { get; set; }
 
+        public Guid OrderItemId { get; set; }
         public string? Code { get; set; }
         public string? Name { get; set; }
 

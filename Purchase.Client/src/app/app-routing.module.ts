@@ -70,15 +70,6 @@ const routes: Routes = [
       { path: 'create', component: TaxFormComponent,pathMatch: 'full' },
       { path: 'edit/:id', component: TaxFormComponent},
     ]
-  },
-  {
-    path: 'productSelect',
-    canActivate: [],
-    children: [
-      { path: '', component: ProductSelectionModalComponent, pathMatch: 'full',},
-      { path: 'create', component: ProductSelectionModalComponent,pathMatch: 'full' },
-      { path: 'edit/:id', component: ProductSelectionModalComponent},
-    ]
   }
 
 ];
