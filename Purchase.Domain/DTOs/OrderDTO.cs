@@ -15,6 +15,8 @@ namespace Purchase.Domain.DTOs
 
        public virtual List<OrderItemDTO>? Items { get; set; }
 
+        public virtual CustomerDTO? Customer { get; set; }
+
         public decimal Total { get; set; }
     }
 }

@@ -3,7 +3,7 @@ import { BasePagedListComponent } from '../../base/base-paged-list-component';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { first } from 'rxjs';
-import { Order } from '../../../models/masterdata-models/masterdata.models';
+import { Customer, Order } from '../../../models/masterdata-models/masterdata.models';
 import { OrderService } from '../../../services/masterdata-services/order.service';
 
 @Component({

@@ -25,8 +25,9 @@
             <table class="table table-nowrap mb-2">
                 <thead>
                     <tr>
+                        <th scope="col">Id</th>
 
-                        <th scope="col">Customer Name</th>
+                        <th scope="col">Customer Id</th>
                         <th scope="col">Order date</th>                        
                         <th scope="col">Total</th>
 
@@ -36,8 +37,8 @@
                 <tbody>
 
                     <tr *ngFor="let item of items " class="p-1">
-                        
-                        <td>{{item.customerName}}</td>
+                        <td>{{item.id}}</td>
+                        <td>{{item.customerId}}</td>
                         <td>{{item.orderDate}}</td>     
                         <td>{{item.total}}</td>        
                                             

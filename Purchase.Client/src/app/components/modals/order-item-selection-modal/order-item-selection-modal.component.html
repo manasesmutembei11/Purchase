@@ -9,7 +9,7 @@
       <li *ngFor="let item of orderItems">
         <label>
           <input type="checkbox" (change)="selectOrderItem(item)" [checked]="selectedOrderItemIds.includes(item.id)">
-          {{ item.products }}
+          {{ item.id }}
         </label>
       </li>
     </ul>
