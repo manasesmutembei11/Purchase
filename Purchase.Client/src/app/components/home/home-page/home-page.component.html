@@ -1,74 +1,76 @@
-<nav
-    class="navbar navbar-expand-sm navbar-light bg-light"
->
-    <div class="container">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button
-            class="navbar-toggler d-lg-none"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapsibleNavId"
-            aria-controls="collapsibleNavId"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-        >
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavId">
-            <ul class="navbar-nav me-auto mt-2 mt-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#" aria-current="page"
-                        >Home
-                        <span class="visually-hidden">(current)</span></a
-                    >
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a
-                        class="nav-link dropdown-toggle"
-                        href="#"
-                        id="dropdownId"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                        >Masterdata</a
-                    >
-                    <div
-                        class="dropdown-menu"
-                        aria-labelledby="dropdownId"
-                    >
-                        <a class="dropdown-item" href="#" routerLink="category"
-                            >Categories</a>
-                        <a class="dropdown-item" href="#" routerLink="customer"
-                            >Customers</a>
-                        <a class="dropdown-item" href="#" routerLink="order"
-                        >Orders</a>
-                        <a class="dropdown-item" href="#" routerLink="orderItem"
-                        >OrderItems</a>
-                        <a class="dropdown-item" href="#" routerLink="product"
-                        >Products</a>
-                        <a class="dropdown-item" href="#" routerLink="tax"
-                        >Taxes</a>
-                    </div>
-                </li>
-            </ul>
-            <form class="d-flex my-2 my-lg-0">
-                <input
-                    class="form-control me-sm-2"
-                    type="text"
-                    placeholder="Search"
-                />
-                <button
-                    class="btn btn-outline-success my-2 my-sm-0"
-                    type="submit"
-                >
-                    Search
-                </button>
-            </form>
-        </div>
+
+
+<!-- home.component.html -->
+
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 offset-md-3 text-center mt-5">
+        <h1>Welcome to the Purchase Application</h1>
+        <p class="lead">Manage your purchases efficiently with our application</p>
+      </div>
     </div>
-</nav>
+  
+    <div class="row mt-5">
+      <div class="col-md-4 offset-md-2 text-center">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">View Orders</h5>
+            <p class="card-text">View and manage your purchase orders</p>
+            <a routerLink="order" class="btn btn-primary">Go to Orders</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 text-center">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Create New Order</h5>
+            <p class="card-text">Create a new purchase order</p>
+            <a routerLink="order" class="btn btn-success">Create Order</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-4 offset-md-2 text-center">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">View Taxes</h5>
+              <p class="card-text">View and manage your taxes</p>
+              <a routerLink="tax" class="btn btn-primary">Go to Taxes</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 text-center">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Create New Category</h5>
+              <p class="card-text">Create a new category</p>
+              <a routerLink="category" class="btn btn-success">Create Category</a>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    <div class="row mt-5">
+      <div class="col-md-4 offset-md-2 text-center">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">View Products</h5>
+            <p class="card-text">Browse through available products</p>
+            <a routerLink="product" class="btn btn-primary">Go to Products</a>
+          </div>
+        </div>
+      </div>
 
-
+      <div class="col-md-4 text-center">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Manage Customers</h5>
+            <p class="card-text">Manage your customer base</p>
+            <a routerLink="customer" class="btn btn-primary">Go to Customers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

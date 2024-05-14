@@ -29,6 +29,9 @@ import { ProductSelectionModalComponent } from './components/modals/product-sele
 import { CategorySelectionModalComponent } from './components/modals/category-selection-modal/category-selection-modal.component';
 import { OrderItemSelectionModalComponent } from './components/modals/order-item-selection-modal/order-item-selection-modal.component';
 import { CustomerSelectionModalComponent } from './components/modals/customer-selection-modal/customer-selection-modal.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -56,9 +59,10 @@ import { CustomerSelectionModalComponent } from './components/modals/customer-se
   ],
   imports: [
     BrowserModule, HttpClientModule,
-    AppRoutingModule, RouterModule, NgbModule, CommonModule, FormsModule, ReactiveFormsModule
+    AppRoutingModule, RouterModule, NgbModule, CommonModule, FormsModule, ReactiveFormsModule, MatCardModule,
+    MatIconModule
   ],
-  providers: [NgbModal],
+  providers: [NgbModal, provideAnimationsAsync()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

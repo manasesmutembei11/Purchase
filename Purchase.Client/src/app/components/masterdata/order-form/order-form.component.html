@@ -10,16 +10,16 @@
                 <div *ngFor="let selectedOrderItem of form.get('orderItems')?.value">
                     {{ selectedOrderItem }}
                 </div>
-                <button type="button" class="btn btn-primary" (click)="openOrderItemModal()">Select Products</button>
+                <button type="button" class="btn btn-primary" (click)="openOrderItemModal()">Select Items</button>
             </div>
 
             <div class="col-md-6 mb-2">
                 <!-- Input field for category -->
                 <label for="customer" class="form-label">Customer</label>
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Select customer" formControlName="customer"
+                    <input type="text" class="form-control" placeholder="Select customer" formControlName="customerId"
                         readonly>
-                    <button class="btn btn-outline-secondary" type="button" (click)="openCustomerModal()">
+                    <button class="btn btn-outline-primary" type="button" (click)="openCustomerModal()">
                         Select Customer
                     </button>
                 </div>
