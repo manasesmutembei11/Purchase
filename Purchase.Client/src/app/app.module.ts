@@ -27,6 +27,8 @@ import { TaxFormComponent } from './components/masterdata/tax-form/tax-form.comp
 import { TaxListComponent } from './components/masterdata/tax-list/tax-list.component';
 import { ProductSelectionModalComponent } from './components/modals/product-selection-modal/product-selection-modal.component';
 import { CategorySelectionModalComponent } from './components/modals/category-selection-modal/category-selection-modal.component';
+import { OrderItemSelectionModalComponent } from './components/modals/order-item-selection-modal/order-item-selection-modal.component';
+import { CustomerSelectionModalComponent } from './components/modals/customer-selection-modal/customer-selection-modal.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { CategorySelectionModalComponent } from './components/modals/category-se
     TaxFormComponent,
     TaxListComponent,
     ProductSelectionModalComponent,
-    CategorySelectionModalComponent
+    CategorySelectionModalComponent,
+    OrderItemSelectionModalComponent,
+    CustomerSelectionModalComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,

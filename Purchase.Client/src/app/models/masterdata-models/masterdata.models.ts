@@ -21,6 +21,7 @@ export interface Order {
 	customerName: string;
 	orderDate: string;
 	total: number;
+	orderItems: [];
 }
 
 export interface Product {
@@ -45,7 +46,7 @@ export interface Tax {
 
 export interface OrderItem {
 	id: string;
-	products: [];
+	products: Product[];
 	quantity: number;
 	subTotal: number;
 	taxRate: number;

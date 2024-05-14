@@ -1,0 +1,21 @@
+<div class="modal-header">
+    <h4 class="modal-title">Select Order Item</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <ul>
+      <li *ngFor="let item of orderItems">
+        <label>
+          <input type="checkbox" (change)="selectOrderItem(item)" [checked]="selectedOrderItemIds.includes(item.id)">
+          {{ item.products }}
+        </label>
+      </li>
+    </ul>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="saveOrderItems()">Save</button>
+    <button type="button" class="btn btn-secondary" (click)="close()">Cancel</button>
+  </div>
+  

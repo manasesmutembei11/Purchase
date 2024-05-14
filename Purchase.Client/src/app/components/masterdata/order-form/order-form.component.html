@@ -5,6 +5,32 @@
     <div class="card-body">
         <app-error-display [errors]="errors"></app-error-display>
         <form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
+            <div class="form-group">
+                <label for="selectedOrderItems">Selected Order Items:</label>
+                <div *ngFor="let selectedOrderItem of form.get('orderItems')?.value">
+                    {{ selectedOrderItem }}
+                </div>
+                <button type="button" class="btn btn-primary" (click)="openOrderItemModal()">Select Products</button>
+            </div>
+
+            <div class="col-md-6 mb-2">
+                <!-- Input field for category -->
+                <label for="customer" class="form-label">Customer</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Select customer" formControlName="customerName"
+                        readonly>
+                    <button class="btn btn-outline-secondary" type="button" (click)="openCustomerModal()">
+                        Select Customer
+                    </button>
+                </div>
+                <div ngxErrors="customer">
+                    <div ngxError="required">Customer is required</div>
+                </div>
+            </div>
+        
+
+  
+        
 
             
     
