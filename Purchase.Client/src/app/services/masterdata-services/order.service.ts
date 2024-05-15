@@ -35,4 +35,8 @@ export class OrderService {
       `${this.baseUrl}api/Order/pagedlist?pageNumber=${pageNumber}&pageSize=${pageSize}&search=${search}`
     );
   }; 
+  
+  cancelOrder(id: string): Observable<BasicResponse> {
+    return this.http.delete<BasicResponse>(`${this.baseUrl}api/Order/${id}`);
+  }
 }

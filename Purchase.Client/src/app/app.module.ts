@@ -32,6 +32,7 @@ import { CustomerSelectionModalComponent } from './components/modals/customer-se
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { OrderModalComponent } from './components/modals/order-modal/order-modal.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { MatIconModule } from '@angular/material/icon';
     ProductSelectionModalComponent,
     CategorySelectionModalComponent,
     OrderItemSelectionModalComponent,
-    CustomerSelectionModalComponent
+    CustomerSelectionModalComponent,
+    OrderModalComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,

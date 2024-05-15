@@ -45,6 +45,8 @@ export interface Tax {
 
 export interface OrderItem {
 	id: string;
+	productId: string;
+	productName: string;
 	products: Product[];
 	quantity: number;
 	subTotal: number;

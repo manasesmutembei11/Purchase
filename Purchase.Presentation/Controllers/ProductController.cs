@@ -102,5 +102,38 @@ namespace Purchase.Presentation.Controllers
                 return StatusCode(500, response);
             }
         }
+
+        [HttpPut("{id}/DecreaseQuantity")]
+        public async Task<IActionResult> DecreaseProductQuantity(Guid id, [FromBody] int quantity)
+        {
+            var product = await _repository.Product.GetByIdAsync(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            product.Quantity -= quantity;
+            _repository.Product.Update(product);
+            await _repository.SaveAsync();
+
+            return NoContent();
+        }
+
+        [HttpPut("{id}/IncreaseQuantity")]
+        public async Task<IActionResult> IncreaseProductQuantity(Guid id, [FromBody] int quantity)
+        {
+            var product = await _repository.Product.GetByIdAsync(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            product.Quantity += quantity;
+            _repository.Product.Update(product);
+            await _repository.SaveAsync();
+
+            return NoContent();
+        }
+
     }
 }

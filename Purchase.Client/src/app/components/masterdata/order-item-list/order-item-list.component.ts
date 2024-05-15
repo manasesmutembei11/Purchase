@@ -5,6 +5,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { first } from 'rxjs';
 import { OrderItem } from '../../../models/masterdata-models/masterdata.models';
 import { OrderItemService } from '../../../services/masterdata-services/order-item.service';
+import { ProductService } from '../../../services/masterdata-services/product.service';
 
 @Component({
   selector: 'app-order-item-list',
@@ -16,7 +17,8 @@ export class OrderItemListComponent extends BasePagedListComponent implements On
   constructor(
     protected router: Router,
     private route: ActivatedRoute,
-    private orderItemService: OrderItemService
+    private orderItemService: OrderItemService,
+    private productService: ProductService
   ) { super() }
 
   ngOnInit(): void {
@@ -49,5 +51,6 @@ export class OrderItemListComponent extends BasePagedListComponent implements On
     this.router.navigate(["."], { relativeTo: this.route, queryParams: params, queryParamsHandling: 'merge' });
 
   }
+
 
 }

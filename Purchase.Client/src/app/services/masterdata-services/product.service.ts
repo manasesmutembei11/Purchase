@@ -10,6 +10,7 @@ import { PagedList } from '../../models/shared-models/paged-list';
   providedIn: 'root'
 })
 export class ProductService {
+  public products: Product[] = [];
   private baseUrl = 'https://localhost:7224/'; 
   constructor(
     private http: HttpClient,
@@ -35,4 +36,14 @@ export class ProductService {
       `${this.baseUrl}api/Product/pagedlist?pageNumber=${pageNumber}&pageSize=${pageSize}&search=${search}`
     );
   }; 
+
+
+  decreaseProductQuantity(id: string, quantity: number): Observable<any> {
+    return this.http.put(`${this.baseUrl}api/Product/${id}/DecreaseQuantity`, { quantity });
+  }
+
+  increaseProductQuantity(id: string, quantity: number): Observable<any> {
+    return this.http.put(`${this.baseUrl}api/Product/${id}/IncreaseQuantity`, { quantity });
+  }
+
 }

@@ -48,4 +48,21 @@ export class ProductListComponent extends BasePagedListComponent implements OnIn
 
   }
 
+
+  addToOrder(productId: string): void {
+    const product = this.items.find(p => p.id === productId);
+    if (product && product.quantity > 0) {
+      this.productService.decreaseProductQuantity(productId, 1).subscribe(
+        () => {
+          product.quantity--; // Update locally
+        },
+        (error) => {
+          console.error('Error updating product quantity:', error);
+        }
+      );
+    } else {
+      console.log('Product not available');
+    }
+  }
+
 }
