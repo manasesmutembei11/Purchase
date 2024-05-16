@@ -23,8 +23,7 @@ export class OrderFormComponent extends BaseFormComponent implements OnInit {
   form: FormGroup = this.fb.group({});
   modalRef: NgbModalRef | null = null;
   orderItems: OrderItem[] = [];
-
-  total: number = 0;
+  total: number= 0;
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,
@@ -124,6 +123,7 @@ export class OrderFormComponent extends BaseFormComponent implements OnInit {
     modalRef.componentInstance.selectedCustomer.subscribe((customer: Customer) => {
       this.form.patchValue({
         customerName: customer.firstName,
+        customerPhone: customer.phone,
         customerId: customer.id
       });
     });
