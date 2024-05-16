@@ -20,7 +20,34 @@
                     <div ngxError="required">Customer is required</div>
                 </div>
             </div>
-        
+
+            <button type="button" class="btn btn-primary" (click)="openOrderItemModal()">Add Order Item</button>
+
+            <!-- Display order items -->
+         
+<!-- Display order items in a table -->
+<table class="table">
+    <thead>
+      <tr>
+        <th>Label</th>
+        <th>Quantity</th>
+        <th>Unit Price</th>
+        <th>Subtotal</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let orderItem of orderItems; let i = index">
+        <td>{{ orderItem.label }}</td>
+        <td>{{ orderItem.quantity }}</td>
+        <td>{{ orderItem.unitPrice }}</td>
+        <td>{{ orderItem.subTotal }}</td>
+        <td>
+          <button type="button" class="btn btn-danger" (click)="removeOrderItem(i)">Remove</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
             <div class="row">
                 <div class="col-md-4">
                     <button type="submit" class="btn btn-primary me-1">{{buttonText}}</button>

@@ -12,6 +12,8 @@ namespace Purchase.Domain.DTOs
         public Guid Id { get; set; }
 
         public Guid CustomerId { get; set; }
+        public string? CustomerName { get; set; }
+        public string? CustomerPhone { get; set; }
         public decimal Total { get; set; }
     }
 }

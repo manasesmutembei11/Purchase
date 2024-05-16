@@ -52,6 +52,8 @@ export class OrderFormComponent extends BaseFormComponent implements OnInit {
       customerId: [Guid.create().toString()],
       orderDate: [Date],
       orderItems: [[]],
+      customerName: [''],
+      customerPhone: [''],
       total: [0]
     });
     return f;
@@ -78,9 +80,9 @@ export class OrderFormComponent extends BaseFormComponent implements OnInit {
         next: (_) => {
           this.location.back();
         },
-        error: (errors) => {
-          this.errors = errors;
-          console.log('Error =>', this.errors);
+        error: (error) => {
+          this.error = error;
+          console.log('Error =>', this.error);
         },
       });
     }
@@ -89,15 +91,19 @@ export class OrderFormComponent extends BaseFormComponent implements OnInit {
     this.location.back();
   }
 
+  removeOrderItem(index: number): void {
+    this.orderItems.splice(index, 1); // Remove order item at the specified index
+  }
+
+
   openOrderItemModal(): void {
-    this.modalRef = this.modalService.open(OrderItemSelectionModalComponent, { size: 'lg' });
-    if (this.modalRef) { // Check if modalRef is not null
-      this.modalRef.componentInstance.selectedOrderItems = this.form.get('orderItems')!.value;
-      this.modalRef.componentInstance.orderItems = this.orderItems;
-      this.modalRef.componentInstance.selectedOrderItems.subscribe((orderItems: OrderItem[]) => {
-        this.form.get('orderItems')!.setValue(orderItems);
-      });
-    }
+    const modalRef: NgbModalRef = this.modalService.open(OrderItemSelectionModalComponent, { size: 'lg' });
+    modalRef.componentInstance.orderItemsAdded.subscribe((orderItems: OrderItem[]) => {
+      // Handle newly added order items
+      console.log('Newly added order items:', orderItems);
+      // Add order items to the form or perform other actions
+      this.orderItems.push(...orderItems); // Add to existing order items
+    });
   }
 
   openCustomerModal() {

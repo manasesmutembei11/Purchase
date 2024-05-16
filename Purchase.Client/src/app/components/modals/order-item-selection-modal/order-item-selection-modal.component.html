@@ -1,21 +1,72 @@
 <div class="modal-header">
-    <h4 class="modal-title">Select Order Item</h4>
-    <button type="button" class="close" aria-label="Close" (click)="close()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
+  <h4 class="modal-title">Select Order Item</h4>
+</div>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <!-- Form fields -->
   <div class="modal-body">
-    <ul>
-      <li *ngFor="let item of orderItems">
-        <label>
-          <input type="checkbox" (change)="selectOrderItem(item)" [checked]="selectedOrderItemIds.includes(item.id)">
-          {{ item.id }}
-        </label>
-      </li>
-    </ul>
-  </div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
+
+      <div class="row">
+          <div class="col-md-6 mb-2">
+              <!-- Input field for category -->
+              <label for="product" class="form-label">Product</label>
+              <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Select product" formControlName="product"
+                      readonly>
+                  <button class="btn btn-outline-secondary" type="button" (click)="openProductModal()">
+                      Select Product
+                  </button>
+              </div>
+              <div ngxErrors="product">
+                  <div ngxError="required">Product is required</div>
+              </div>
+          </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6 mb-2">
+            <label for="label" class="form-label">Item label</label>
+            <input type="text" class="form-control" placeholder="label" id="label" formControlName="label"
+                appValidityStyle>
+            <div ngxErrors="label">
+                <div ngxError="required"> Label is required</div>
+            </div>
+        </div>
+    </div> 
+
+      <div class="row">
+          <div class="col-6 mb-2">
+              <label for="quantity" class="form-label">Quantity</label>
+              <input type="number" class="form-control" placeholder="Quantity" id="quantity" formControlName="quantity"
+                  appValidityStyle>
+              <div ngxErrors="quantity">
+                  <div ngxError="required"> Quantity is required</div>
+              </div>
+          </div>
+      </div> 
+      <div class="row">
+          <div class="col-6 mb-2">
+              <label for="unitPrice" class="form-label">Unit price</label>
+              <input type="number" class="form-control" placeholder="Unit price" id="unitPrice" formControlName="unitPrice"
+                  appValidityStyle>
+              <div ngxErrors="unitPrice">
+                  <div ngxError="required"> Price is required</div>
+              </div>
+          </div>
+      </div> 
+      <div class="row">
+          <div class="col-6 mb-2">
+              <label for="subTotal" class="form-label">Sub-total</label>
+              <input type="number" class="form-control" placeholder="subTotal" id="subTotal" formControlName="subTotal"
+                  appValidityStyle>
+              <div ngxErrors="subTotal">
+                  <div ngxError="required"> Sub total is required</div>
+              </div>
+          </div>
+      </div> 
+
   <div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="saveOrderItems()">Save</button>
-    <button type="button" class="btn btn-secondary" (click)="close()">Cancel</button>
+    <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Save</button>
   </div>
-  
+</form>

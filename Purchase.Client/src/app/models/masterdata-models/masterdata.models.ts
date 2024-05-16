@@ -20,6 +20,8 @@ export interface Order {
 	customerId: string;
 	orderDate: string;
 	total: number;
+	customerName: string;
+	customerPhone: string;
 	orderItems: [];
 }
 
@@ -47,6 +49,5 @@ export interface OrderItem {
 	quantity: number;
 	unitPrice: number;
 	subTotal: number;
-	orderId: string;
 	productId: string;
 }
