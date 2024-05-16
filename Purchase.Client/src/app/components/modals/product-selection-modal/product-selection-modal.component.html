@@ -8,7 +8,7 @@
   <ul>
     <li *ngFor="let product of products">
       <label>
-        <input type="checkbox" (change)="selectProduct(product)" [checked]="selectedProductIds.includes(product.id)">
+        <input type="radio" (change)="selectProduct(product)" [checked]="selectedProductIds.includes(product.id)">
         {{ product.name }}
       </label>
     </li>

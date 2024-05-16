@@ -12,11 +12,6 @@ namespace Purchase.Domain.DTOs
         public Guid Id { get; set; }
 
         public Guid CustomerId { get; set; }
-
-       public virtual List<OrderItemDTO>? Items { get; set; }
-
-        public virtual CustomerDTO? Customer { get; set; }
-
         public decimal Total { get; set; }
     }
 }

@@ -5,13 +5,6 @@
     <div class="card-body">
         <app-error-display [errors]="errors"></app-error-display>
         <form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
-            <div class="form-group">
-                <label for="selectedOrderItems">Selected Order Items:</label>
-                <div *ngFor="let selectedOrderItem of form.get('orderItems')?.value">
-                    {{ selectedOrderItem }}
-                </div>
-                <button type="button" class="btn btn-primary" (click)="openOrderItemModal()">Select Items</button>
-            </div>
 
             <div class="col-md-6 mb-2">
                 <!-- Input field for category -->
@@ -28,21 +21,6 @@
                 </div>
             </div>
         
-
-  
-        
-
-            
-    
-      
-               
-
-    
-
- 
-
-     
-            
             <div class="row">
                 <div class="col-md-4">
                     <button type="submit" class="btn btn-primary me-1">{{buttonText}}</button>

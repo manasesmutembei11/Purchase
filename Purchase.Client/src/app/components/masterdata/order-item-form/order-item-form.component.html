@@ -5,13 +5,55 @@
         <app-error-display [errors]="errors"></app-error-display>
         <form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
 
-            <div class="form-group">
-                <label for="selectedProducts">Selected Products:</label>
-                <div *ngFor="let selectedProduct of form.get('products')?.value">
-                    {{ selectedProduct.name }}
+            <div class="row">
+                <div class="col-md-6 mb-2">
+                    <!-- Input field for category -->
+                    <label for="product" class="form-label">Product</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Select product" formControlName="product"
+                            readonly>
+                        <button class="btn btn-outline-secondary" type="button" (click)="openProductModal()">
+                            Select Product
+                        </button>
+                    </div>
+                    <div ngxErrors="product">
+                        <div ngxError="required">Product is required</div>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-primary" (click)="openProductModal()">Select Products</button>
             </div>
+
+            <div class="row">
+                <div class="col-6 mb-2">
+                    <label for="quantity" class="form-label">Quantity</label>
+                    <input type="number" class="form-control" placeholder="Quantity" id="quantity" formControlName="quantity"
+                        appValidityStyle [submitted]="submitted">
+                    <div ngxErrors="quantity">
+                        <div ngxError="required"> Quantity is required</div>
+                    </div>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="col-6 mb-2">
+                    <label for="unitPrice" class="form-label">Unit price</label>
+                    <input type="number" class="form-control" placeholder="Unit price" id="unitPrice" formControlName="unitPrice"
+                        appValidityStyle [submitted]="submitted">
+                    <div ngxErrors="unitPrice">
+                        <div ngxError="required"> Price is required</div>
+                    </div>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="col-6 mb-2">
+                    <label for="subTotal" class="form-label">Sub-total</label>
+                    <input type="number" class="form-control" placeholder="subTotal" id="subTotal" formControlName="subTotal"
+                        appValidityStyle [submitted]="submitted">
+                    <div ngxErrors="subTotal">
+                        <div ngxError="required"> Sub total is required</div>
+                    </div>
+                </div>
+            </div> 
+
+      
 
             <div class="row">
                 <div class="col-md-4">

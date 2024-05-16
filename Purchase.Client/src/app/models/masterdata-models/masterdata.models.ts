@@ -28,12 +28,10 @@ export interface Product {
 	code: string;
 	name: string;
 	price: number;
-	hasTax: boolean;
-	taxRate: number;
 	quantity: number;
 	description: string;
 	categoryId: string;
-	orderItemId: string;
+	taxId: string;
 }
 
 export interface Tax {
@@ -45,11 +43,10 @@ export interface Tax {
 
 export interface OrderItem {
 	id: string;
-	productId: string;
-	productName: string;
-	products: Product[];
+	label: string;
 	quantity: number;
+	unitPrice: number;
 	subTotal: number;
-	taxRate: number;
 	orderId: string;
+	productId: string;
 }

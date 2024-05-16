@@ -6,10 +6,11 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../../services/masterdata-services/product.service';
 import { Guid } from 'guid-typescript';
 import { first } from 'rxjs';
-import { Product, Category, OrderItem } from '../../../models/masterdata-models/masterdata.models';
+import { Product, Category, OrderItem, Tax } from '../../../models/masterdata-models/masterdata.models';
 import { cloneDeep } from 'lodash';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CategorySelectionModalComponent } from '../../modals/category-selection-modal/category-selection-modal.component';
+import { TaxModalComponent } from '../../modals/tax-modal/tax-modal.component';
 
 @Component({
   selector: 'app-product-form',
@@ -48,13 +49,12 @@ export class ProductFormComponent extends BaseFormComponent implements OnInit {
       code: ['', [Validators.required]],
       name: ['', Validators.required],
       price: [0, Validators.required],
-      hasTax: [false, Validators.required],
-      taxRate: [0,],
       quantity: [0, Validators.required],
       description: ['', Validators.required],
       category: [''],
       categoryId: [''],
-      orderItemId: ['3FA85F64-5717-4562-B3FC-2C963F66AFA6'],
+      tax: [''],
+      taxId: [''],
       id: [Guid.create().toString()],
     });
     return f;
@@ -97,6 +97,16 @@ export class ProductFormComponent extends BaseFormComponent implements OnInit {
       this.form.patchValue({
         category: category.name,
         categoryId: category.id
+      });
+    });
+  }
+
+  openTaxModal() {
+    const modalRef = this.modalService.open(TaxModalComponent, { size: 'lg' });
+    modalRef.componentInstance.selectedTax.subscribe((tax: Tax) => {
+      this.form.patchValue({
+        tax: tax.name,
+        taxId: tax.id
       });
     });
   }

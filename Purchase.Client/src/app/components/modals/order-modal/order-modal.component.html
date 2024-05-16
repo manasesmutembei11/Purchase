@@ -1,38 +1,3 @@
-<div>
-    <label for="customer">Select Customer:</label>
-    <select id="customer" [(ngModel)]="selectedCustomer">
-      <option *ngFor="let customer of customers" [value]="customer">{{ customer.name }}</option>
-    </select>
-  </div>
+
   
-  <div>
-    <label for="product">Select Product:</label>
-    <select id="product" [(ngModel)]="selectedProduct">
-      <option *ngFor="let product of products" [value]="product">{{ product.name }}</option>
-    </select>
-  </div>
-  
-  <div>
-    <label for="quantity">Quantity:</label>
-    <input type="number" id="quantity" [(ngModel)]="quantity" />
-  </div>
-  
-  <div>
-    <button (click)="addToOrder()">Add to Order</button>
-  </div>
-  
-  <div *ngIf="selectedOrder.items.length > 0">
-    <h2>Order Items</h2>
-    <ul>
-      <li *ngFor="let item of selectedOrder.items; let i = index">
-        {{ item.productName }} - Quantity: {{ item.quantity }} - Subtotal: {{ item.subtotal | currency }}
-        <button (click)="removeFromOrder(i)">Remove</button>
-      </li>
-    </ul>
-    <h3>Total: {{ getTotal() | currency }}</h3>
-  </div>
-  
-  <div>
-    <button (click)="submitOrder()">Submit Order</button>
-  </div>
   

@@ -33,6 +33,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { OrderModalComponent } from './components/modals/order-modal/order-modal.component';
+import { TaxModalComponent } from './components/modals/tax-modal/tax-modal.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { OrderModalComponent } from './components/modals/order-modal/order-modal
     CategorySelectionModalComponent,
     OrderItemSelectionModalComponent,
     CustomerSelectionModalComponent,
-    OrderModalComponent
+    OrderModalComponent,
+    TaxModalComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,

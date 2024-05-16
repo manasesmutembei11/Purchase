@@ -54,10 +54,13 @@ export class OrderItemFormComponent extends BaseFormComponent implements OnInit 
   createForm(): FormGroup {
     return this.fb.group({
       id: [Guid.create().toString()],
-      orderId: [''],
-      products: [[]],
+      product: [''],
+      label: [''],
+      unitPrice: [0],
       subTotal: [0],
-      taxRate: [0]
+      quantity: [0],
+      orderId: [''],
+      productId: ['']
     });
   }
 

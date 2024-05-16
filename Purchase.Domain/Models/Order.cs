@@ -10,6 +10,9 @@ namespace Purchase.Domain.Models
     {
 
         public Guid CustomerId { get; set; }
+        public string CustomerName { get; set; }
+        public string CustomerPhone { get; set; }
+        public  List<string>? ItemNames { get; set; }
 
         public decimal Total { get; set; }
 

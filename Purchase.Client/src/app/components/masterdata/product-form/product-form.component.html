@@ -41,18 +41,6 @@
             </div> 
 
             <div class="row">
-                <div class="col-md-12  mb-2">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="hasTax"
-                            formControlName="hasTax">
-                            <label class="form-check-label" for="hasTax">
-                                Has tax
-                              </label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
                 <div class="col-6 mb-2">
                     <label for="quantity" class="form-label">Quantity</label>
                     <input type="number" class="form-control" placeholder="Quantity" id="quantity" formControlName="quantity"
@@ -72,7 +60,7 @@
                         <div ngxError="required"> Description is required</div>
                     </div>
                 </div>
-
+                <div class="row">
                 <div class="col-md-6 mb-2">
                     <!-- Input field for category -->
                     <label for="category" class="form-label">Category</label>
@@ -88,7 +76,25 @@
                     </div>
                 </div>
             </div>
-            
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-2">
+                <!-- Input field for category -->
+                <label for="tax" class="form-label">Tax</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Select tax" formControlName="tax"
+                        readonly>
+                    <button class="btn btn-outline-secondary" type="button" (click)="openTaxModal()">
+                        Select Tax
+                    </button>
+                </div>
+                <div ngxErrors="tax">
+                    <div ngxError="required">Tax is required</div>
+                </div>
+            </div>
+        </div>
+
+
             <div class="row">
                 <div class="col-md-4">
                     <button type="submit" class="btn btn-primary me-1">{{buttonText}}</button>
