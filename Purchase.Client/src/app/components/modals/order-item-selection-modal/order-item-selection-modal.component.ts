@@ -31,11 +31,12 @@ export class OrderItemSelectionModalComponent implements OnInit {
       label: ['', Validators.required],
       quantity: ['', Validators.required],
       unitPrice: ['', Validators.required],
-      subTotal: ['', Validators.required],
+      subTotal: this.calculateSubTotal(),
       product: ['']
     });
 
     this.loadProducts();
+    this.calculateSubTotal();
   }
 
   loadProducts(): void {
@@ -75,4 +76,9 @@ export class OrderItemSelectionModalComponent implements OnInit {
       });
     }
   }
+  calculateSubTotal(): number {
+    const quantity = this.form.get('quantity')?.value ?? 0;
+    const unitPrice = this.form.get('unitPrice')?.value ?? 0;
+    return quantity * unitPrice;
+}
 }

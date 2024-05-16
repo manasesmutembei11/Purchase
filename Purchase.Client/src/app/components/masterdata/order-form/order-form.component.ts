@@ -11,6 +11,7 @@ import { OrderService } from '../../../services/masterdata-services/order.servic
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { OrderItemSelectionModalComponent } from '../../modals/order-item-selection-modal/order-item-selection-modal.component';
 import { CustomerSelectionModalComponent } from '../../modals/customer-selection-modal/customer-selection-modal.component';
+import { ProductService } from '../../../services/masterdata-services/product.service';
 
 
 @Component({
@@ -22,12 +23,14 @@ export class OrderFormComponent extends BaseFormComponent implements OnInit {
   form: FormGroup = this.fb.group({});
   modalRef: NgbModalRef | null = null;
   orderItems: OrderItem[] = [];
+  total: number = 0;
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,
     public location: Location,
     private orderService: OrderService,
     private modalService: NgbModal,
+    private productService: ProductService
   ) {
     super();
   }
@@ -64,6 +67,8 @@ export class OrderFormComponent extends BaseFormComponent implements OnInit {
         .subscribe({
           next: (_) => {
             this.form.patchValue(_);
+            this.orderItems = _.orderItems;
+            this.calculateTotal();
           }
         })
 
@@ -92,17 +97,20 @@ export class OrderFormComponent extends BaseFormComponent implements OnInit {
   }
 
   removeOrderItem(index: number): void {
-    this.orderItems.splice(index, 1); // Remove order item at the specified index
+    const removedItem = this.orderItems.splice(index, 1)[0];
+    this.updateProductQuantity(removedItem.productId, removedItem.quantity);
+    this.calculateTotal();
   }
 
 
   openOrderItemModal(): void {
     const modalRef: NgbModalRef = this.modalService.open(OrderItemSelectionModalComponent, { size: 'lg' });
     modalRef.componentInstance.orderItemsAdded.subscribe((orderItems: OrderItem[]) => {
-      // Handle newly added order items
-      console.log('Newly added order items:', orderItems);
-      // Add order items to the form or perform other actions
-      this.orderItems.push(...orderItems); // Add to existing order items
+      this.orderItems.push(...orderItems);
+      this.calculateTotal();
+      orderItems.forEach(item => {
+        this.updateProductQuantity(item.productId, item.quantity);
+      });
     });
   }
 
@@ -116,5 +124,20 @@ export class OrderFormComponent extends BaseFormComponent implements OnInit {
     });
   }
 
+  calculateTotal(): void {
+    this.total = this.orderItems.reduce((acc, item) => acc + item.subTotal, 0);
+    this.form.patchValue({ total: this.total });
+  }
 
+  updateProductQuantity(id: string, quantity: number): void {
+    this.productService.findById(id).subscribe((product) => {
+      product.quantity -= quantity;
+      this.productService.save(product).subscribe(() => {
+        console.log(`Product quantity updated: ${product.quantity}`);
+      });
+    });
+  }
 }
+
+
+
