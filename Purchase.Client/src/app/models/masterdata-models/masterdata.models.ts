@@ -18,6 +18,7 @@ export interface Customer {
 export interface Order {
 	id: string;
 	customerId: string;
+	productId: string;
 	orderDate: string;
 	total: number;
 	customerName: string;

@@ -23,6 +23,7 @@ export class OrderFormComponent extends BaseFormComponent implements OnInit {
   form: FormGroup = this.fb.group({});
   modalRef: NgbModalRef | null = null;
   orderItems: OrderItem[] = [];
+
   total: number = 0;
   constructor(
     private route: ActivatedRoute,
@@ -53,6 +54,7 @@ export class OrderFormComponent extends BaseFormComponent implements OnInit {
     const f = this.fb.group({
       id: [Guid.create().toString()],
       customerId: [Guid.create().toString()],
+      productId: [''],
       orderDate: [Date],
       orderItems: [[]],
       customerName: [''],
@@ -68,11 +70,11 @@ export class OrderFormComponent extends BaseFormComponent implements OnInit {
           next: (_) => {
             this.form.patchValue(_);
             this.orderItems = _.orderItems;
-            this.calculateTotal();
+            
           }
         })
-
     }
+    this.calculateTotal();
   }
   onSubmit() {
     this.submitted = true;
@@ -106,6 +108,9 @@ export class OrderFormComponent extends BaseFormComponent implements OnInit {
   openOrderItemModal(): void {
     const modalRef: NgbModalRef = this.modalService.open(OrderItemSelectionModalComponent, { size: 'lg' });
     modalRef.componentInstance.orderItemsAdded.subscribe((orderItems: OrderItem[]) => {
+      orderItems.forEach(item => {
+        item.productId = item.productId; 
+      });
       this.orderItems.push(...orderItems);
       this.calculateTotal();
       orderItems.forEach(item => {
@@ -129,8 +134,9 @@ export class OrderFormComponent extends BaseFormComponent implements OnInit {
     this.form.patchValue({ total: this.total });
   }
 
-  updateProductQuantity(id: string, quantity: number): void {
-    this.productService.findById(id).subscribe((product) => {
+  updateProductQuantity(productId: string, quantity: number): void {
+    debugger
+    this.productService.findById(productId).subscribe((product) => {
       product.quantity -= quantity;
       this.productService.save(product).subscribe(() => {
         console.log(`Product quantity updated: ${product.quantity}`);

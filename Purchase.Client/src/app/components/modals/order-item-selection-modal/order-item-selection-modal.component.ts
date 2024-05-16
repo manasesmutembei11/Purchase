@@ -31,7 +31,7 @@ export class OrderItemSelectionModalComponent implements OnInit {
       label: ['', Validators.required],
       quantity: ['', Validators.required],
       unitPrice: ['', Validators.required],
-      subTotal: this.calculateSubTotal(),
+      subTotal: [0],
       product: ['']
     });
 
@@ -50,14 +50,14 @@ export class OrderItemSelectionModalComponent implements OnInit {
   onSubmit(): void {
     if (this.form.valid) {
       const orderItem: OrderItem = {
-        id: '', // Assign null or generate new ID as required
+        id: '', 
         label: this.form.value.label,
         quantity: this.form.value.quantity,
         unitPrice: this.form.value.unitPrice,
         subTotal: this.form.value.subTotal,
         productId: this.form.value.productId
       };
-      this.orderItemsAdded.emit([orderItem]); // Emit array of order items
+      this.orderItemsAdded.emit([orderItem]);
       this.activeModal.close();
     }
   }
