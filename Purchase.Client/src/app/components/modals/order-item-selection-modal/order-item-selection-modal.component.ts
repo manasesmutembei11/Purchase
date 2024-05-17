@@ -1,8 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ProductService } from '../../../services/masterdata-services/product.service'; 
-import { Product, OrderItem } from '../../../models/masterdata-models/masterdata.models';
+import { Product, OrderItem, Order } from '../../../models/masterdata-models/masterdata.models';
 import { ProductSelectionModalComponent } from '../product-selection-modal/product-selection-modal.component';
 import { Guid } from 'guid-typescript';
 import { OrderItemService } from '../../../services/masterdata-services/order-item.service';
@@ -14,6 +14,7 @@ import { OrderItemService } from '../../../services/masterdata-services/order-it
 })
 export class OrderItemSelectionModalComponent implements OnInit {
   @Output() orderItemsAdded = new EventEmitter<OrderItem[]>();
+  @Input() orderId!: string;
 
   form: FormGroup= this.fb.group({});
   products: Product[] = [];
@@ -35,7 +36,8 @@ export class OrderItemSelectionModalComponent implements OnInit {
       unitPrice: [''],
       subTotal: [0],
       productName: [''],
-      productId: ['']
+      productId: [''],
+      orderId: [this.orderId]
     });
 
     this.loadProducts();
@@ -59,7 +61,8 @@ export class OrderItemSelectionModalComponent implements OnInit {
         unitPrice: this.form.value.unitPrice,
         subTotal: this.form.value.subTotal,
         productName: this.form.value.productName,
-        productId: this.form.value.productId
+        productId: this.form.value.productId,
+        orderId: this.orderId
 
       };
       this.orderItemsAdded.emit([orderItem]);

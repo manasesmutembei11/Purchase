@@ -54,4 +54,5 @@ export interface OrderItem {
 	subTotal: number;
 	productName: string;
 	productId: string;
+	orderId: string;
 }

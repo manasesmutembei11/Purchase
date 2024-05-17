@@ -57,7 +57,7 @@ export class OrderFormComponent extends BaseFormComponent implements OnInit {
       customerId: [Guid.create().toString()],
       productId: [''],
       orderDate: [Date],
-      orderItems: [[]],
+      orderItems: [this.orderItems],
       customerName: [''],
       customerPhone: [''],
       total: [0]
@@ -68,40 +68,41 @@ export class OrderFormComponent extends BaseFormComponent implements OnInit {
     if (this.editMode) {
       this.orderService.findById(this.id).pipe(first())
         .subscribe({
-          next: (_) => {
-            this.form.patchValue(_);
-            this.orderItems = _.orderItems;
-            
+          next: (order) => {
+            this.form.patchValue(order);
+            this.orderItems = order.orderItems;
+            this.calculateTotal();
           }
-        })
+        });
     }
-    this.calculateTotal();
   }
   onSubmit() {
     this.submitted = true;
     if (this.validateForm(this.form)) {
-      const model: Order = cloneDeep(this.form.value);
-      console.log("onSubmit =&gt;", model);
-
-      this.orderService.save(model).subscribe({
-        next: (savedOrder) => {
-          console.log('Order saved successfully', savedOrder);
-          const orderId = savedOrder.id;
-          this.saveOrderItems(savedOrder.id); // Pass the saved order ID to saveOrderItems
-        },
-        error: (error) => {
-          this.error = error;
-          console.log('Error =&gt;', this.error);
-        },
-      });
+      this.saveOrder();
     }
   }
+
+  saveOrder() {
+    const model: Order = cloneDeep(this.form.value);
+    this.orderService.save(model).subscribe({
+      next: (savedOrder) => {
+        console.log('Order saved successfully', savedOrder);
+        this.saveOrderItems(savedOrder.id);
+      },
+      error: (error) => {
+        this.error = error;
+        console.log('Error =>', this.error);
+      }
+    });
+  }
+
+
   saveOrderItems(orderId: string) {
     const orderItemsToSave = this.orderItems.map(item => ({
       ...item,
-      orderId: orderId // Set the orderId for each item
+      orderId: orderId
     }));
-
     orderItemsToSave.forEach(orderItem => {
       this.orderItemService.save(orderItem).subscribe({
         next: (response) => {
@@ -112,19 +113,16 @@ export class OrderFormComponent extends BaseFormComponent implements OnInit {
           }
         },
         error: (error) => {
-          console.error('Error =&gt;', error);
+          console.error('Error =>', error);
         },
       });
     });
-
     this.location.back();
   }
+
   back(): void {
     this.location.back();
   }
-  
-
-  
 
   removeOrderItem(index: number): void {
     const removedItem = this.orderItems.splice(index, 1)[0];
@@ -135,19 +133,19 @@ export class OrderFormComponent extends BaseFormComponent implements OnInit {
 
   openOrderItemModal(): void {
     const modalRef: NgbModalRef = this.modalService.open(OrderItemSelectionModalComponent, { size: 'lg' });
+    modalRef.componentInstance.orderId = this.form.get('id')!.value;
     modalRef.componentInstance.orderItemsAdded.subscribe((orderItems: OrderItem[]) => {
       orderItems.forEach(item => {
-        item.productId = item.productId ?? ''; 
+        item.productId = item.productId ?? '';
+        item.orderId = this.form.get('id')!.value; 
+
         this.updateProductQuantity(item.productId, item.quantity);
       });
-      
+
       this.orderItems.push(...orderItems);
       this.calculateTotal();
       const itemNames = orderItems.map(item => item.label);
-     this.form.patchValue({ orderItems: orderItems, ItemNames: itemNames });
-      orderItems.forEach(item => {
-        this.updateProductQuantity(item.productId, item.quantity);
-      });
+      this.form.patchValue({ orderItems: this.orderItems, ItemNames: itemNames });
     });
   }
   
@@ -170,9 +168,7 @@ export class OrderFormComponent extends BaseFormComponent implements OnInit {
 
   updateProductQuantity(productId: string, quantityChange: number): void {
     this.productService.findById(productId).subscribe((product) => {
-      // Check if product exists
       if (product) {
-        // Ensure quantity doesn't go negative
         const newQuantity = Math.max(product.quantity - quantityChange, 0);
         product.quantity = newQuantity;
         this.productService.save(product).subscribe(() => {

@@ -16,5 +16,6 @@ namespace Purchase.Domain.DTOs
         public string? CustomerPhone { get; set; }
         public string? ItemName { get; set; }
         public decimal Total { get; set; }
+        public virtual ICollection<OrderItemDTO>? OrderItems { get; set; }
     }
 }
