@@ -34,6 +34,8 @@ export interface Product {
 	quantity: number;
 	description: string;
 	categoryId: string;
+	taxRate: number;
+	totalPrice: number;
 	taxId: string;
 }
 

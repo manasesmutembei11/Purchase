@@ -54,6 +54,8 @@ export class ProductFormComponent extends BaseFormComponent implements OnInit {
       category: [''],
       categoryId: [''],
       tax: [''],
+      taxRate: [0], 
+      totalPrice: [{ value: 0, disabled: true }],
       taxId: [''],
       id: [Guid.create().toString()],
     });
@@ -65,6 +67,7 @@ export class ProductFormComponent extends BaseFormComponent implements OnInit {
         .subscribe({
           next: (_) => {
             this.form.patchValue(_);
+            this.calculateTotalPrice();
           }
         })
     }
@@ -106,11 +109,19 @@ export class ProductFormComponent extends BaseFormComponent implements OnInit {
     modalRef.componentInstance.selectedTax.subscribe((tax: Tax) => {
       this.form.patchValue({
         tax: tax.name,
+        taxRate: tax.rate,
         taxId: tax.id
       });
+      this.calculateTotalPrice();
     });
   }
 
-  
+
+  calculateTotalPrice(): void {
+    const price = this.form.get('price')?.value || 0;
+    const taxRate = this.form.get('taxRate')?.value || 0;
+    const totalPrice = price * (1 + taxRate / 100);
+    this.form.get('price')?.setValue(totalPrice.toFixed(2));
+  }
 
 }

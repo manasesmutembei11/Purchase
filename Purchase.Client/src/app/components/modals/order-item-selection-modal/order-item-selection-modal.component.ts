@@ -30,7 +30,7 @@ export class OrderItemSelectionModalComponent implements OnInit {
       id: [Guid.create().toString()],
       label: ['', Validators.required],
       quantity: ['', Validators.required],
-      unitPrice: ['', Validators.required],
+      unitPrice: [''],
       subTotal: [0],
       product: ['']
     });
@@ -68,17 +68,32 @@ export class OrderItemSelectionModalComponent implements OnInit {
 
   openProductModal(): void {
     this.modalRef = this.modalService.open(ProductSelectionModalComponent, { size: 'lg' });
-    if (this.modalRef) { // Check if modalRef is not null
+    if (this.modalRef) { 
       this.modalRef.componentInstance.selectedProducts = this.form.get('products')!.value;
       this.modalRef.componentInstance.products = this.products;
       this.modalRef.componentInstance.selectedProducts.subscribe((products: Product[]) => {
-        this.form.get('products')!.setValue(products);
+        const invalidProducts = products.filter(product => {
+          const requestedQuantity = this.form.get('quantity')!.value;
+          return product.quantity < requestedQuantity;
+        });
+  
+        if (invalidProducts.length > 0) {
+          console.error("Requested quantity exceeds available quantity for some products");
+        } else {
+        
+          const price = products[0].price; 
+          const quantity = this.form.get('quantity')!.value;
+          const subTotal = price * quantity;
+          this.form.patchValue({ subTotal: subTotal });
+          this.form.get('products')!.setValue(products);
+        }
       });
     }
   }
-  calculateSubTotal(): number {
+  calculateSubTotal(): void {
     const quantity = this.form.get('quantity')?.value ?? 0;
     const unitPrice = this.form.get('unitPrice')?.value ?? 0;
-    return quantity * unitPrice;
-}
+    const subTotal = quantity * unitPrice;
+    this.form.patchValue({ subTotal: subTotal });
+  }
 }

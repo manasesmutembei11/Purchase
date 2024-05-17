@@ -104,10 +104,30 @@ export class OrderItemFormComponent extends BaseFormComponent implements OnInit 
       this.modalRef.componentInstance.selectedProducts = this.form.get('products')!.value;
       this.modalRef.componentInstance.products = this.products;
       this.modalRef.componentInstance.selectedProducts.subscribe((products: Product[]) => {
-        this.form.get('products')!.setValue(products);
+        // Check available quantity before adding to order item
+        const invalidProducts = products.filter(product => {
+          const requestedQuantity = this.form.get('quantity')!.value;
+          return product.quantity < requestedQuantity;
+        });
+  
+        if (invalidProducts.length > 0) {
+          // Handle invalid products, such as showing an error message
+          console.error("Requested quantity exceeds available quantity for some products");
+        } else {
+          // Calculate subtotal and set it in the form
+          const price = products[0].price; // Assuming only one product is selected
+          const quantity = this.form.get('quantity')!.value;
+          const subTotal = price * quantity;
+          this.form.patchValue({ subTotal: subTotal });
+          
+          // Set selected products in the form
+          this.form.get('products')!.setValue(products);
+        }
       });
     }
   }
+  
+  
 
   loadProducts() {
     this.productService.list(1, 10, '').pipe(first())

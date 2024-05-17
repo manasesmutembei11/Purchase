@@ -108,8 +108,10 @@ export class OrderFormComponent extends BaseFormComponent implements OnInit {
     const modalRef: NgbModalRef = this.modalService.open(OrderItemSelectionModalComponent, { size: 'lg' });
     modalRef.componentInstance.orderItemsAdded.subscribe((orderItems: OrderItem[]) => {
       orderItems.forEach(item => {
-        item.productId = item.productId; 
+        item.productId = item.productId ?? ''; 
+        this.updateProductQuantity(item.productId, item.quantity);
       });
+      
       this.orderItems.push(...orderItems);
       this.calculateTotal();
       orderItems.forEach(item => {
@@ -117,6 +119,7 @@ export class OrderFormComponent extends BaseFormComponent implements OnInit {
       });
     });
   }
+  
 
   openCustomerModal() {
     const modalRef = this.modalService.open(CustomerSelectionModalComponent, { size: 'lg' });
@@ -134,15 +137,23 @@ export class OrderFormComponent extends BaseFormComponent implements OnInit {
     this.form.patchValue({ total: this.total });
   }
 
-  updateProductQuantity(productId: string, quantity: number): void {
+  updateProductQuantity(productId: string, quantityChange: number): void {
     debugger
     this.productService.findById(productId).subscribe((product) => {
-      product.quantity -= quantity;
-      this.productService.save(product).subscribe(() => {
-        console.log(`Product quantity updated: ${product.quantity}`);
-      });
+      // Check if product exists
+      if (product) {
+        // Ensure quantity doesn't go negative
+        const newQuantity = Math.max(product.quantity + quantityChange, 0);
+        product.quantity = newQuantity;
+        this.productService.save(product).subscribe(() => {
+          console.log(`Product quantity updated: ${product.quantity}`);
+        });
+      }
     });
   }
+
+
+  
 }
 
 
