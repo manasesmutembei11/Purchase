@@ -23,7 +23,7 @@ export interface Order {
 	total: number;
 	customerName: string;
 	customerPhone: string;
-	orderItems: [];
+	orderItems: OrderItem[];
 }
 
 export interface Product {
@@ -52,5 +52,6 @@ export interface OrderItem {
 	quantity: number;
 	unitPrice: number;
 	subTotal: number;
+	productName: string;
 	productId: string;
 }

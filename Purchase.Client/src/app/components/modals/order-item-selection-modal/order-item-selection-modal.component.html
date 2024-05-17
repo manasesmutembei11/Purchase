@@ -9,15 +9,15 @@
       <div class="row">
           <div class="col-md-6 mb-2">
               <!-- Input field for category -->
-              <label for="product" class="form-label">Product</label>
+              <label for="productName" class="form-label">Product</label>
               <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Select product" formControlName="product"
+                  <input type="text" class="form-control" placeholder="Select product" formControlName="productName"
                       readonly>
-                  <button class="btn btn-outline-secondary" type="button" (click)="openProductModal()">
+                  <button class="btn btn-outline-primary" type="button" (click)="openProductModal()">
                       Select Product
                   </button>
               </div>
-              <div ngxErrors="product">
+              <div ngxErrors="productName">
                   <div ngxError="required">Product is required</div>
               </div>
           </div>
@@ -67,6 +67,6 @@
 
   <div class="modal-footer">
     <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
-    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Save</button>
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid" >Save</button>
   </div>
 </form>

@@ -15,8 +15,8 @@ export class OrderItemService {
     private http: HttpClient,
 
   ) {}
-  public save = (body: OrderItem): Observable<BasicResponse> => {
-    return this.http.post<BasicResponse>(this.baseUrl + 'api/OrderItem/Save',body);
+  public save = (body: OrderItem): Observable<OrderItem> => {
+    return this.http.post<OrderItem>(this.baseUrl + 'api/OrderItem/Save',body);
   };
   findById(id: string): Observable<OrderItem> {
     return this.http.get<OrderItem>(`${this.baseUrl}api/OrderItem/${id}`);

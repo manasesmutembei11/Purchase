@@ -21,7 +21,21 @@
                 </div>
             </div>
 
-            <button type="button" class="btn btn-primary" (click)="openOrderItemModal()">Add Order Item</button>
+            <div class="row">
+              <div class="col-md-6 mb-2">
+                  <label for="orderItem" class="form-label">Order Item</label>
+                  <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Add Order Item" formControlName="orderItem"
+                          readonly>
+                      <button class="btn btn-outline-primary" type="button" (click)="openOrderItemModal()">
+                          Add Order Item
+                      </button>
+                  </div>
+                  <div ngxErrors="orderItem">
+                      <div ngxError="required">Order item is required</div>
+                  </div>
+              </div>
+          </div>
 
             <!-- Display order items -->
          

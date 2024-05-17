@@ -10,7 +10,7 @@ namespace Purchase.Domain.DTOs
     public class OrderItemDTO
     {
         public Guid Id { get; set; }
-
+        public Guid OrderId { get; set; }
         public string? Label { get; set; }
         public int Quantity { get; set; }
         public decimal UnitPrice { get; set; }

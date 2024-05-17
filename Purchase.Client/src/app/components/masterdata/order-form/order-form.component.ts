@@ -12,6 +12,7 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { OrderItemSelectionModalComponent } from '../../modals/order-item-selection-modal/order-item-selection-modal.component';
 import { CustomerSelectionModalComponent } from '../../modals/customer-selection-modal/customer-selection-modal.component';
 import { ProductService } from '../../../services/masterdata-services/product.service';
+import { OrderItemService } from '../../../services/masterdata-services/order-item.service';
 
 
 @Component({
@@ -30,7 +31,8 @@ export class OrderFormComponent extends BaseFormComponent implements OnInit {
     public location: Location,
     private orderService: OrderService,
     private modalService: NgbModal,
-    private productService: ProductService
+    private productService: ProductService,
+    private orderItemService: OrderItemService,
   ) {
     super();
   }
@@ -78,24 +80,51 @@ export class OrderFormComponent extends BaseFormComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (this.validateForm(this.form)) {
-      const model: Order = cloneDeep(this.form.value)
-      console.log("onSubmit =>",model);
-      
+      const model: Order = cloneDeep(this.form.value);
+      console.log("onSubmit =&gt;", model);
 
       this.orderService.save(model).subscribe({
-        next: (_) => {
-          this.location.back();
+        next: (savedOrder) => {
+          console.log('Order saved successfully', savedOrder);
+          const orderId = savedOrder.id;
+          this.saveOrderItems(savedOrder.id); // Pass the saved order ID to saveOrderItems
         },
         error: (error) => {
           this.error = error;
-          console.log('Error =>', this.error);
+          console.log('Error =&gt;', this.error);
         },
       });
     }
   }
+  saveOrderItems(orderId: string) {
+    const orderItemsToSave = this.orderItems.map(item => ({
+      ...item,
+      orderId: orderId // Set the orderId for each item
+    }));
+
+    orderItemsToSave.forEach(orderItem => {
+      this.orderItemService.save(orderItem).subscribe({
+        next: (response) => {
+          if (response) {
+            console.log('Order item saved successfully', orderItem);
+          } else {
+            console.error('Failed to save order item');
+          }
+        },
+        error: (error) => {
+          console.error('Error =&gt;', error);
+        },
+      });
+    });
+
+    this.location.back();
+  }
   back(): void {
     this.location.back();
   }
+  
+
+  
 
   removeOrderItem(index: number): void {
     const removedItem = this.orderItems.splice(index, 1)[0];
@@ -114,6 +143,8 @@ export class OrderFormComponent extends BaseFormComponent implements OnInit {
       
       this.orderItems.push(...orderItems);
       this.calculateTotal();
+      const itemNames = orderItems.map(item => item.label);
+     this.form.patchValue({ orderItems: orderItems, ItemNames: itemNames });
       orderItems.forEach(item => {
         this.updateProductQuantity(item.productId, item.quantity);
       });
@@ -138,12 +169,11 @@ export class OrderFormComponent extends BaseFormComponent implements OnInit {
   }
 
   updateProductQuantity(productId: string, quantityChange: number): void {
-    debugger
     this.productService.findById(productId).subscribe((product) => {
       // Check if product exists
       if (product) {
         // Ensure quantity doesn't go negative
-        const newQuantity = Math.max(product.quantity + quantityChange, 0);
+        const newQuantity = Math.max(product.quantity - quantityChange, 0);
         product.quantity = newQuantity;
         this.productService.save(product).subscribe(() => {
           console.log(`Product quantity updated: ${product.quantity}`);
@@ -151,8 +181,8 @@ export class OrderFormComponent extends BaseFormComponent implements OnInit {
       }
     });
   }
-
-
+ 
+  
   
 }
 

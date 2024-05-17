@@ -15,8 +15,8 @@ export class OrderService {
     private http: HttpClient,
 
   ) {}
-  public save = (body: Order): Observable<BasicResponse> => {
-    return this.http.post<BasicResponse>(this.baseUrl + 'api/Order/Save',body);
+  public save = (body: Order): Observable<Order> => {
+    return this.http.post<Order>(this.baseUrl + 'api/Order/Save',body);
   };
   findById(id: string): Observable<Order> {
     return this.http.get<Order>(`${this.baseUrl}api/Order/${id}`);

@@ -5,6 +5,7 @@ import { ProductService } from '../../../services/masterdata-services/product.se
 import { Product, OrderItem } from '../../../models/masterdata-models/masterdata.models';
 import { ProductSelectionModalComponent } from '../product-selection-modal/product-selection-modal.component';
 import { Guid } from 'guid-typescript';
+import { OrderItemService } from '../../../services/masterdata-services/order-item.service';
 
 @Component({
   selector: 'app-order-item-selection-modal',
@@ -22,7 +23,8 @@ export class OrderItemSelectionModalComponent implements OnInit {
     public activeModal: NgbActiveModal,
     private fb: FormBuilder,
     private productService: ProductService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private orderItemService: OrderItemService
   ) { }
 
   ngOnInit(): void {
@@ -32,7 +34,8 @@ export class OrderItemSelectionModalComponent implements OnInit {
       quantity: ['', Validators.required],
       unitPrice: [''],
       subTotal: [0],
-      product: ['']
+      productName: [''],
+      productId: ['']
     });
 
     this.loadProducts();
@@ -50,12 +53,14 @@ export class OrderItemSelectionModalComponent implements OnInit {
   onSubmit(): void {
     if (this.form.valid) {
       const orderItem: OrderItem = {
-        id: '', 
+        id: Guid.create().toString(), 
         label: this.form.value.label,
         quantity: this.form.value.quantity,
         unitPrice: this.form.value.unitPrice,
         subTotal: this.form.value.subTotal,
+        productName: this.form.value.productName,
         productId: this.form.value.productId
+
       };
       this.orderItemsAdded.emit([orderItem]);
       this.activeModal.close();
@@ -66,30 +71,29 @@ export class OrderItemSelectionModalComponent implements OnInit {
     this.activeModal.dismiss('Cross click');
   }
 
+
   openProductModal(): void {
     this.modalRef = this.modalService.open(ProductSelectionModalComponent, { size: 'lg' });
-    if (this.modalRef) { 
-      this.modalRef.componentInstance.selectedProducts = this.form.get('products')!.value;
-      this.modalRef.componentInstance.products = this.products;
-      this.modalRef.componentInstance.selectedProducts.subscribe((products: Product[]) => {
-        const invalidProducts = products.filter(product => {
-          const requestedQuantity = this.form.get('quantity')!.value;
-          return product.quantity < requestedQuantity;
-        });
-  
-        if (invalidProducts.length > 0) {
-          console.error("Requested quantity exceeds available quantity for some products");
+    this.modalRef.componentInstance.selectedProductsChange.subscribe((products: Product[]) => {
+      if (products.length > 0) {
+        const selectedProduct = products[0]; // Assuming single selection
+        const quantity = this.form.get('quantity')!.value;
+
+        if (quantity > selectedProduct.quantity) {
+          console.error("Requested quantity exceeds available quantity for the selected product");
         } else {
-        
-          const price = products[0].price; 
-          const quantity = this.form.get('quantity')!.value;
-          const subTotal = price * quantity;
-          this.form.patchValue({ subTotal: subTotal });
-          this.form.get('products')!.setValue(products);
+          const subTotal = selectedProduct.price * quantity;
+          this.form.patchValue({
+            productName: selectedProduct.name,
+            productId: selectedProduct.id,
+            unitPrice: selectedProduct.price,
+            subTotal: subTotal
+          });
         }
-      });
-    }
+      }
+    });
   }
+  
   calculateSubTotal(): void {
     const quantity = this.form.get('quantity')?.value ?? 0;
     const unitPrice = this.form.get('unitPrice')?.value ?? 0;
@@ -97,3 +101,4 @@ export class OrderItemSelectionModalComponent implements OnInit {
     this.form.patchValue({ subTotal: subTotal });
   }
 }
+
