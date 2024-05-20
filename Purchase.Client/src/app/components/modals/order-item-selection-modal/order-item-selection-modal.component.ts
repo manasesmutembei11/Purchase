@@ -79,7 +79,7 @@ export class OrderItemSelectionModalComponent implements OnInit {
     this.modalRef = this.modalService.open(ProductSelectionModalComponent, { size: 'lg' });
     this.modalRef.componentInstance.selectedProductsChange.subscribe((products: Product[]) => {
       if (products.length > 0) {
-        const selectedProduct = products[0]; // Assuming single selection
+        const selectedProduct = products[0]; 
         const quantity = this.form.get('quantity')!.value;
 
         if (quantity > selectedProduct.quantity) {

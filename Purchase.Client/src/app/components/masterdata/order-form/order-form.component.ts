@@ -99,10 +99,8 @@ export class OrderFormComponent extends BaseFormComponent implements OnInit {
 
 
   saveOrderItems(orderId: string) {
-    const orderItemsToSave = this.orderItems.map(item => ({
-      ...item,
-      orderId: orderId
-    }));
+    debugger
+    const orderItemsToSave = this.orderItems.map(item => ({...item, orderId: orderId}));
     orderItemsToSave.forEach(orderItem => {
       this.orderItemService.save(orderItem).subscribe({
         next: (response) => {
