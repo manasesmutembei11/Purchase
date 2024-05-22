@@ -5,6 +5,8 @@ using Purchase.API.Extensions;
 using Purchase.Domain.Contracts;
 using Purchase.Domain.Mapping;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
+using Purchase.Domain.Models.UserEntities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,7 +34,26 @@ builder.Services.AddControllers()
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddIdentity<IdentityUser, IdentityRole>();
+builder.Services.AddIdentityServices();
+//jwt auth services
+
+builder.Services.AddJwtAuthenticationServices();
+builder.Services.AddApiKeyAuthentication();
+
+builder.Services.AddAuthorization(options =>
+{
+    options.DefaultPolicy = new AuthorizationPolicyBuilder()
+        .RequireAuthenticatedUser()
+        .AddAuthenticationSchemes("JWT_OR_APIKEY")
+        .Build();
+    foreach (var permission in RolePermissions.ClaimPermissions)
+    {
+        options.AddPolicy(permission.Permission, policy =>
+        {
+            policy.RequireClaim(CustomClaimTypes.Permission, permission.Permission);
+        });
+    }
+});
 
 var app = builder.Build();
 
