@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Purchase.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -9,9 +10,9 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Purchase.Infrastructure
 {
-    public class RepositoryContext : DbContext
+    public class RepositoryContext : IdentityDbContext
     {
-        public RepositoryContext(DbContextOptions options)
+        public RepositoryContext(DbContextOptions<RepositoryContext> options)
         : base(options)
         {
         }

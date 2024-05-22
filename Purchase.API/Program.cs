@@ -4,6 +4,7 @@ using Purchase.Domain.Mapping;
 using Purchase.API.Extensions;
 using Purchase.Domain.Contracts;
 using Purchase.Domain.Mapping;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +32,7 @@ builder.Services.AddControllers()
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddIdentity<IdentityUser, IdentityRole>();
 
 var app = builder.Build();
 
@@ -61,7 +63,7 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 });
 app.UseCors("CorsPolicy");
 
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
