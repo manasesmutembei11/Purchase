@@ -67,7 +67,7 @@ import { LayoutsComponent } from './layouts/layouts.component';
   imports: [
     BrowserModule, HttpClientModule,
     AppRoutingModule, RouterModule, NgbModule, CommonModule, FormsModule, ReactiveFormsModule, MatCardModule,
-    MatIconModule, AccountModule
+    MatIconModule
   ],
   providers: [NgbModal, provideAnimationsAsync()],
   bootstrap: [AppComponent]

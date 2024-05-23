@@ -9,6 +9,7 @@ import { RecoverpwdComponent } from './recoverpwd/recoverpwd.component';
 import { ConfirmmailComponent } from './confirmmail/confirmmail.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { SharedModule } from '../shared-components/shared.module';
+import { ValidityStyleDirective } from '../services/directives/validity-style.directive';
 
 
 
@@ -20,13 +21,13 @@ import { SharedModule } from '../shared-components/shared.module';
     RecoverpwdComponent,
     ConfirmmailComponent,
     ResetPasswordComponent,
+    ValidityStyleDirective
     
   ],
   imports: [
     CommonModule,
     AccountRoutingModule,
-    ReactiveFormsModule,
-    SharedModule
+    ReactiveFormsModule
     
   ]
 })

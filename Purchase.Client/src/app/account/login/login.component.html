@@ -7,7 +7,7 @@
                         <div class="d-flex flex-column h-100">
                             <div class="mb-4 mb-md-5 text-center">
                                 <a routerLink="/" class="d-block auth-logo">
-                                    <app-logo></app-logo>
+                                    
                                 </a>
                             </div>
                             <div class="auth-content my-auto">
@@ -15,8 +15,7 @@
                                     <h5 class="mb-0">Welcome Back !</h5>
                                     <p class="text-muted mt-2">Sign in to continue to ExpaqASVA.</p>
                                 </div>
-                                <app-spinner></app-spinner>
-                                <app-error-display [errors]="errors"></app-error-display>
+                         
                                 <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
                                     <div class="mb-3">
@@ -67,7 +66,7 @@
                             </div>
                             <div class="mt-4 mt-md-5 text-center">
                                 <p class="mb-0">
-                                   <app-app-version></app-app-version>
+                                   
                                 </p>
                                 <p class="mb-0">©
                                     {{year}} ExpaqASVA . Powered by Expaq
@@ -80,7 +79,7 @@
             </div>
             <!-- end col -->
             <div class="col-xxl-9 col-lg-8 col-md-7">
-                <app-banner></app-banner>
+            
             </div>
             <!-- end col -->
         </div>
