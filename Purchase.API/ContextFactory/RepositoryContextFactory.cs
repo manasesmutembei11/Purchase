@@ -4,6 +4,7 @@ using Purchase.Infrastructure;
 
 namespace Purchase.API.ContextFactory
 {
+    
     public class RepositoryContextFactory : IDesignTimeDbContextFactory<RepositoryContext>
     {
         public RepositoryContext CreateDbContext(string[] args)

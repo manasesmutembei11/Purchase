@@ -3,10 +3,15 @@ using NLog;
 using Purchase.Domain.Mapping;
 using Purchase.API.Extensions;
 using Purchase.Domain.Contracts;
+using Microsoft.EntityFrameworkCore;
+using Purchase.Infrastructure;
+
 using Purchase.Domain.Mapping;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Purchase.Domain.Models.UserEntities;
+using Microsoft.EntityFrameworkCore;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +29,12 @@ builder.Services.AddMvc();
 builder.Services.ConfigureRepositoryManager();
 // builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureSqlContext(builder.Configuration);
+var connectionString = builder.Configuration.GetConnectionString("DefaultAppConnection");
+builder.Services.AddDbContext<RepositoryContext>(options =>
+{
+    options.UseLazyLoadingProxies();
+    options.UseSqlServer(connectionString);
+});
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 

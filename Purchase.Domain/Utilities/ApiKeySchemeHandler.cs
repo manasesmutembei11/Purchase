@@ -17,8 +17,9 @@ namespace Purchase.Domain.Utilities
             IConfiguration configuration,
             IOptionsMonitor<ApiKeySchemeOptions> options,
             ILoggerFactory logger,
+            ISystemClock clock,
             UrlEncoder encoder
-            ) : base(options, logger, encoder)
+            ) : base(options, logger, encoder, clock)
         {
             _configuration = configuration;
         }
