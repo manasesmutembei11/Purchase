@@ -34,6 +34,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { OrderModalComponent } from './components/modals/order-modal/order-modal.component';
 import { TaxModalComponent } from './components/modals/tax-modal/tax-modal.component';
+import { AccountModule } from './account/account.module';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,7 @@ import { TaxModalComponent } from './components/modals/tax-modal/tax-modal.compo
   imports: [
     BrowserModule, HttpClientModule,
     AppRoutingModule, RouterModule, NgbModule, CommonModule, FormsModule, ReactiveFormsModule, MatCardModule,
-    MatIconModule
+    MatIconModule, AccountModule
   ],
   providers: [NgbModal, provideAnimationsAsync()],
   bootstrap: [AppComponent]
