@@ -8,6 +8,7 @@ import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { RecoverpwdComponent } from './recoverpwd/recoverpwd.component';
 import { ConfirmmailComponent } from './confirmmail/confirmmail.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { SharedModule } from '../shared-components/shared.module';
 
 
 
@@ -25,6 +26,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     CommonModule,
     AccountRoutingModule,
     ReactiveFormsModule,
+    SharedModule
     
   ]
 })

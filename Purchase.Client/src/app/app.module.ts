@@ -35,6 +35,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { OrderModalComponent } from './components/modals/order-modal/order-modal.component';
 import { TaxModalComponent } from './components/modals/tax-modal/tax-modal.component';
 import { AccountModule } from './account/account.module';
+import { LayoutsComponent } from './layouts/layouts.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { AccountModule } from './account/account.module';
     OrderItemSelectionModalComponent,
     CustomerSelectionModalComponent,
     OrderModalComponent,
-    TaxModalComponent
+    TaxModalComponent,
+    LayoutsComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,

@@ -1,1 +1,90 @@
-<p>login works!</p>
+<div class="auth-page">
+    <div class="container-fluid p-0">
+        <div class="row g-0">
+            <div class="col-xxl-3 col-lg-4 col-md-5">
+                <div class="auth-full-page-content d-flex p-sm-5 p-4">
+                    <div class="w-100">
+                        <div class="d-flex flex-column h-100">
+                            <div class="mb-4 mb-md-5 text-center">
+                                <a routerLink="/" class="d-block auth-logo">
+                                    <app-logo></app-logo>
+                                </a>
+                            </div>
+                            <div class="auth-content my-auto">
+                                <div class="text-center">
+                                    <h5 class="mb-0">Welcome Back !</h5>
+                                    <p class="text-muted mt-2">Sign in to continue to ExpaqASVA.</p>
+                                </div>
+                                <app-spinner></app-spinner>
+                                <app-error-display [errors]="errors"></app-error-display>
+                                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+                                    <div class="mb-3">
+                                        <label for="email">Email</label>
+                                        <input type="email" class="form-control" id="email" formControlName="email"
+                                            appValidityStyle [submitted]="submitted" placeholder="Enter email">
+                                        <div ngxErrors="email">
+                                            <div ngxError="required">Email is required</div>
+                                            <div ngxError="email">Invalid email address</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <div class="float-end">
+                                            <a routerLink="/account/recoverpw" class="text-muted">Forgot
+                                                password?</a>
+                                        </div>
+                                        <label for="userpassword">Password</label>
+                                        <div class="input-group auth-pass-inputgroup">
+                                            <input [type]="fieldTextType ? 'text' : 'password'" class="form-control"
+                                                formControlName="password" appValidityStyle [submitted]="submitted"
+                                                placeholder="Enter password" aria-label="Password"
+                                                aria-describedby="password-addon">
+                                            <button class="btn btn-light " type="button" id="password-addon"><i
+                                                    class="mdi" [ngClass]="{'mdi-eye-off-outline': !fieldTextType, 'mdi-eye-outline': fieldTextType
+                                                      }" (click)="toggleFieldTextType()"></i></button>
+                                          
+                                        </div>
+                                        <div ngxErrors="password">
+                                            <div ngxError="required">Password is required</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="remember-check">
+                                        <label class="form-check-label" for="remember-check">
+                                            Remember me
+                                        </label>
+                                    </div>
+
+                                    <div class="mt-3 d-grid">
+                                        <button class="btn btn-primary btn-block" type="submit">Log In</button>
+                                    </div>
+
+                                </form>
+
+
+                            </div>
+                            <div class="mt-4 mt-md-5 text-center">
+                                <p class="mb-0">
+                                   <app-app-version></app-app-version>
+                                </p>
+                                <p class="mb-0">©
+                                    {{year}} ExpaqASVA . Powered by Expaq
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end auth full page content -->
+            </div>
+            <!-- end col -->
+            <div class="col-xxl-9 col-lg-8 col-md-7">
+                <app-banner></app-banner>
+            </div>
+            <!-- end col -->
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container fluid -->
+</div>
