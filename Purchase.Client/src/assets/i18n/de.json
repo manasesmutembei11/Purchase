@@ -1,0 +1,249 @@
+{
+  "APP2": {
+    "MENU": {
+      "OPERATION": "OPERATION",
+      "USERNAME": "Username"
+    }
+  },
+  "HEADER": {
+    "MEGA_MENU": "Mega-Menü",
+    "NOTIFICATIONS": {
+      "FIRST": {
+        "TEXT": "Wenn mehrere Sprachen die Grammatik zusammenführen",
+        "TIME": "Vor 3 Minuten",
+        "TITLE": "Ihre Bestellung ist aufgegeben"
+      },
+      "FOUR": {
+        "TEXT": "Als skeptischer Cambridge-Freund von mir abendländisch.",
+        "TIME": "Vor 1 Stunden",
+        "TITLE": "Salena Layfield"
+      },
+      "LOAD_MORE": "Mehr sehen..",
+      "SECOND": {
+        "TEXT": "Es wird wie vereinfachtes Englisch erscheinen.",
+        "TIME": "Vor 1 Stunden",
+        "TITLE": "James Lemire"
+      },
+      "THIRD": {
+        "TEXT": "Wenn mehrere Sprachen die Grammatik zusammenführen",
+        "TIME": "Vor 3 Minuten",
+        "TITLE": "Ihr Artikel wird versendet"
+      },
+      "TITLE": "Benachrichtigungen",
+      "VIEW_ALL": "Alle ansehen"
+    },
+    "SEARCH": "Suche..."
+  },
+  "MENUITEMS": {
+    "APPS": {
+      "BADGE": "Neu",
+      "LIST": {
+        "BLOG": "Bloggen",
+        "BLOGDETAILS": "Blog-Details",
+        "BLOGGRID": "Blog-Raster",
+        "BLOGLIST": "Blog-Liste",
+        "CALENDAR": "Kalender",
+        "CHAT": "Plaudern",
+        "CONTACTS": "Kontakte",
+        "EMAIL": "Email",
+        "INBOX": "Posteingang",
+        "INVOICEDETAIL": "Rechnungsdetails",
+        "INVOICELIST": "Rechnungsliste",
+        "INVOICES": "Rechnungen",
+        "PROFILE": "Profil",
+        "READEMAIL": "E-Mail lesen",
+        "USERGRID": "Benutzerraster",
+        "USERLIST": "Benutzerliste"
+      },
+      "TEXT": "Apps"
+    },
+    "AUTHENTICATION": {
+      "BADGE": "Neu",
+      "LIST": {
+        "CONFIRMMAIL": "E-Mail bestätigen",
+        "EMAILVERIFICATION": "E-Mail-Verifizierung",
+        "LOCKSCREEN": "Bildschirm sperren",
+        "LOGIN": "Anmeldung",
+        "LOGOUT": "Ausloggen",
+        "RECOVERPWD": "Passwort wiederherstellen",
+        "REGISTER": "Registrieren",
+        "TWOSTEPVERIFICATION": "Bestätigung in zwei Schritten"
+      },
+      "TEXT": "Authentifizierung"
+    },
+    "CHARTS": {
+      "LIST": {
+        "APEX": "Apexcharts",
+        "CHARTJS": "Apex-Charts",
+        "ECHARTS": "Karten"
+      },
+      "TEXT": "Diagramme"
+    },
+    "COMPONENTS": {
+      "LIST": {
+        "ALERTS": "Benachrichtigungen",
+        "BUTTONS": "Tasten",
+        "CARDS": "Karten",
+        "CAROUSEL": "Karussell",
+        "COLORS": "Farben",
+        "DROPDOWNS": "Dropdowns",
+        "GENERAL": "Allgemeines",
+        "GRID": "Gitter",
+        "IMAGES": "Bilder",
+        "MODALS": "Modalitäten",
+        "OFFCANVAS": "Leinwand",
+        "PLACEHOLDERS": "Platzhalter",
+        "PROGRESSBAR": "Fortschrittsbalken",
+        "TABS": "Tabs & Akkordeons",
+        "TOASTS": "Toast",
+        "TYPOGRAPHY": "Typografie",
+        "UTILITIES": "Dienstprogramme",
+        "VIDEO": "Video"
+      },
+      "TEXT": "Komponenten"
+    },
+    "DASHBOARDS": {
+      "BADGE": "vier",
+      "TEXT": "Instrumententafel"
+    },
+    "ELEMENTS": {
+      "TEXT": "Elemente"
+    },
+    "EXTENDED": {
+      "LIST": {
+        "LIGHTBOX": "Leuchtkasten",
+        "NOTIFICATION": "Benachrichtigung",
+        "RANGESLIDER": "Bereichsschieberegler",
+        "RATING": "Bewertung",
+        "SWEETALERT": "Süße Warnung"
+      },
+      "TEXT": "Verlängert"
+    },
+    "EXTRAPAGES": {
+      "TEXT": "Zusätzliche Seiten"
+    },
+    "FORMS": {
+      "BADGE": "7",
+      "LIST": {
+        "ADVANCED": "Erweitertes Plugin",
+        "EDITOR": "Herausgeber",
+        "ELEMENTS": "Grundelemente",
+        "FILEUPLOAD": "Datei-Upload",
+        "MASK": "Formularmaske",
+        "VALIDATION": "Validierung",
+        "WIZARD": "Magier"
+      },
+      "TEXT": "Formen"
+    },
+    "HORIZONTAL": {
+      "TEXT": "Horizontal"
+    },
+    "ICONS": {
+      "LIST": {
+        "BOXICONS": "Boxicons",
+        "DRIPICONS": "Dripicons",
+        "FONTAWESOME": "Schriftart Super",
+        "MATERIALDESIGN": "Material Design"
+      },
+      "TEXT": "Symbole"
+    },
+    "MAPS": {
+      "LIST": {
+        "GOOGLEMAP": "Google",
+        "LEAFLET": "Leaflet"
+      },
+      "TEXT": "Karten"
+    },
+    "MENU": {
+      "TEXT": "Speisekarte"
+    },
+    "MULTILEVEL": {
+      "LIST": {
+        "LEVEL1": {
+          "1": "Stufe 1.1",
+          "2": "Stufe 1.2",
+          "LEVEL2": {
+            "1": "Stufe 2.1",
+            "2": "Stufe 2.2"
+          }
+        }
+      },
+      "TEXT": "Mehrstufig"
+    },
+    "PAGES": {
+      "LIST": {
+        "ERROR404": "Fehler 404",
+        "ERROR500": "Fehler 500",
+        "FAQS": "Häufig gestellte Fragen",
+        "MAINTENANCE": "Instandhaltung",
+        "PRICING": "Preisgestaltung",
+        "STARTER": "Startseite",
+        "TIMELINE": "Zeitleiste"
+      },
+      "TEXT": "Seiten"
+    },
+    "TABLES": {
+      "LIST": {
+        "ADVANCED": "Datentabellen",
+        "BASIC": "Bootstrap-Grundlagen"
+      },
+      "TEXT": "Tabellen"
+    },
+    "UTILITY": {
+      "TEXT": "Nützlichkeit"
+    }
+  },
+  "RIGHTSIDEBAR": {
+    "LAYOUT": {
+      "LIST": {
+        "HORIZONTAL": "Horizontal",
+        "VERTICAL": "Vertikal"
+      },
+      "TEXT": "Layout"
+    },
+    "LAYOUTMODE": {
+      "LIST": {
+        "DARK": "Dunkel",
+        "LIGHT": "Licht"
+      },
+      "TEXT": "Layout-Modus"
+    },
+    "LAYOUTPOSITION": {
+      "LIST": {
+        "FIXED": "Fest",
+        "SCROLLABLE": "Bildlauffähig"
+      },
+      "TEXT": "Layoutposition"
+    },
+    "LAYOUTWIDTH": {
+      "LIST": {
+        "BOXED": "Boxed",
+        "FLUID": "Flüssigkeit"
+      },
+      "TEXT": "Layoutbreite"
+    },
+    "SIDEBARCOLOR": {
+      "LIST": {
+        "BRAND": "Marke",
+        "DARK": "Dunkel",
+        "LIGHT": "Licht"
+      },
+      "TEXT": "Seitenleistenfarbe"
+    },
+    "SIDEBARSIZE": {
+      "LIST": {
+        "COMPACT": "Kompakt",
+        "DEFAULT": "Standard",
+        "SMALL": "Klein"
+      },
+      "TEXT": "Seitenleistengröße"
+    },
+    "TOPBARCOLOR": {
+      "LIST": {
+        "DARK": "Dunkel",
+        "LIGHT": "Licht"
+      },
+      "TEXT": "Farbe der oberen Leiste"
+    }
+  }
+}

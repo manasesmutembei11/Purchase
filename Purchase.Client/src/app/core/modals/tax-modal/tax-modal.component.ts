@@ -7,11 +7,23 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Subject } from "rxjs";
 import { NgbActiveModal, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { Params } from "@angular/router";
+import { CommonModule } from '@angular/common';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../../../shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-tax-modal',
   templateUrl: './tax-modal.component.html',
-  styles: []
+  standalone: true,
+  imports: [
+    CommonModule,
+    NgbModalModule,
+    FormsModule,
+    SharedModule,
+    ReactiveFormsModule,
+  ],
 })
 export class TaxModalComponent extends BasePagedListComponent implements OnInit {
   taxes: Tax[] = [];

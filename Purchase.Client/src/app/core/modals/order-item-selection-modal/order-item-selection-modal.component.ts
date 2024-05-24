@@ -6,11 +6,23 @@ import { Product, Order, OrderItem } from '../../models/masterdata-models/master
 import { ProductSelectionModalComponent } from '../product-selection-modal/product-selection-modal.component';
 import { Guid } from 'guid-typescript';
 import { OrderItemService } from '../../services/masterdata-services/order-item.service';
+import { CommonModule } from '@angular/common';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../../../shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-order-item-selection-modal',
   templateUrl: './order-item-selection-modal.component.html',
-  styles: []
+  standalone: true,
+  imports: [
+    CommonModule,
+    NgbModalModule,
+    FormsModule,
+    SharedModule,
+    ReactiveFormsModule,
+  ],
 })
 export class OrderItemSelectionModalComponent implements OnInit {
   @Output() orderItemsAdded = new EventEmitter<OrderItem[]>();

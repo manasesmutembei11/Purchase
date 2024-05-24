@@ -1,0 +1,249 @@
+{
+  "APP2": {
+    "MENU": {
+      "OPERATION": "OPERATION",
+      "USERNAME": "Username"
+    }
+  },
+  "HEADER": {
+    "MEGA_MENU": "Мега Меню",
+    "NOTIFICATIONS": {
+      "FIRST": {
+        "TEXT": "Это будет похоже на упрощенный английский.",
+        "TIME": "1 час назад",
+        "TITLE": "Джеймс Лемир"
+      },
+      "FOUR": {
+        "TEXT": "Как скептически настроенный мой кембриджский друг с Запада.",
+        "TIME": "10 часов назад",
+        "TITLE": "Салена Лэйфилд"
+      },
+      "LOAD_MORE": "Посмотреть больше..",
+      "SECOND": {
+        "TEXT": "Если несколько языков объединяют грамматику",
+        "TIME": "3 минуты назад",
+        "TITLE": "Ваш заказ размещен"
+      },
+      "THIRD": {
+        "TEXT": "Если несколько языков объединяют грамматику",
+        "TIME": "3 минуты назад",
+        "TITLE": "Ваш товар отправлен"
+      },
+      "TITLE": "Уведомления",
+      "VIEW_ALL": "Посмотреть все"
+    },
+    "SEARCH": "Поиск..."
+  },
+  "MENUITEMS": {
+    "APPS": {
+      "BADGE": "Новый",
+      "LIST": {
+        "BLOG": "Блог",
+        "BLOGDETAILS": "Подробности блога",
+        "BLOGGRID": "Сетка блога",
+        "BLOGLIST": "Список блогов",
+        "CALENDAR": "Календарь",
+        "CHAT": "Чат",
+        "CONTACTS": "Контакты",
+        "EMAIL": "Электронное письмо",
+        "INBOX": "Входящие",
+        "INVOICEDETAIL": "Детали счета",
+        "INVOICELIST": "Список счетов",
+        "INVOICES": "Счета",
+        "PROFILE": "Профиль",
+        "READEMAIL": "Читать электронную почту",
+        "USERGRID": "Сетка пользователя",
+        "USERLIST": "Список пользователей"
+      },
+      "TEXT": "Программы"
+    },
+    "AUTHENTICATION": {
+      "BADGE": "Новый",
+      "LIST": {
+        "CONFIRMMAIL": "Подтвердить почту",
+        "EMAILVERIFICATION": "подтверждение адреса электронной почты",
+        "LOCKSCREEN": "Экран блокировки",
+        "LOGIN": "Авторизоваться",
+        "LOGOUT": "Выйти",
+        "RECOVERPWD": "Восстановить пароль",
+        "REGISTER": "регистр",
+        "TWOSTEPVERIFICATION": "Двухэтапная проверка"
+      },
+      "TEXT": "Аутентификация"
+    },
+    "CHARTS": {
+      "LIST": {
+        "APEX": "Apexcharts",
+        "CHARTJS": "Chartjs",
+        "ECHARTS": "Электронные диаграммы"
+      },
+      "TEXT": "Диаграммы"
+    },
+    "COMPONENTS": {
+      "LIST": {
+        "ALERTS": "Оповещения",
+        "BUTTONS": "Кнопки",
+        "CARDS": "Открытки",
+        "CAROUSEL": "Карусель",
+        "COLORS": "Цвета",
+        "DROPDOWNS": "Выпадающие списки",
+        "GENERAL": "Общий",
+        "GRID": "Сетка",
+        "IMAGES": "Изображений",
+        "MODALS": "Модальные окна",
+        "OFFCANVAS": "Offcanvas",
+        "PLACEHOLDERS": "Заполнители",
+        "PROGRESSBAR": "Индикаторы прогресса",
+        "TABS": "Табы и аккордеоны",
+        "TOASTS": "Тосты",
+        "TYPOGRAPHY": "Типография",
+        "UTILITIES": "Утилиты",
+        "VIDEO": "видео"
+      },
+      "TEXT": "Составные части"
+    },
+    "DASHBOARDS": {
+      "BADGE": "четыре",
+      "TEXT": "Приборная панель"
+    },
+    "ELEMENTS": {
+      "TEXT": "Элементы"
+    },
+    "EXTENDED": {
+      "LIST": {
+        "LIGHTBOX": "LightBox",
+        "NOTIFICATION": "Уведомление",
+        "RANGESLIDER": "Ползунок диапазона",
+        "RATING": "Рейтинг",
+        "SWEETALERT": "Сладкое оповещение"
+      },
+      "TEXT": "Расширенный"
+    },
+    "EXTRAPAGES": {
+      "TEXT": "Дополнительные страницы"
+    },
+    "FORMS": {
+      "BADGE": "семь",
+      "LIST": {
+        "ADVANCED": "Расширенный плагин",
+        "EDITOR": "Редакторы",
+        "ELEMENTS": "Основные элементы",
+        "FILEUPLOAD": "Файл загружен",
+        "MASK": "Форма Маска",
+        "VALIDATION": "Проверка",
+        "WIZARD": "волшебник"
+      },
+      "TEXT": "Формы"
+    },
+    "HORIZONTAL": {
+      "TEXT": "По горизонтали"
+    },
+    "ICONS": {
+      "LIST": {
+        "BOXICONS": "Боксиконы",
+        "DRIPICONS": "Дрипиконы",
+        "FONTAWESOME": "Font Awesome",
+        "MATERIALDESIGN": "Материальный дизайн"
+      },
+      "TEXT": "Иконки"
+    },
+    "MAPS": {
+      "LIST": {
+        "GOOGLEMAP": "Google",
+        "LEAFLET": "Leaflet"
+      },
+      "TEXT": "Карты"
+    },
+    "MENU": {
+      "TEXT": "Меню"
+    },
+    "MULTILEVEL": {
+      "LIST": {
+        "LEVEL1": {
+          "1": "Уровень 1.1",
+          "2": "Уровень 1.2",
+          "LEVEL2": {
+            "1": "Уровень 2.1",
+            "2": "Уровень 2.2"
+          }
+        }
+      },
+      "TEXT": "Многоуровневый"
+    },
+    "PAGES": {
+      "LIST": {
+        "ERROR404": "Ошибка 404",
+        "ERROR500": "Ошибка 500",
+        "FAQS": "FAQs",
+        "MAINTENANCE": "Обслуживание",
+        "PRICING": "Ценообразование",
+        "STARTER": "Стартовая страница",
+        "TIMELINE": "График"
+      },
+      "TEXT": "Страницы"
+    },
+    "TABLES": {
+      "LIST": {
+        "ADVANCED": "Таблицы данных",
+        "BASIC": "Bootstrap Basic"
+      },
+      "TEXT": "Столы"
+    },
+    "UTILITY": {
+      "TEXT": "Полезность"
+    }
+  },
+  "RIGHTSIDEBAR": {
+    "LAYOUT": {
+      "LIST": {
+        "HORIZONTAL": "По горизонтали",
+        "VERTICAL": "Вертикальный"
+      },
+      "TEXT": "Макет"
+    },
+    "LAYOUTMODE": {
+      "LIST": {
+        "DARK": "Темный",
+        "LIGHT": "Свет"
+      },
+      "TEXT": "Режим макета"
+    },
+    "LAYOUTPOSITION": {
+      "LIST": {
+        "FIXED": "Фиксированный",
+        "SCROLLABLE": "Прокручиваемый"
+      },
+      "TEXT": "Расположение макета"
+    },
+    "LAYOUTWIDTH": {
+      "LIST": {
+        "BOXED": "В штучной упаковке",
+        "FLUID": "Жидкость"
+      },
+      "TEXT": "Ширина макета"
+    },
+    "SIDEBARCOLOR": {
+      "LIST": {
+        "BRAND": "Марка",
+        "DARK": "Темный",
+        "LIGHT": "Свет"
+      },
+      "TEXT": "Цвет боковой панели"
+    },
+    "SIDEBARSIZE": {
+      "LIST": {
+        "COMPACT": "Компактный",
+        "DEFAULT": "По умолчанию",
+        "SMALL": "Небольшой"
+      },
+      "TEXT": "Размер боковой панели"
+    },
+    "TOPBARCOLOR": {
+      "LIST": {
+        "DARK": "Темный",
+        "LIGHT": "Свет"
+      },
+      "TEXT": "Цвет верхней панели"
+    }
+  }
+}

@@ -36,7 +36,7 @@ import { LanguageService } from '../shared/services/language.service';
     RouterModule,
     FeatherModule.pick(allIcons),
     NgbDropdownModule,
-    SimplebarAngularModule,
+    SimplebarAngularModule
     SharedModule,
     
   ],

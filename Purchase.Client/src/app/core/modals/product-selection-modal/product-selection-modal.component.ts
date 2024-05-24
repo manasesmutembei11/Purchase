@@ -4,11 +4,23 @@ import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Product } from '../../models/masterdata-models/masterdata.models';
 import { BasePagedListComponent } from '../../../shared/base/base-paged-list-component';
 import { Params } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../../../shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-product-selection-modal',
   templateUrl: './product-selection-modal.component.html',
-  styles: []
+  standalone: true,
+  imports: [
+    CommonModule,
+    NgbModalModule,
+    FormsModule,
+    SharedModule,
+    ReactiveFormsModule,
+  ],
 })
 export class ProductSelectionModalComponent extends BasePagedListComponent implements OnInit {
   products: Product[] = [];

@@ -1,0 +1,249 @@
+{
+  "APP2": {
+    "MENU": {
+      "OPERATION": "OPERATION",
+      "USERNAME": "Username"
+    }
+  },
+  "HEADER": {
+    "MEGA_MENU": "Mega Menu",
+    "NOTIFICATIONS": {
+      "FIRST": {
+        "TEXT": "If several languages coalesce the grammar",
+        "TIME": "3 min ago",
+        "TITLE": "Your order is placed"
+      },
+      "FOUR": {
+        "TEXT": "As a skeptical Cambridge friend of mine occidental.",
+        "TIME": "1 hours ago",
+        "TITLE": "Salena Layfield"
+      },
+      "LOAD_MORE": "View More..",
+      "SECOND": {
+        "TEXT": "It will seem like simplified English.",
+        "TIME": "1 hours ago",
+        "TITLE": "James Lemire"
+      },
+      "THIRD": {
+        "TEXT": "If several languages coalesce the grammar",
+        "TIME": "3 min ago",
+        "TITLE": "Your item is shipped"
+      },
+      "TITLE": "Notifications",
+      "VIEW_ALL": "View All"
+    },
+    "SEARCH": "Search..."
+  },
+  "MENUITEMS": {
+    "APPS": {
+      "BADGE": "New",
+      "LIST": {
+        "BLOG": "Blog",
+        "BLOGDETAILS": "Blog Details",
+        "BLOGGRID": "Blog Grid",
+        "BLOGLIST": "Blog List",
+        "CALENDAR": "Calendar",
+        "CHAT": "Chat",
+        "CONTACTS": "Contacts",
+        "EMAIL": "Email",
+        "INBOX": "Inbox",
+        "INVOICEDETAIL": "Invoice Detail",
+        "INVOICELIST": "Invoice List",
+        "INVOICES": "Invoices",
+        "PROFILE": "Profile",
+        "READEMAIL": "Read Email",
+        "USERGRID": "User Grid",
+        "USERLIST": "User List"
+      },
+      "TEXT": "Apps"
+    },
+    "AUTHENTICATION": {
+      "BADGE": "New",
+      "LIST": {
+        "CONFIRMMAIL": "Confirm Mail",
+        "EMAILVERIFICATION": "Email Verification",
+        "LOCKSCREEN": "Lock screen",
+        "LOGIN": "Login",
+        "LOGOUT": "Log Out",
+        "RECOVERPWD": "Recover Password",
+        "REGISTER": "Register",
+        "TWOSTEPVERIFICATION": "Two Step Verification"
+      },
+      "TEXT": "Authentication"
+    },
+    "CHARTS": {
+      "LIST": {
+        "APEX": "Apexcharts",
+        "CHARTJS": "Chartjs",
+        "ECHARTS": "Echarts"
+      },
+      "TEXT": "Charts"
+    },
+    "COMPONENTS": {
+      "LIST": {
+        "ALERTS": "Alerts",
+        "BUTTONS": "Buttons",
+        "CARDS": "Cards",
+        "CAROUSEL": "Carousel",
+        "COLORS": "Colors",
+        "DROPDOWNS": "Dropdowns",
+        "GENERAL": "General",
+        "GRID": "Grid",
+        "IMAGES": "Images",
+        "MODALS": "Modals",
+        "OFFCANVAS": "Offcanvas",
+        "PLACEHOLDERS": "Placeholders",
+        "PROGRESSBAR": "Progress Bars",
+        "TABS": "Tabs & Accordions",
+        "TOASTS": "Toasts",
+        "TYPOGRAPHY": "Typography",
+        "UTILITIES": "Utilities",
+        "VIDEO": "Video"
+      },
+      "TEXT": "Components"
+    },
+    "DASHBOARDS": {
+      "BADGE": "04",
+      "TEXT": "Dashboard"
+    },
+    "ELEMENTS": {
+      "TEXT": "Elements"
+    },
+    "EXTENDED": {
+      "LIST": {
+        "LIGHTBOX": "LightBox",
+        "NOTIFICATION": "Notification",
+        "RANGESLIDER": "Range Slider",
+        "RATING": "Rating",
+        "SWEETALERT": "Sweet Alert"
+      },
+      "TEXT": "Extended"
+    },
+    "EXTRAPAGES": {
+      "TEXT": "Extra Pages"
+    },
+    "FORMS": {
+      "BADGE": "7",
+      "LIST": {
+        "ADVANCED": "Advanced Plugin",
+        "EDITOR": "Editors",
+        "ELEMENTS": "Basic Elements",
+        "FILEUPLOAD": "File Upload",
+        "MASK": "Form Mask",
+        "VALIDATION": "Validation",
+        "WIZARD": "Wizard"
+      },
+      "TEXT": "Forms"
+    },
+    "HORIZONTAL": {
+      "TEXT": "Horizontal"
+    },
+    "ICONS": {
+      "LIST": {
+        "BOXICONS": "Boxicons",
+        "DRIPICONS": "Dripicons",
+        "FONTAWESOME": "Font Awesome",
+        "MATERIALDESIGN": "Material Design"
+      },
+      "TEXT": "Icons"
+    },
+    "MAPS": {
+      "LIST": {
+        "GOOGLEMAP": "Google",
+        "LEAFLET": "Leaflet"
+      },
+      "TEXT": "Maps"
+    },
+    "MENU": {
+      "TEXT": "Menu"
+    },
+    "MULTILEVEL": {
+      "LIST": {
+        "LEVEL1": {
+          "1": "Level 1.1",
+          "2": "Level 1.2",
+          "LEVEL2": {
+            "1": "Level 2.1",
+            "2": "Level 2.2"
+          }
+        }
+      },
+      "TEXT": "Multi Level"
+    },
+    "PAGES": {
+      "LIST": {
+        "ERROR404": "Error 404",
+        "ERROR500": "Error 500",
+        "FAQS": "FAQs",
+        "MAINTENANCE": "Maintenance",
+        "PRICING": "Pricing",
+        "STARTER": "Starter Page",
+        "TIMELINE": "Timeline"
+      },
+      "TEXT": "Pages"
+    },
+    "TABLES": {
+      "LIST": {
+        "ADVANCED": "DataTables",
+        "BASIC": "Bootstrap Basic"
+      },
+      "TEXT": "Tables"
+    },
+    "UTILITY": {
+      "TEXT": "Utility"
+    }
+  },
+  "RIGHTSIDEBAR": {
+    "LAYOUT": {
+      "LIST": {
+        "HORIZONTAL": "Horizontal",
+        "VERTICAL": "Vertical"
+      },
+      "TEXT": "Layout"
+    },
+    "LAYOUTMODE": {
+      "LIST": {
+        "DARK": "Dark",
+        "LIGHT": "Light"
+      },
+      "TEXT": "Layout Mode"
+    },
+    "LAYOUTPOSITION": {
+      "LIST": {
+        "FIXED": "Fixed",
+        "SCROLLABLE": "Scrollable"
+      },
+      "TEXT": "Layout Position"
+    },
+    "LAYOUTWIDTH": {
+      "LIST": {
+        "BOXED": "Boxed",
+        "FLUID": "Fluid"
+      },
+      "TEXT": "Layout Width"
+    },
+    "SIDEBARCOLOR": {
+      "LIST": {
+        "BRAND": "Brand",
+        "DARK": "Dark",
+        "LIGHT": "Light"
+      },
+      "TEXT": "Sidebar Color"
+    },
+    "SIDEBARSIZE": {
+      "LIST": {
+        "COMPACT": "Compact",
+        "DEFAULT": "Default",
+        "SMALL": "Small"
+      },
+      "TEXT": "Sidebar Size"
+    },
+    "TOPBARCOLOR": {
+      "LIST": {
+        "DARK": "Dark",
+        "LIGHT": "Light"
+      },
+      "TEXT": "Topbar Color"
+    }
+  }
+}

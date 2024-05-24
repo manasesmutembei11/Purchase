@@ -1,0 +1,249 @@
+{
+  "APP2": {
+    "MENU": {
+      "OPERATION": "OPERATION",
+      "USERNAME": "Username"
+    }
+  },
+  "HEADER": {
+    "MEGA_MENU": "Menu Mega",
+    "NOTIFICATIONS": {
+      "FIRST": {
+        "TEXT": "Sembrerà un inglese semplificato.",
+        "TIME": "1 ora fa",
+        "TITLE": "James Lemire"
+      },
+      "FOUR": {
+        "TEXT": "Come un mio amico occidentale scettico di Cambridge.",
+        "TIME": "1 ora fa",
+        "TITLE": "Salena Layfield"
+      },
+      "LOAD_MORE": "Visualizza altro..",
+      "SECOND": {
+        "TEXT": "Se più lingue uniscono la grammatica",
+        "TIME": "3 minuti fa",
+        "TITLE": "Il tuo ordine è stato effettuato"
+      },
+      "THIRD": {
+        "TEXT": "Se più lingue uniscono la grammatica",
+        "TIME": "3 minuti fa",
+        "TITLE": "Il tuo articolo viene spedito"
+      },
+      "TITLE": "Notifiche",
+      "VIEW_ALL": "Mostra tutto"
+    },
+    "SEARCH": "Ricerca..."
+  },
+  "MENUITEMS": {
+    "APPS": {
+      "BADGE": "Nuova",
+      "LIST": {
+        "BLOG": "Blog",
+        "BLOGDETAILS": "Dettagli del blog",
+        "BLOGGRID": "Griglia del blog",
+        "BLOGLIST": "Elenco blog",
+        "CALENDAR": "Calendario",
+        "CHAT": "Chiacchierare",
+        "CONTACTS": "Contatti",
+        "EMAIL": "E-mail",
+        "INBOX": "Posta in arrivo",
+        "INVOICEDETAIL": "Dettaglio fattura",
+        "INVOICELIST": "Elenco fatture",
+        "INVOICES": "grasso",
+        "PROFILE": "Profilo",
+        "READEMAIL": "Leggi e-mail",
+        "USERGRID": "Griglia utente",
+        "USERLIST": "lista degli utenti"
+      },
+      "TEXT": "App"
+    },
+    "AUTHENTICATION": {
+      "BADGE": "Nuovo",
+      "LIST": {
+        "CONFIRMMAIL": "Conferma posta",
+        "EMAILVERIFICATION": "verifica email",
+        "LOCKSCREEN": "Blocca schermo",
+        "LOGIN": "Login",
+        "LOGOUT": "Disconnettersi",
+        "RECOVERPWD": "Recupera la password",
+        "REGISTER": "Registrati",
+        "TWOSTEPVERIFICATION": "Verifica in due passaggi"
+      },
+      "TEXT": "Autenticazione"
+    },
+    "CHARTS": {
+      "LIST": {
+        "APEX": "grafici apicali",
+        "CHARTJS": "Chartjs",
+        "ECHARTS": "Echarts"
+      },
+      "TEXT": "Grafici"
+    },
+    "COMPONENTS": {
+      "LIST": {
+        "ALERTS": "Avvisi",
+        "BUTTONS": "pulsanti",
+        "CARDS": "Carte",
+        "CAROUSEL": "Giostra",
+        "COLORS": "Colori",
+        "DROPDOWNS": "menu a discesa",
+        "GENERAL": "Generale",
+        "GRID": "Griglia",
+        "IMAGES": "immagini",
+        "MODALS": "modali",
+        "OFFCANVAS": "Fuori tela",
+        "PLACEHOLDERS": "Segnaposto",
+        "PROGRESSBAR": "Barre di avanzamento",
+        "TABS": "Tablature e fisarmoniche",
+        "TOASTS": "Brindisi",
+        "TYPOGRAPHY": "Tipografia",
+        "UTILITIES": "Utilità",
+        "VIDEO": "video"
+      },
+      "TEXT": "Componenti"
+    },
+    "DASHBOARDS": {
+      "BADGE": "quattro",
+      "TEXT": "Pannello di controllo"
+    },
+    "ELEMENTS": {
+      "TEXT": "Elementi"
+    },
+    "EXTENDED": {
+      "LIST": {
+        "LIGHTBOX": "LightBox",
+        "NOTIFICATION": "Notifica",
+        "RANGESLIDER": "Dispositivo di scorrimento dell'intervallo",
+        "RATING": "Valutazione",
+        "SWEETALERT": "dolce allerta"
+      },
+      "TEXT": "Esteso"
+    },
+    "EXTRAPAGES": {
+      "TEXT": "Pagine extra"
+    },
+    "FORMS": {
+      "BADGE": "sette",
+      "LIST": {
+        "ADVANCED": "Plugin avanzato",
+        "EDITOR": "Editori",
+        "ELEMENTS": "Elementi basici",
+        "FILEUPLOAD": "Upload di file",
+        "MASK": "Maschera forma",
+        "VALIDATION": "Convalida",
+        "WIZARD": "procedura guidata"
+      },
+      "TEXT": "Forme"
+    },
+    "HORIZONTAL": {
+      "TEXT": "Orizzontale"
+    },
+    "ICONS": {
+      "LIST": {
+        "BOXICONS": "Boxicon",
+        "DRIPICONS": "Dripicons",
+        "FONTAWESOME": "Carattere fantastico",
+        "MATERIALDESIGN": "Design dei materiali"
+      },
+      "TEXT": "Icone"
+    },
+    "MAPS": {
+      "LIST": {
+        "GOOGLEMAP": "Google",
+        "LEAFLET": "Leaflet"
+      },
+      "TEXT": "Mappe"
+    },
+    "MENU": {
+      "TEXT": "Menù"
+    },
+    "MULTILEVEL": {
+      "LIST": {
+        "LEVEL1": {
+          "1": "Livello 1.1",
+          "2": "Livello 1.2",
+          "LEVEL2": {
+            "1": "Livello 2.1",
+            "2": "Livello 2.2"
+          }
+        }
+      },
+      "TEXT": "Multi livello"
+    },
+    "PAGES": {
+      "LIST": {
+        "ERROR404": "Errore 404",
+        "ERROR500": "Errore 500",
+        "FAQS": "FAQ",
+        "MAINTENANCE": "Manutenzione",
+        "PRICING": "Prezzi",
+        "STARTER": "Pagina iniziale",
+        "TIMELINE": "Sequenza temporale"
+      },
+      "TEXT": "Pagine"
+    },
+    "TABLES": {
+      "LIST": {
+        "ADVANCED": "DataTables",
+        "BASIC": "Bootstrap di base"
+      },
+      "TEXT": "Tabelle"
+    },
+    "UTILITY": {
+      "TEXT": "Utilità"
+    }
+  },
+  "RIGHTSIDEBAR": {
+    "LAYOUT": {
+      "LIST": {
+        "HORIZONTAL": "Orizzontale",
+        "VERTICAL": "Verticale"
+      },
+      "TEXT": "disposizione"
+    },
+    "LAYOUTMODE": {
+      "LIST": {
+        "DARK": "Buio",
+        "LIGHT": "Leggero"
+      },
+      "TEXT": "Modalità layout"
+    },
+    "LAYOUTPOSITION": {
+      "LIST": {
+        "FIXED": "Fisso",
+        "SCROLLABLE": "scorrevole"
+      },
+      "TEXT": "Posizione di layout"
+    },
+    "LAYOUTWIDTH": {
+      "LIST": {
+        "BOXED": "Incorniciato",
+        "FLUID": "Fluido"
+      },
+      "TEXT": "Larghezza layout"
+    },
+    "SIDEBARCOLOR": {
+      "LIST": {
+        "BRAND": "Marca",
+        "DARK": "Buio",
+        "LIGHT": "Leggero"
+      },
+      "TEXT": "Colore barra laterale"
+    },
+    "SIDEBARSIZE": {
+      "LIST": {
+        "COMPACT": "Compatto",
+        "DEFAULT": "Predefinito",
+        "SMALL": "Piccolo"
+      },
+      "TEXT": "Dimensione barra laterale"
+    },
+    "TOPBARCOLOR": {
+      "LIST": {
+        "DARK": "Buio",
+        "LIGHT": "Leggero"
+      },
+      "TEXT": "Topbar Color"
+    }
+  }
+}

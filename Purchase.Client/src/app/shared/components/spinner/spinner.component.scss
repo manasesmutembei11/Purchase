@@ -1,0 +1,10 @@
+#loading-bar .bar {
+    position: relative;
+}
+
+#loading-bar-container {
+    position: absolute;
+    z-index: 999999;
+    top: 30%;
+    left: 50%;
+}

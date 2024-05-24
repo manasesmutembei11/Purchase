@@ -1,0 +1,21 @@
+<div id="layout-wrapper">
+    <!-- Top Bar -->
+    <app-topbar (mobileMenuButtonClicked)="onToggleMobileMenu()" (settingsButtonClicked)="onSettingsButtonClicked()">
+    </app-topbar>
+    <app-sidebar *ngIf="menuItems && menuItems.length>0" [menuItems]="menuItems"></app-sidebar>
+    <div class="main-content" id="mainContent">
+        <div class="page-content">
+            <div class="container-fluid">
+                <div *ngIf="isLoading" class="spinner-wrapper">
+                    <div class="spinner">Loading...</div>
+                  </div>
+                  <app-spinner></app-spinner>
+                <!-- content -->
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+        <!-- footer -->
+        <app-footer></app-footer>
+    </div>
+</div>
+<app-rightsidebar></app-rightsidebar>

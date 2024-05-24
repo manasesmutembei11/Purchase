@@ -1,0 +1,270 @@
+{
+  "APP2": {
+    "MENU": {
+      "OPERATION": "OPERATION",
+      "USERNAME": "Username"
+    }
+  },
+  "HEADER": {
+    "MEGA_MENU": "Mega menú",
+    "NOTIFICATIONS": {
+      "FIRST": {
+        "TEXT": "Si varios idiomas fusionan la gramática",
+        "TIME": "Hace 3 minutos",
+        "TITLE": "Se realiza tu pedido"
+      },
+      "FOUR": {
+        "TEXT": "Como un escéptico amigo mío occidental de Cambridge.",
+        "TIME": "Hace 1 hora",
+        "TITLE": "Salena Layfield"
+      },
+      "LOAD_MORE": "Ver más..",
+      "SECOND": {
+        "TEXT": "Parecerá un inglés simplificado.",
+        "TIME": "Hace 1 hora",
+        "TITLE": "James Lemire"
+      },
+      "THIRD": {
+        "TEXT": "Si varios idiomas fusionan la gramática",
+        "TIME": "Hace 3 minutos",
+        "TITLE": "Tu artículo es enviado"
+      },
+      "TITLE": "Notificaciones",
+      "VIEW_ALL": "Ver todo"
+    },
+    "SEARCH": "Buscar..."
+  },
+  "MENUITEMS": {
+    "APPS": {
+      "BADGE": "Nuevo",
+      "LIST": {
+        "BLOG": "Blog",
+        "BLOGDETAILS": "Detalles del blog",
+        "BLOGGRID": "Cuadrícula de blogs",
+        "BLOGLIST": "Lista de blogs",
+        "CALENDAR": "Calendario",
+        "CHAT": "Chat",
+        "CONTACTS": "Contactos",
+        "EMAIL": "Correo electrónico",
+        "INBOX": "Bandeja de entrada",
+        "INVOICEDETAIL": "Detalle de la factura",
+        "INVOICELIST": "Lista de facturas",
+        "INVOICES": "Facturas",
+        "PROFILE": "Perfil",
+        "READEMAIL": "Leer el correo electrónico",
+        "USERGRID": "Cuadrícula de usuario",
+        "USERLIST": "Lista de usuarios"
+      },
+      "TEXT": "Aplicaciones"
+    },
+    "AUTHENTICATION": {
+      "BADGE": "Nuevo",
+      "LIST": {
+        "CONFIRMMAIL": "Confirmar correo",
+        "EMAILVERIFICATION": "verificacion de email",
+        "LOCKSCREEN": "Bloquear pantalla",
+        "LOGIN": "Acceso",
+        "LOGOUT": "Cerrar sesión",
+        "RECOVERPWD": "Recuperar contraseña",
+        "REGISTER": "Registrarse",
+        "TWOSTEPVERIFICATION": "Verificación de dos pasos"
+      },
+      "TEXT": "Autenticación"
+    },
+    "CHARTS": {
+      "LIST": {
+        "APEX": "Apexcharts",
+        "CHARTJS": "Chartjs",
+        "ECHARTS": "Echarts"
+      },
+      "TEXT": "Gráficos"
+    },
+    "COMPONENTS": {
+      "LIST": {
+        "ALERTS": "Alertas",
+        "BUTTONS": "Botones",
+        "CARDS": "Tarjetas",
+        "CAROUSEL": "Carrusel",
+        "COLORS": "Colores",
+        "DROPDOWNS": "Listas deplegables",
+        "GENERAL": "General",
+        "GRID": "Red",
+        "IMAGES": "Imagenes",
+        "MODALS": "Modales",
+        "OFFCANVAS": "Offcanvas",
+        "PLACEHOLDERS": "Marcadores de posición",
+        "PROGRESSBAR": "Barras de progreso",
+        "TABS": "Pestañas y acordeones",
+        "TOASTS": "tostadas",
+        "TYPOGRAPHY": "Tipografía",
+        "UTILITIES": "Utilidades",
+        "VIDEO": "Video"
+      },
+      "TEXT": "Componentes"
+    },
+    "DASHBOARDS": {
+      "BADGE": "04",
+      "LIST": {
+        "BLOG": "Blog",
+        "CRYPTO": "Cripto",
+        "DEFAULT": "Defecto",
+        "SAAS": "Saas"
+      },
+      "TEXT": "Tablero"
+    },
+    "ELEMENTS": {
+      "TEXT": "Elements"
+    },
+    "EXTENDED": {
+      "LIST": {
+        "LIGHTBOX": "Caja ligera",
+        "NOTIFICATION": "Notificación",
+        "RANGESLIDER": "Control deslizante de rango",
+        "RATING": "Clasificación",
+        "SWEETALERT": "Alerta dulce"
+      },
+      "TEXT": "Extendido"
+    },
+    "EXTRAPAGES": {
+      "TEXT": "Páginas extra"
+    },
+    "FORMS": {
+      "BADGE": "siete",
+      "LIST": {
+        "ADVANCED": "Advanced Plugin",
+        "EDITOR": "Editores",
+        "ELEMENTS": "Elementos basicos",
+        "FILEUPLOAD": "Subir archivo",
+        "MASK": "Máscara de forma",
+        "VALIDATION": "Validación",
+        "WIZARD": "Mago"
+      },
+      "TEXT": "Formularios"
+    },
+    "HORIZONTAL": {
+      "TEXT": "Horizontal"
+    },
+    "ICONS": {
+      "LIST": {
+        "BOXICONS": "Boxicons",
+        "DRIPICONS": "Dripicons",
+        "FONTAWESOME": "Fuente impresionante",
+        "MATERIALDESIGN": "Diseño de materiales"
+      },
+      "TEXT": "Iconos"
+    },
+    "LAYOUTS": {
+      "LIST": {
+        "BOXED": "Diseño en caja",
+        "COLOREDHEADER": "Encabezado de color",
+        "COLOREDSIDEBAR": "Barra lateral coloreada",
+        "COMPACTSIDEBAR": "Barra lateral compacta",
+        "HORIZONTAL": "Horizontal",
+        "ICONSIDEBAR": "Barra lateral de iconos",
+        "LIGHTSIDEBAR": "Barra lateral ligera",
+        "LIGHTTOPBAR": "Barra superior ligera",
+        "SCROLLABLE": "Desplazable",
+        "VERTICAL": "Vertical"
+      },
+      "TEXT": "Diseños"
+    },
+    "MAPS": {
+      "LIST": {
+        "GOOGLEMAP": "Google",
+        "LEAFLET": "Leaflet"
+      },
+      "TEXT": "Mapas"
+    },
+    "MENU": {
+      "TEXT": "Menú"
+    },
+    "MULTILEVEL": {
+      "LIST": {
+        "LEVEL1": {
+          "1": "Nivel 1.1",
+          "2": "Nivel 1.2",
+          "LEVEL2": {
+            "1": "Nivel 2.1",
+            "2": "Nivel 2.2"
+          }
+        }
+      },
+      "TEXT": "Multi nivel"
+    },
+    "PAGES": {
+      "LIST": {
+        "ERROR404": "Error 404",
+        "ERROR500": "Error 500",
+        "FAQS": "Preguntas frecuentes",
+        "MAINTENANCE": "Mantenimiento",
+        "PRICING": "Precios",
+        "STARTER": "Página de inicio",
+        "TIMELINE": "Cronología"
+      },
+      "TEXT": "Paginas"
+    },
+    "TABLES": {
+      "LIST": {
+        "ADVANCED": "Tablas de datos",
+        "BASIC": "Bootstrap básico"
+      },
+      "TEXT": "Mesas"
+    },
+    "UTILITY": {
+      "TEXT": "Utilidad"
+    }
+  },
+  "RIGHTSIDEBAR": {
+    "LAYOUT": {
+      "LIST": {
+        "HORIZONTAL": "Horizontal",
+        "VERTICAL": "Vertical"
+      },
+      "TEXT": "Diseño"
+    },
+    "LAYOUTMODE": {
+      "LIST": {
+        "DARK": "Oscuro",
+        "LIGHT": "Ligero"
+      },
+      "TEXT": "Modo de diseño"
+    },
+    "LAYOUTPOSITION": {
+      "LIST": {
+        "FIXED": "Reparado",
+        "SCROLLABLE": "Desplazable"
+      },
+      "TEXT": "Posición de diseño"
+    },
+    "LAYOUTWIDTH": {
+      "LIST": {
+        "BOXED": "En caja",
+        "FLUID": "Líquido"
+      },
+      "TEXT": "Ancho de diseño"
+    },
+    "SIDEBARCOLOR": {
+      "LIST": {
+        "BRAND": "Marca",
+        "DARK": "Oscuro",
+        "LIGHT": "Ligero"
+      },
+      "TEXT": "Color de la barra lateral"
+    },
+    "SIDEBARSIZE": {
+      "LIST": {
+        "COMPACT": "Compacto",
+        "DEFAULT": "Defecto",
+        "SMALL": "Pequeño"
+      },
+      "TEXT": "Tamaño de la barra lateral"
+    },
+    "TOPBARCOLOR": {
+      "LIST": {
+        "DARK": "Oscuro",
+        "LIGHT": "Ligero"
+      },
+      "TEXT": "Color de la barra superior"
+    }
+  }
+}
