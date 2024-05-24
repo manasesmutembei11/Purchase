@@ -29,8 +29,13 @@ import { ForbiddenComponent } from './components/forbidden/forbidden.component';
   exports: [
     
     ValidityStyleDirective,
-    ErrorDisplayComponent,
+    ErrorDisplayComponent, 
     PagetitleComponent,
+    LogoComponent,
+    SpinnerComponent,
+    AppVersionComponent,
+    BannerComponent,
+    ForbiddenComponent,
   ],
 })
 export class SharedModule {}
