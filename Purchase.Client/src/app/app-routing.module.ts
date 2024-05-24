@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomePageComponent } from './components/home/home-page/home-page.component';
-import { CategoryListComponent } from './components/masterdata/category-list/category-list.component';
-import { CategoryFormComponent } from './components/masterdata/category-form/category-form.component';
-import { CustomerListComponent } from './components/masterdata/customer-list/customer-list.component';
-import { CustomerFormComponent } from './components/masterdata/customer-form/customer-form.component';
-import { OrderListComponent } from './components/masterdata/order-list/order-list.component';
-import { OrderFormComponent } from './components/masterdata/order-form/order-form.component';
-import { OrderItemListComponent } from './components/masterdata/order-item-list/order-item-list.component';
-import { OrderItemFormComponent } from './components/masterdata/order-item-form/order-item-form.component';
-import { ProductListComponent } from './components/masterdata/product-list/product-list.component';
-import { ProductFormComponent } from './components/masterdata/product-form/product-form.component';
-import { TaxListComponent } from './components/masterdata/tax-list/tax-list.component';
-import { TaxFormComponent } from './components/masterdata/tax-form/tax-form.component';
-import { ProductSelectionModalComponent } from './components/modals/product-selection-modal/product-selection-modal.component';
+import { HomePageComponent } from './pages/home/home-page/home-page.component';
+import { CategoryListComponent } from './pages/masterdata/category-list/category-list.component';
+import { CategoryFormComponent } from './pages/masterdata/category-form/category-form.component';
+import { CustomerListComponent } from './pages/masterdata/customer-list/customer-list.component';
+import { CustomerFormComponent } from './pages/masterdata/customer-form/customer-form.component';
+import { OrderListComponent } from './pages/masterdata/order-list/order-list.component';
+import { OrderFormComponent } from './pages/masterdata/order-form/order-form.component';
+import { OrderItemListComponent } from './pages/masterdata/order-item-list/order-item-list.component';
+import { OrderItemFormComponent } from './pages/masterdata/order-item-form/order-item-form.component';
+import { ProductListComponent } from './pages/masterdata/product-list/product-list.component';
+import { ProductFormComponent } from './pages/masterdata/product-form/product-form.component';
+import { TaxListComponent } from './pages/masterdata/tax-list/tax-list.component';
+import { TaxFormComponent } from './pages/masterdata/tax-form/tax-form.component';
+import { ProductSelectionModalComponent } from './core/modals/product-selection-modal/product-selection-modal.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },

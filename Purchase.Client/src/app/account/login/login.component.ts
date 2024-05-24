@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { FormGroup, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BaseFormComponent } from '../../components/base/base-form-component';
-import { AuthService } from '../../services/auth-services/auth.service';
+import { BaseFormComponent } from '../../shared/base/base-form-component';
+import { AuthService } from '../../core/services/auth-services/auth.service';
 import { LAYOUT_MODE } from '../../layouts/layouts.model';
-import { AuthenticationDto } from '../../models/auth-models/authentication-dto';
+import { AuthenticationDto } from '../../core/models/auth-models/authentication-dto';
 
 
 @Component({

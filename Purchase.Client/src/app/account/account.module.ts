@@ -4,12 +4,12 @@ import { CommonModule } from '@angular/common';
 import { AccountRoutingModule } from './account-routing.module';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
+import { NgxErrorsModule } from '@ngspot/ngx-errors';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { RecoverpwdComponent } from './recoverpwd/recoverpwd.component';
 import { ConfirmmailComponent } from './confirmmail/confirmmail.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { SharedModule } from '../shared-components/shared.module';
-import { ValidityStyleDirective } from '../services/directives/validity-style.directive';
 
 
 
@@ -21,13 +21,14 @@ import { ValidityStyleDirective } from '../services/directives/validity-style.di
     RecoverpwdComponent,
     ConfirmmailComponent,
     ResetPasswordComponent,
-    ValidityStyleDirective
     
   ],
   imports: [
     CommonModule,
     AccountRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule,
+    NgxErrorsModule,
     
   ]
 })
