@@ -17,6 +17,7 @@ import { HorizontaltopbarComponent } from './horizontaltopbar/horizontaltopbar.c
 import { SharedModule } from '../shared/shared.module';
 import { LanguageService } from '../shared/services/language.service';
 import { LayoutsComponent } from './layouts.component';
+import { NgxSimplebarModule } from 'ngx-simplebar';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { LayoutsComponent } from './layouts.component';
     FeatherModule.pick(allIcons),
     NgbDropdownModule,
     SharedModule,
+    NgxSimplebarModule
     
   ],
   providers: [LanguageService],

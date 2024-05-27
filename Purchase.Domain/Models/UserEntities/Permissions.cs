@@ -8,13 +8,15 @@ namespace Purchase.Domain.Models.UserEntities
 {
     public class Permissions
     {
-        public class Menu
+        public class Menus
         {
-            public const string UserManagement = "menu.usermanagement";
-            public const string Setting = "menu.setting";
-            public const string MasterData = "menu.masterdata";
-            public const string Report = "menu.report";
-            public const string Invoice = "menu.invoicing";
+            public const string UserManagement = "menus.usermanagement";
+            public const string Setting = "menus.setting";
+            public const string MasterData = "menus.masterdata";
+            public const string Report = "menus.report";
+            public const string Invoice = "menus.invoicing";
+            public const string AppTask = "menus.apptask";
+            public const string Assessment = "menus.assessment";
 
 
 
@@ -67,6 +69,22 @@ namespace Purchase.Domain.Models.UserEntities
 
         }
 
+        public class AppTaskPermision
+        {
+            public const string Add = "at.add";
+            public const string Edit = "at.edit";
+            public const string View = "at.view";
+            public const string Delete = "at.delete";
+
+        }
+        public class AssessmentPermision
+        {
+            public const string Add = "assm.add";
+            public const string Edit = "assm.edit";
+            public const string View = "assm.view";
+            public const string Delete = "assm.delete";
+
+        }
         public class Invoicing
         {
             public const string Add = "inv.add";

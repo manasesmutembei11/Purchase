@@ -276,7 +276,7 @@
                             <a class="nav-link dropdown-toggle arrow-none" *ngIf="!item.subItems"
                                 (click)="onMenuClick($event)" href="javascript: void(0);" id="topnav-components"
                                 [routerLink]="item.link" role="button">
-                                <i-feather name="{{ item.icon }}"></i-feather>{{ item.label | translate}} <div
+                                <i-feather name="{{ item.icon }}"></i-feather>{{ item.label?? '' | translate}} <div
                                     class="arrow-down" *ngIf="hasItems(item)"></div>
                             </a>
 
@@ -284,7 +284,7 @@
                                 (click)="onMenuClick($event)" href="javascript: void(0);" id="topnav-components"
                                 role="button">
                                 <i-feather name="{{ item.icon }}"></i-feather>
-                                {{item.label | translate }}
+                                {{item.label?? ''| translate }}
                                 <div class="arrow-down"></div>
                             </a>
 
