@@ -12,8 +12,20 @@ using Microsoft.AspNetCore.Authorization;
 using Purchase.Domain.Models.UserEntities;
 using Microsoft.EntityFrameworkCore;
 using System;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+builder.Host.ConfigureContainer<ContainerBuilder>(
+    builder =>
+    {
+        builder.RegisterModule(new DataRepositoryModule());
+        builder.RegisterModule(new WebAppModule());
+   
+    });
 
 LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
 

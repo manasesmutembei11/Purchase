@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Autofac;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -11,12 +12,21 @@ using Purchase.Infrastructure;
 using Purchase.Infrastructure.Repository;
 using System;
 using System.Text;
+using Autofac.Extensions.DependencyInjection;
 
 namespace Purchase.API.Extensions
 {
     public static class ServiceExtensions
     {
+        public static void ConfigureAppAutofacModules(this IHostBuilder host)
+        {
+            host.ConfigureContainer<ContainerBuilder>(builder =>
+            {
+                builder.RegisterModule(new DataRepositoryModule());
+                builder.RegisterModule(new WebAppModule());
+            });
 
+        }
         public static void ConfigureCors(this IServiceCollection services) =>
         services.AddCors(options =>
         {

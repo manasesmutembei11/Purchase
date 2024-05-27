@@ -13,14 +13,14 @@ namespace Purchase.Domain.Models.UserEntities
         {
             var permissions = new List<RoleClaimPermission>();
             //users
-            permissions.Add(new RoleClaimPermission(Permissions.Menu.UserManagement, "User management menu", "USER MANAGEMENT"));
+            permissions.Add(new RoleClaimPermission(Permissions.Menus.UserManagement, "User management menu", "USER MANAGEMENT"));
             permissions.Add(new RoleClaimPermission(Permissions.Users.Edit, "Edit system users", "USER MANAGEMENT"));
             permissions.Add(new RoleClaimPermission(Permissions.Users.View, "View system users", "USER MANAGEMENT"));
             permissions.Add(new RoleClaimPermission(Permissions.Users.Activate, "Activate system users", "USER MANAGEMENT"));
             permissions.Add(new RoleClaimPermission(Permissions.Users.Roles, "Add, Edit and View system roles", "USER MANAGEMENT"));
             permissions.Add(new RoleClaimPermission(Permissions.Users.Permissiion, "Access permissions", "USER MANAGEMENT"));
             //masterdata
-            permissions.Add(new RoleClaimPermission(Permissions.Menu.MasterData, "Master data menu", "MASTER DATA"));
+            permissions.Add(new RoleClaimPermission(Permissions.Menus.MasterData, "Master data menu", "MASTER DATA"));
             permissions.Add(new RoleClaimPermission(Permissions.MasterData.Add, "Add  masterdata", "MASTER DATA"));
             permissions.Add(new RoleClaimPermission(Permissions.MasterData.Edit, "Edit  masterdata", "MASTER DATA"));
             permissions.Add(new RoleClaimPermission(Permissions.MasterData.View, "View  masterdata", "MASTER DATA"));
@@ -39,12 +39,12 @@ namespace Purchase.Domain.Models.UserEntities
             permissions.Add(new RoleClaimPermission(Permissions.AccountMasterData.Delete, "Delete Account  masterdata", "MASTER DATA"));
 
             //setting
-            permissions.Add(new RoleClaimPermission(Permissions.Menu.Setting, "Setting  menu", "SETTINGS"));
+            permissions.Add(new RoleClaimPermission(Permissions.Menus.Setting, "Setting  menu", "SETTINGS"));
             permissions.Add(new RoleClaimPermission(Permissions.Setting.View, "View settings", "SETTINGS"));
             permissions.Add(new RoleClaimPermission(Permissions.Setting.Update, "Update settings", "SETTINGS"));
 
             //Reports
-            permissions.Add(new RoleClaimPermission(Permissions.Menu.Report, "Report  menu", "REPORTS"));
+            permissions.Add(new RoleClaimPermission(Permissions.Menus.Report, "Report  menu", "REPORTS"));
             permissions.Add(new RoleClaimPermission(Permissions.Report.Dashboard, "Report Dashboard", "REPORTS"));
             permissions.Add(new RoleClaimPermission(Permissions.Report.ReportViewer, "Report Viewer", "REPORTS"));
 
@@ -56,7 +56,7 @@ namespace Purchase.Domain.Models.UserEntities
 
             //invoicing
 
-            permissions.Add(new RoleClaimPermission(Permissions.Menu.Invoice, "Invoicing menu", "INVOICING"));
+            permissions.Add(new RoleClaimPermission(Permissions.Menus.Invoice, "Invoicing menu", "INVOICING"));
             permissions.Add(new RoleClaimPermission(Permissions.Invoicing.Add, "Add Invoice", "INVOICING"));
             permissions.Add(new RoleClaimPermission(Permissions.Invoicing.Edit, "Edit Invoice", "INVOICING"));
             permissions.Add(new RoleClaimPermission(Permissions.Invoicing.View, "View Invoices", "INVOICING"));

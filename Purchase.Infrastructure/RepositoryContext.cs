@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Purchase.Domain.Models;
+using Purchase.Domain.Models.Counters;
 using Purchase.Domain.Models.UserEntities;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace Purchase.Infrastructure
             _logger.LogDebug("Create AppDbContext");
         }
         public DbSet<Customer>? Customers { get; set; }
+        public DbSet<AppCounter> Counters { get; set; }
         public DbSet<Order>? Orders { get; set; }
         public DbSet<OrderItem>? OrderItems { get; set; }
         public DbSet<Product>? Products { get; set; }
