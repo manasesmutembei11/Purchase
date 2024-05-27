@@ -8,8 +8,8 @@ import { TranslateService } from '@ngx-translate/core';
 
 import { LAYOUT_MODE } from "../layouts.model";
 import { filter, Subject, takeUntil } from 'rxjs';
-import { User } from '../../shared/models/users/user';
-import { AuthService } from '../../shared/services/auth.service';
+import { User } from '../../core/models/user-models/user';
+import { AuthService } from '../../core/services/auth-services/auth.service';
 import { LanguageService } from '../../shared/services/language.service';
 import { EventService } from '../../shared/services/event.service';
 

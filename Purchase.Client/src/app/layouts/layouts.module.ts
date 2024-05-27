@@ -4,13 +4,11 @@ import { RouterModule } from '@angular/router';
 import { FeatherModule } from 'angular-feather';
 import { allIcons } from 'angular-feather/icons';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
-import { SimplebarAngularModule } from 'simplebar-angular';
 
 import { TranslateModule } from '@ngx-translate/core';
 
 import { VerticalComponent } from './vertical/vertical.component';
 import { TopbarComponent } from './topbar/topbar.component';
-import { LayoutComponent } from './layout.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RightsidebarComponent } from './rightsidebar/rightsidebar.component';
@@ -18,12 +16,13 @@ import { HorizontalComponent } from './horizontal/horizontal.component';
 import { HorizontaltopbarComponent } from './horizontaltopbar/horizontaltopbar.component';
 import { SharedModule } from '../shared/shared.module';
 import { LanguageService } from '../shared/services/language.service';
+import { LayoutsComponent } from './layouts.component';
 
 @NgModule({
   declarations: [
     VerticalComponent,
     TopbarComponent,
-    LayoutComponent,
+    LayoutsComponent,
     SidebarComponent,
     FooterComponent,
     RightsidebarComponent,
@@ -36,7 +35,6 @@ import { LanguageService } from '../shared/services/language.service';
     RouterModule,
     FeatherModule.pick(allIcons),
     NgbDropdownModule,
-    SimplebarAngularModule
     SharedModule,
     
   ],

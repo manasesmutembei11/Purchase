@@ -3,7 +3,7 @@ import { Component, OnInit, AfterViewInit, Output, EventEmitter } from '@angular
 import { Router, NavigationEnd } from '@angular/router';
 
 import { MENU } from './menu';
-import { MenuItem } from './menu.model';
+import { MenuItem } from '../../shared/models/menu.model';
 
 import { TranslateService } from '@ngx-translate/core';
 import { CookieService } from 'ngx-cookie-service';
@@ -12,7 +12,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { LAYOUT_MODE } from "../layouts.model";
 import { LanguageService } from '../../shared/services/language.service';
 import { EventService } from '../../shared/services/event.service';
-import { AuthService } from '../../shared/services/auth.service';
+import { AuthService } from '../../core/services/auth-services/auth.service';
 
 @Component({
   selector: 'app-horizontaltopbar',
