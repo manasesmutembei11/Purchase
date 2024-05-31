@@ -58,7 +58,7 @@ namespace Purchase.Infrastructure.Repository
         }
 
 
-        public void Delete(T entity) => _context.Set<T>().Remove(entity);
+        public virtual void Delete(T entity) => _context.Set<T>().Remove(entity);
 
         public T GetById(TId id)
         {

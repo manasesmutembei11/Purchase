@@ -1,7 +1,7 @@
 import { HttpRequest } from "@angular/common/http";
 import { EventEmitter, Injectable } from "@angular/core";
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class LoadingIndicatorService {
 
   onLoadingChanged: EventEmitter<boolean> = new EventEmitter<boolean>();

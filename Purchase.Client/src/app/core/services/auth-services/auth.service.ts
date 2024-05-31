@@ -32,7 +32,7 @@ export class AuthService {
 
   public loginUser = (body: AuthenticationDto) => {
     return this._http
-      .post<AuthResponseDto>(this.baseUrl + 'api/Auth/login', body)
+      .post<AuthResponseDto>(this.baseUrl + 'api/Account/login', body)
       .pipe(
         map((result) => {
           if (result && result.token) {
@@ -116,14 +116,14 @@ export class AuthService {
     let params = new HttpParams({ encoder: new CustomEncoder() })
     params = params.append('token', token);
     params = params.append('email', email);
-    return this._http.get(this.baseUrl + 'api/Auth/emailconfirmation', { params: params });
+    return this._http.get(this.baseUrl + 'api/Account/emailconfirmation', { params: params });
   }
 
   public forgotPassword = ( body: ForgotPassword) => {
-    return this._http.post( this.baseUrl + 'api/Auth/ForgotPassword',body);
+    return this._http.post( this.baseUrl + 'api/Account/ForgotPassword',body);
   }
   public resetPassword = ( body: ResetPassword) => {
-    return this._http.post( this.baseUrl + 'api/Auth/ResetPassword',body);
+    return this._http.post( this.baseUrl + 'api/Account/ResetPassword',body);
   }
 
 }

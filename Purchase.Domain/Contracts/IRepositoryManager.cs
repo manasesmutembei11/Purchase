@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Purchase.Domain.Contracts.Configs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,8 +15,10 @@ namespace Purchase.Domain.Contracts
         IOrderRepository Order { get; }
         IProductRepository Product { get; }
         IOrderItemRepository OrderItem { get; }
+        IAccountRepository Account { get; }
 
         ITaxRepository Tax { get; }
+        IConfigRepository Config { get; }
         Task SaveAsync();
     }
 }

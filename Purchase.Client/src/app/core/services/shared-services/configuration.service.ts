@@ -11,9 +11,10 @@ import { EnumLookupItem, LookupItem } from '../../models/shared-models/lookup-it
   providedIn: 'root'
 })
 export class ConfigurationService {
+  private baseUrl = 'https://localhost:7224/'
 
 
-  constructor(private http: HttpClient,  @Inject('BASE_URL') private baseUrl: string) { }
+  constructor(private http: HttpClient, ) { }
 
 
 

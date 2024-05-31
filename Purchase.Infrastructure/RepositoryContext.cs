@@ -11,6 +11,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Purchase.Domain.Models.Configs;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Purchase.Infrastructure
@@ -22,7 +23,7 @@ namespace Purchase.Infrastructure
         public RepositoryContext(DbContextOptions<RepositoryContext> options) : base(options)
         {
             
-            _logger.LogDebug("Create AppDbContext");
+           
         }
         public DbSet<Customer>? Customers { get; set; }
         public DbSet<AppCounter> Counters { get; set; }
@@ -31,6 +32,7 @@ namespace Purchase.Infrastructure
         public DbSet<Product>? Products { get; set; }
         public DbSet<Category>? Categories { get; set; }
         public DbSet<Tax>? Taxes { get; set; }
+        public DbSet<Config> Configs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
