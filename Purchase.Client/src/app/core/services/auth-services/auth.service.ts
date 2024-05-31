@@ -16,9 +16,10 @@ export class AuthService {
 
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
+  private baseUrl = 'https://localhost:7224/';
   constructor(
     private _http: HttpClient,
-    @Inject('BASE_URL') private baseUrl: string,
+    
     private jwtHelper: JwtHelperService
   ) {
     this.currentUserSubject = new BehaviorSubject<User>(this.getUserInfo());
