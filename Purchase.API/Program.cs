@@ -15,7 +15,13 @@ using System;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 
-var builder = WebApplication.CreateBuilder(args);
+//var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
+
+var loggerr = NLog.LogManager.Setup().GetCurrentClassLogger();
+loggerr.Debug("init main");
+try
+{
+    var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
@@ -114,3 +120,17 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+}
+catch (Exception exception)
+{
+    // NLog: catch setup errors
+    loggerr.Error(exception, "Stopped program because of exception");
+loggerr.Error(exception.StackTrace);
+
+throw;
+}
+finally
+{
+    // Ensure to flush and stop internal timers/threads before application-exit (Avoid segmentation fault on Linux)
+    NLog.LogManager.Shutdown();
+}

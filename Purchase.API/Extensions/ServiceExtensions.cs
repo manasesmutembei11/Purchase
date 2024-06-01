@@ -73,6 +73,7 @@ namespace Purchase.API.Extensions
                 .AddRoleManager<ApplicationRoleManager>()
                 .AddEntityFrameworkStores<RepositoryContext>()
                 .AddDefaultTokenProviders();
+                
         }
 
         public static void AddJwtAuthenticationServices(this IServiceCollection services)
@@ -124,5 +125,7 @@ namespace Purchase.API.Extensions
         }
 
 
+
     }
+
 }
