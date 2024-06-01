@@ -81,7 +81,7 @@ namespace Purchase.Presentation.Controllers.Users
                         var cc = await _repository.Account.GetByIdAsync(accountId);
                         if (cc != null)
                         {
-                            user.Accounts.Add(new AccountRefDTO { Id = accountId, Name = cc.Name, TypeName = cc.AccountType.ToDescription() });
+                           // user.Accounts.Add(new AccountRefDTO { Id = accountId, Name = cc.Name, TypeName = cc.AccountType.ToDescription() });
                         }
 
                     }

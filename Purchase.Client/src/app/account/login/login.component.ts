@@ -74,9 +74,9 @@ export class LoginComponent extends BaseFormComponent {
         next: (_) => {
           this.router.navigate([this.returnUrl]);
         },
-        error: (errors) => {
-          this.errors = errors;
-          console.log('Error =>', this.errors);
+        error: (error) => {
+          this.error = error;
+          console.log('Error =>', this.error);
         },
       });
     }

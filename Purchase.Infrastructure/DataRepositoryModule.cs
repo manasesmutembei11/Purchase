@@ -6,12 +6,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Purchase.Infrastructure.Repository.Counters;
+using Purchase.Infrastructure.Repository.Configs;
+using Purchase.Infrastructure.Repository;
 using Purchase.Domain.Contracts.Counters;
 using System.Text;
 using System.Threading.Tasks;
 using Autofac;
 using Autofac.Core;
 using Autofac.Extensions.DependencyInjection;
+using Purchase.Domain.Contracts.Configs;
+using Purchase.Domain.Caching;
+using Purchase.Infrastructure.Caching;
 namespace Purchase.Infrastructure
 {
     public class DataRepositoryModule : Module
@@ -40,7 +45,14 @@ namespace Purchase.Infrastructure
             builder.RegisterType<CustomerRepository>().As<ICustomerRepository>();
             builder.RegisterType<CategoryRepository>().As<ICategoryRepository>();
             builder.RegisterType<TaxRepository>().As<ITaxRepository>();
-         
+            builder.RegisterType<ConfigRepository>().As<IConfigRepository>();
+            builder.RegisterType<AccountRepository>().As<IAccountRepository>();
+           // builder.RegisterType<AppCounterRepository>().As<IAppCounterRepository>();
+            builder.RegisterType<UserRepository>().As<IUserRepository>();
+            builder.RegisterType<ConfigRepository>().As<IConfigRepository>();
+            builder.RegisterType<EmailSender>().As<IEmailSender>();
+            builder.RegisterType<DefaultCacheProvider>().As<ICacheProvider>().SingleInstance();
+
             //manager
             builder.RegisterType<RepositoryManager>().As<IRepositoryManager>();
 

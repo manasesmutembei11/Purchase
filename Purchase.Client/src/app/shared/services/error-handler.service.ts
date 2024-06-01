@@ -59,7 +59,6 @@ export class ErrorHandlerService {
   }
   handleOtherErrors(error: HttpErrorResponse) {
     //console.log('handleBadRequest => ', error);
-    debugger
     if(error.error.errors){
       const values = Object.values(error.error.errors) as Error[];
       return this.processError(values)
