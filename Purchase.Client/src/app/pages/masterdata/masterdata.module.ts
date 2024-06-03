@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MasterdataRoutingModule } from './masterdata-routing.module';
 import { NgbModalModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NGX_ERRORS_DECLARATIONS } from '@ngspot/ngx-errors';
+import { NgxErrorsModule } from '@ngspot/ngx-errors';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { TaxListComponent } from './tax-list/tax-list.component';
 import { TaxFormComponent } from './tax-form/tax-form.component';
@@ -40,6 +40,7 @@ import { CustomerListComponent } from './customer-list/customer-list.component';
     SharedModule,
     NgbPaginationModule,
     ReactiveFormsModule,
+    NgxErrorsModule,
     
     FormsModule,
     NgbModalModule,
