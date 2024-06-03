@@ -32,7 +32,7 @@ export class AuthService {
 
   public loginUser = (body: AuthenticationDto) => {
     return this._http
-      .post<AuthResponseDto>(this.baseUrl + 'api/Account/Login', body)
+      .post<AuthResponseDto>(this.baseUrl + 'api/Auth/Login', body)
       .pipe(
         map((result) => {
           if (result && result.token) {

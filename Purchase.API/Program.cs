@@ -14,6 +14,9 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using Purchase.Domain.Utilities;
+using Autofac.Core;
+using Purchase.API.Models;
 
 //var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 
@@ -22,9 +25,10 @@ loggerr.Debug("init main");
 try
 {
     var builder = WebApplication.CreateBuilder(args);
+    builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 
 
-builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+    builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 builder.Host.ConfigureContainer<ContainerBuilder>(
     builder =>
     {
@@ -36,9 +40,17 @@ builder.Host.ConfigureContainer<ContainerBuilder>(
 LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
 
 
-// Add services to the container.
+    // Add services to the container.
+    //builder.Services.AddHttpContextAccessor();
+    var presentationAssembly = typeof(Purchase.Presentation.AssemblyReference).Assembly;
+    builder.Services.AddControllers().AddApplicationPart(presentationAssembly);
 
-builder.Services.ConfigureCors();
+    builder.Services.AddControllers()
+            .AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.Converters.Add(new NullableDecimalConverter());
+            });
+    builder.Services.ConfigureCors();
 builder.Services.ConfigureIISIntegration();
 
 builder.Services.ConfigureLoggerService();
@@ -64,9 +76,9 @@ builder.Services.AddControllers()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddIdentityServices();
-//jwt auth services
-
-builder.Services.AddJwtAuthenticationServices();
+    //jwt auth services
+    builder.Services.AddCookieAuthenticationServices();
+    builder.Services.AddJwtAuthenticationServices();
 builder.Services.AddApiKeyAuthentication();
 
 builder.Services.AddAuthorization(options =>
@@ -89,6 +101,7 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
+
 var logger = app.Services.GetRequiredService<ILoggerManager>();
 app.ConfigureExceptionHandler(logger);
 if (app.Environment.IsProduction())
@@ -104,15 +117,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-app.UseHttpsRedirection();
+    app.UseHttpContext();
+    app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 app.UseForwardedHeaders(new ForwardedHeadersOptions
 {
     ForwardedHeaders = ForwardedHeaders.All
 });
-app.UseCors("CorsPolicy");
+    app.UseCors("CorsPolicy");
 
 app.UseAuthentication();
 app.UseAuthorization();

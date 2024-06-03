@@ -8,8 +8,9 @@ import { MenuItem } from '../models/menu.model';
   providedIn: 'root'
 })
 export class MenuService {
+  private baseUrl = 'https://localhost:7224/'
 
-  constructor(private http: HttpClient,  @Inject('BASE_URL') private baseUrl: string) { }
+  constructor(private http: HttpClient) { }
   getMenu():Observable<MenuItem[]> {
     return this.http.get<MenuItem[]>(`${this.baseUrl}api/menu/menuItems`);
   }

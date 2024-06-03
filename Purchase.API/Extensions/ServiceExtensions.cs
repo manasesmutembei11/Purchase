@@ -13,6 +13,7 @@ using Purchase.Infrastructure.Repository;
 using System;
 using System.Text;
 using Autofac.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Purchase.API.Extensions
 {
@@ -74,6 +75,10 @@ namespace Purchase.API.Extensions
                 .AddEntityFrameworkStores<RepositoryContext>()
                 .AddDefaultTokenProviders();
                 
+        }
+        public static void AddCookieAuthenticationServices(this IServiceCollection services)
+        {
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
         }
 
         public static void AddJwtAuthenticationServices(this IServiceCollection services)
