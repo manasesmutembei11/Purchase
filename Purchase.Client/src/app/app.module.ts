@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClient, HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -32,52 +32,43 @@ function jwtConfigOptionGetter(): JwtConfig {
 }
 
 
-@NgModule({
-  declarations: [
-    AppComponent,
-   
-  ],
-  imports: [
-    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
-    HttpClientModule,
-    FormsModule,
-    TranslateModule.forRoot({
-      defaultLanguage: 'en',
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [HttpClient]
-      }
-    }),     
-    LayoutsModule,
-    AppRoutingModule,
- 
-    
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: ErrorHandlerService,
-      multi: true,
-    },
-    { provide: HTTP_INTERCEPTORS, useClass: AppJwtInterceptor, multi: true },
-    LoadingIndicatorService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: LoadingIndicatorInterceptor,
-      multi: true,
-      deps: [LoadingIndicatorService],
-    },
-    {
-      provide: JWT_OPTIONS,
-      useValue: jwtConfigOptionGetter(),
-    },
-    JwtHelperService,
-    {
-      provide: NgbDateParserFormatter,
-      useValue: new CustomDateParserFormatter("dd-MMM-yyyy"), // <== format!
-    },
-  ],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+        FormsModule,
+        TranslateModule.forRoot({
+            defaultLanguage: 'en',
+            loader: {
+                provide: TranslateLoader,
+                useFactory: (createTranslateLoader),
+                deps: [HttpClient]
+            }
+        }),
+        LayoutsModule,
+        AppRoutingModule], providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: ErrorHandlerService,
+            multi: true,
+        },
+        { provide: HTTP_INTERCEPTORS, useClass: AppJwtInterceptor, multi: true },
+        LoadingIndicatorService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: LoadingIndicatorInterceptor,
+            multi: true,
+            deps: [LoadingIndicatorService],
+        },
+        {
+            provide: JWT_OPTIONS,
+            useValue: jwtConfigOptionGetter(),
+        },
+        JwtHelperService,
+        {
+            provide: NgbDateParserFormatter,
+            useValue: new CustomDateParserFormatter("dd-MMM-yyyy"), // <== format!
+        },
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule { }
