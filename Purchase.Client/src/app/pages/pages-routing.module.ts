@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ForbiddenComponent } from '../shared/components/forbidden/forbidden.component';
-import { HomePageComponent } from './home/home-page/home-page.component';
+import { HomePageComponent } from '../home-page/home-page.component';
 import { AppComponent } from '../app.component';
 
 

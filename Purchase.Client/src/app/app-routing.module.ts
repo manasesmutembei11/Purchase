@@ -3,9 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutsComponent } from './layouts/layouts.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { NgxSimplebarModule } from 'ngx-simplebar';
+import { HomePageComponent } from './home-page/home-page.component';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
-  { path: '', component: LayoutsComponent, loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), canActivate: [AuthGuard] },
+  { path: '', component: AppComponent, loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), canActivate: [AuthGuard] },
   { path: 'account', loadChildren: () => import('./account/account.module').then(m => m.AccountModule) }
 
 ];

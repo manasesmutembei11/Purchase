@@ -16,6 +16,9 @@ import { LoadingIndicatorService } from './shared/services/loading-indicator-ser
 import { LoadingIndicatorInterceptor } from './shared/interceptors/loading-indicator-interceptor';
 import { NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 import { CustomDateParserFormatter } from './shared/core/custom-date-parser-formatter';
+import { MasterdataModule } from './pages/masterdata/masterdata.module';
+import { PagesModule } from './pages/pages.module';
+import { HomePageComponent } from './home-page/home-page.component';
 
 export function createTranslateLoader(http: HttpClient): any {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -33,10 +36,10 @@ function jwtConfigOptionGetter(): JwtConfig {
 
 
 @NgModule({ declarations: [
-        AppComponent,
+        AppComponent, HomePageComponent
     ],
     bootstrap: [AppComponent], imports: [BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
-        FormsModule,
+        FormsModule, RouterModule,
         TranslateModule.forRoot({
             defaultLanguage: 'en',
             loader: {
