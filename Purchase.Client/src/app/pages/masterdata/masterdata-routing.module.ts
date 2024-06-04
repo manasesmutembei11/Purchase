@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TaxListComponent } from './tax-list/tax-list.component';
 import { TaxFormComponent } from './tax-form/tax-form.component';
 import { AuthGuard } from '../../shared/guards/auth.guard';
-import { HomePageComponent } from '../home/home-page/home-page.component';
+import { HomePageComponent } from '../../home-page/home-page.component';
 import { CategoryFormComponent } from './category-form/category-form.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { CustomerFormComponent } from './customer-form/customer-form.component';
